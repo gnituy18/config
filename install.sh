@@ -27,8 +27,11 @@ fi
 ln -s ${DIR}/.vim ~/.vim
 ln -s ${DIR}/.vimrc ~/.vimrc
 ln -s ${DIR}/.bash_profile ~/.bash_profile
+ln -s ${DIR}/.tern-project ~/.tern-project
+ln -s ${DIR}/.gitignore ~/.gitignore
 
 git submodule update --init --recursive
 git config --global core.editor vim
+git config --global core.excludesfile ~/.gitignore
 
 ${DIR}/.vim/bundle/YouCompleteMe/install.py --clang-completer --tern-completer
