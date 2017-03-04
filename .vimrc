@@ -43,6 +43,7 @@ let NERDTreeIgnore = ['\.DS_Store$', '[._]sw[a-p]$', '^node_modules$', '^.git$']
 map <C-n> :NERDTreeToggle<CR>
 
 " Hybrid
+set background=dark
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 colorscheme hybrid
