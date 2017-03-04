@@ -7,7 +7,7 @@ xcode-select --install
 brew tap caskroom/cask
 
 brew install bash
-brew isntall macvim
+brew install macvim
 brew install git
 brew install cmake
 
