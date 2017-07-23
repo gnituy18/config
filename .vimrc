@@ -20,11 +20,15 @@ set showcmd
 syntax enable 
 
 " Editing
+set foldmethod=indent
+set nofoldenable
 set autoindent
 set shiftwidth=4 tabstop=4
 autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType pug setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType scss setlocal expandtab shiftwidth=2 softtabstop=2
 
 " Keyboard
 set backspace=eol,start,indent
@@ -63,3 +67,5 @@ let g:syntastic_check_on_wq = 0
 
 let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_args = '--fix'
+
+let g:syntastic_scss_checkers = ['']
