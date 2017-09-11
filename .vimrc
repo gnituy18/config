@@ -69,3 +69,6 @@ let g:syntastic_javascript_checkers = ['eslint']
 let g:syntastic_javascript_eslint_args = '--fix'
 
 let g:syntastic_scss_checkers = ['']
+
+" Javascript library syntax
+let g:used_javascript_libs = 'react,backbone'
