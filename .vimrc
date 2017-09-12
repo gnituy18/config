@@ -72,3 +72,7 @@ let g:syntastic_scss_checkers = ['']
 
 " Javascript library syntax
 let g:used_javascript_libs = 'react,backbone'
+
+" ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
