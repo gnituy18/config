@@ -1,8 +1,22 @@
 {
-	"libs": [
-		"browser"
-	],
-	"plugins": {
-		"node": {}
-	}
+  "ecmaVersion": 8,
+  "libs": [
+    "browser",
+    "ecmascripts",
+    "react"
+  ],
+  "dontLoad": [
+    "node_modules/**"
+  ],
+  "plugins": {
+    "complete_strings": {},
+    "modules": {},
+    "es_modules": {},
+    "node": {},
+    "node_resolve": {},
+    "doc_comment": {
+      "fullDocs": true,
+      "strong": true
+    }
+  }
 }
