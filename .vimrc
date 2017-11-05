@@ -1,8 +1,15 @@
-" Switch bash to default shell
-set shell=/bin/bash
-
-" Pathogen
-execute pathogen#infect()
+call plug#begin('~/.vim/plugins')
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
+Plug 'scrooloose/nerdcommenter'
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+call plug#end()
 
 " General
 set nocompatible
@@ -20,6 +27,7 @@ set showcmd
 syntax enable 
 
 " Editing
+set encoding=utf8
 set foldmethod=indent
 set nofoldenable
 set autoindent
@@ -41,38 +49,13 @@ map <C-l> <C-w>l
 " Mouse
 set mouse=a
 
-" NerdTree
+" NERDtree
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['\.DS_Store$', '[._]sw[a-p]$', '^node_modules$', '^.git$']
+let NERDTreeIgnore = ['\.DS_Store$', '[._]sw[a-p]$', '^.git$']
 map <C-n> :NERDTreeToggle<CR>
 
-" Hybrid
-set background=dark
-let g:hybrid_custom_term_colors = 1
-let g:hybrid_reduced_contrast = 1
-colorscheme hybrid
+" Deoplete
+let g:deoplete#enable_at_startup = 1
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-
-" Syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_args = '--fix'
-
-let g:syntastic_scss_checkers = ['']
-
-" Javascript library syntax
-let g:used_javascript_libs = 'react,backbone'
-
-" ctrlp
-let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
+" Deoplete-ternjs
+let g:deoplete#sources#ternjs#include_keywords = 1

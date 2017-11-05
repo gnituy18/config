@@ -5,6 +5,7 @@ xcode-select --install
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 brew tap caskroom/cask
+brew tap caskroom/fonts
 
 brew install bash
 brew install macvim
@@ -17,6 +18,7 @@ brew install node
 brew install npm
 
 brew cask install google-chrome
+brew cask install font-hack-nerd-font
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
