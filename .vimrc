@@ -1,7 +1,8 @@
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdtree'
-Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'ryanoasis/vim-devicons'
+Plug 'pangloss/vim-javascript'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'kien/ctrlp.vim'
@@ -24,11 +25,17 @@ set ruler
 set number
 set incsearch
 set showcmd
-syntax enable 
+set fillchars+=vert:\┃
+set t_Co=256
+syntax on
+colorscheme my-highlight
 
 " Editing
+let mapleader=','
+set cursorline
 set encoding=utf8
 set foldmethod=indent
+set nohlsearch
 set nofoldenable
 set autoindent
 set shiftwidth=4 tabstop=4
@@ -52,7 +59,7 @@ set mouse=a
 " NERDtree
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.DS_Store$', '[._]sw[a-p]$', '^.git$']
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
