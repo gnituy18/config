@@ -39,7 +39,7 @@ cal s:hl('Directory', 'none', s:blued, 'none')
 cal s:hl('Ignore', 'none', s:pink, 'none') 
 cal s:hl('Conceal', 'none', s:pink, 'none') 
 
-cal s:hl('Comment', 'none', s:grayl, 'bold')
+cal s:hl('Comment', 'none', s:grayl, 'none')
 cal s:hl('Constant', 'none', s:yellow, 'none')
 cal s:hl('Identifier', 'none', s:orange, 'none')
 cal s:hl('Statement', 'none', s:blue, 'none')
@@ -56,4 +56,4 @@ cal s:hl('IncSearch', s:yellowd, 'bg', 'none')
 cal s:hl('ErrorMsg', 'none', s:redd, 'underline') 
 
 " fjdoisjfois
-"
+

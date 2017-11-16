@@ -6,6 +6,7 @@ ln -s /usr/local/bin/mvim /usr/local/bin/vim
 if [ -h ~/.vim ] ; then
 	rm -rf ~/.vim
 fi
+
 ln -s ${DIR}/.vim ~/.vim
 ln -s ${DIR}/.vimrc ~/.vimrc
 ln -s ${DIR}/.bash_profile ~/.bash_profile
@@ -16,4 +17,6 @@ git submodule update --init --recursive
 git config --global core.editor vim
 git config --global core.excludesfile ~/.gitignore
 
-${DIR}/.vim/bundle/YouCompleteMe/install.py --clang-completer --tern-completer
+function copy {
+	
+}

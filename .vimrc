@@ -28,7 +28,7 @@ set showcmd
 set fillchars+=vert:\┃
 set t_Co=256
 syntax on
-colorscheme my-highlight
+colorscheme my_highlights
 
 " Editing
 let mapleader=','
