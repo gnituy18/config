@@ -32,6 +32,8 @@ colorscheme my_highlights
 
 " Editing
 let mapleader=','
+set list
+set lcs=trail:\ 
 set cursorline
 set encoding=utf8
 set foldmethod=indent
