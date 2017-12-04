@@ -1,11 +1,16 @@
-# Mac OS #
+# General
+*.log
+
+
+# Mac OS
 *.DS_Store
 .AppleDouble
 .LSOverride
 Icon
 ._*
 
-# vim #
+
+# vim
 [._]*.s[a-v][a-z]
 [._]*.sw[a-p]
 [._]s[a-v][a-z]
@@ -14,4 +19,6 @@ Session.vim
 .netrwhist
 *~
 tags
+
+# Ignore installed plugins
 .vim/plugins

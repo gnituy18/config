@@ -90,7 +90,7 @@ cal s:hl('SpellBad', 'none', s:darkRed, 'none')
 cal s:hl('SpellCap', 'none', s:darkRed, 'none')
 cal s:hl('SpellLocal', 'none', s:darkRed, 'none')
 cal s:hl('SpellRare', 'none', s:darkRed, 'none')
-cal s:hl('MatchParen', s:darkYellow, 'none', '')
+cal s:hl('MatchParen', s:darkGray, s:yellow, 'bold')
 
 " Words
 cal s:hl('Comment', 'none', s:lightGray, 'none')
@@ -106,4 +106,7 @@ cal s:hl('Error', 'none', s:darkRed, 'underline')
 cal s:hl('Todo', 'none', s:darkYellow, 'underline')
 
 " vim-javascript
-
+cal s:hl('jsNoise', 'none', s:lightGray, 'none')
+cal s:hl('jsFuncCall', 'none', s:orange, 'none')
+cal s:hl('jsObjectProp', 'none', s:orange, 'none')
+cal s:hl('jsParseError', 'none', s:darkRed, 'none')
