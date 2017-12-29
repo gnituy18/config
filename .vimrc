@@ -69,6 +69,10 @@ nnoremap <C-t>v :vsplit term://bash<CR>ilogin<CR>charlieHsu<CR>
 nnoremap <C-t>s :split term://bash<CR>ilogin<CR>charlieHsu<CR>
 tnoremap <Esc> <C-\><C-n>
 
+" Vimrc
+:nnoremap <leader>ev :tabe $MYVIMRC<cr>
+:nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " NERDtree
 let NERDTreeShowHidden=1
 let NERDTreeIgnore = ['\.DS_Store$', '[._]sw[a-p]$', '^.git$']
