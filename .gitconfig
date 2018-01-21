@@ -1,0 +1,10 @@
+[core]
+	editor = nvim
+	excludesfile = /Users/charliehsu/.gitignore
+[user]
+	name = gnituy18
+	email = sourfeethsu@gmail.com
+[alias]
+	co = checkout
+	ci = commit
+	st = status
