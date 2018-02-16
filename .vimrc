@@ -33,7 +33,7 @@ set showcmd
 set fillchars+=vert:\┃
 set t_Co=256
 syntax on
-colorscheme my_highlights
+colorscheme my-highlights
 
 " Editing
 let mapleader=','
