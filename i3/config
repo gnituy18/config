@@ -19,7 +19,10 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # 視窗border寬度1px
-new_window pixel 1
+default_border pixel 1
+
+# 自動隱藏border
+hide_edge_borders smart
 
 # 改變操作視窗 vim
 bindsym $mod+h focus left
@@ -71,6 +74,17 @@ bindsym $mod+a focus parent
 # 操作子視窗
 #bindsym $mod+d focus child
 
+# 開啟瀏覽器
+bindsym $mod+b exec google-chrome-stable
+
+# class                 border  backgr. text    indicator child_border
+client.focused          #afd7ff #285577 #ffffff #2e9ef4   #285577
+client.focused_inactive #303030 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #303030 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #303030 #303030 #ffffff #000000   #0c0c0c
+client.background       #000000
+
 # 切換workspace
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
@@ -107,15 +121,15 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # resize 模式 (或用滑操作)
 mode "resize" {
         # 左寬 右窄 上長 下短
-        bindsym h resize grow width 10 px or 10 ppt
-        bindsym l resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
+        bindsym h resize grow width 2 px or 2 ppt
+        bindsym l resize shrink width 2 px or 2 ppt
+        bindsym k resize grow height 2 px or 2 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
 
-        bindsym Left resize grow 10 width px or 10 ppt
-        bindsym Right resize shrink width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Left resize grow 2 width px or 2 ppt
+        bindsym Right resize shrink width 2 px or 2 ppt
+        bindsym Up resize grow height 2 px or 2 ppt
+        bindsym Down resize shrink height 2 px or 2 ppt
 
         # 回到正常模式 Enter 或 esc
         bindsym Return mode "default"
@@ -128,7 +142,17 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
         status_command i3status
+        mode hide
+        colors {
+               background #303030
+               statusline #ffffff
+               separator #8a8a8a
+               focused_workspace  #303030 #303030 #afd7ff
+               active_workspace   #303030 #303030 #ffffff
+               inactive_workspace #303030 #303030 #8a8a8a
+               urgent_workspace   #303030 #303030 #ff87af
+    }
 }
 
-exec chromium
+exec google-chrome-stable
 exec fcitx
