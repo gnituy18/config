@@ -1,0 +1,38 @@
+general {
+        colors = true
+        interval = 5
+        color_good = "#d7ff87"
+        color_bad = "#ff87af"
+        color_degraded = "#ffffff"
+}
+
+order += "tztime local"
+order += "path_exists VPN"
+order += "wireless wlp3s0"
+order += "battery 0"
+
+wireless wlp3s0 {
+        format_up = "%essid"
+        format_down = "No Wi-Fi"
+}
+
+battery 0 {
+        format = "%status %percentage"
+        format_down = "No battery"
+        status_chr = "⚡"
+        status_bat = "🔋"
+        status_unk = "? "
+        status_full = "☻ "
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
+}
+
+path_exists VPN {
+        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
+        path = "/proc/sys/net/ipv4/conf/tun0"
+}
+
+tztime local {
+        format = "%Y年 %m月 %d日  %H:%M"
+        timezone = "Asia/Taipei"
+}
