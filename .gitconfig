@@ -8,3 +8,5 @@
 	co = checkout
 	ci = commit
 	st = status
+[credential]
+	helper = cache
