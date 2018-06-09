@@ -14,6 +14,7 @@ elif [ $STATUS == "on" ]; then
     ipsec up $VPN_NAME
     echo "c $VPN_NAME" > /var/run/xl2tpd/l2tp-control
     IP=$(ip route | grep "default via" | awk '{print $3}')
+    sleep 2
     route add $VPN_IP gw $IP
     route add default dev ppp0
 elif [ $STATUS == "off" ]; then
