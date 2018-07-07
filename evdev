@@ -39,7 +39,7 @@ default xkb_keycodes "evdev" {
 	alias <AC12> = <BKSL>;
 	<RTRN> = 36;
 
-	<CAPS> = 37;
+	<CAPS> = 133;
 	<AC01> = 38;
 	<AC02> = 39;
 	<AC03> = 40;
@@ -66,12 +66,12 @@ default xkb_keycodes "evdev" {
 	<RTSH> = 62;
 
 	<LALT> = 64;
-	<LCTL> = 37;
+	<LCTL> = 66;
 	<SPCE> = 65;
 	<RCTL> = 105;
 	<RALT> = 108;
 	// Microsoft keyboard extra keys
-	<LWIN> = 133;
+	<LWIN> = 37;
 	<RWIN> = 134;
 	<COMP> = 135;
 	alias <MENU> = <COMP>;
