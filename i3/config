@@ -6,7 +6,7 @@ set $mod Mod4
 font pango: Noto Sans 12
 
 # Return / Enter 開alacritty
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty -e tmux
 
 # 關閉目前的window
 bindsym $mod+Shift+q kill

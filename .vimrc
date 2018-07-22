@@ -48,6 +48,7 @@ set nohlsearch
 set nofoldenable
 set autoindent
 set shiftwidth=4 tabstop=4
+set iskeyword=@
 autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
