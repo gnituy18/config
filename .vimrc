@@ -44,11 +44,11 @@ set lcs=trail:\
 set cursorline
 set encoding=utf8
 set foldmethod=indent
-set nohlsearch
 set nofoldenable
 set autoindent
 set shiftwidth=4 tabstop=4
 set iskeyword=@
+set ignorecase
 autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
