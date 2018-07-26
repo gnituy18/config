@@ -49,11 +49,13 @@ set autoindent
 set shiftwidth=4 tabstop=4
 set iskeyword=@
 set ignorecase
+set nolist
 autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType json setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType pug setlocal expandtab shiftwidth=2 softtabstop=2
 autocmd FileType scss setlocal expandtab shiftwidth=2 softtabstop=2
+autocmd FileType go setlocal shiftwidth=2 tabstop=2
 
 " Keyboard
 set backspace=eol,start,indent
