@@ -81,7 +81,6 @@ workspace_auto_back_and_forth no
 
 # autostart
 exec google-chrome-stable
-exec alacritty
 exec --no-startup-id nm-applet
 exec --no-startup-id volumeicon
 exec --no-startup-id cbatticon
@@ -89,15 +88,16 @@ exec --no-startup-id pamac-tray
 exec --no-startup-id /usr/bin/lxqt-policykit-agent
 exec --no-startup-id blueman-applet
 exec --no-startup-id fcitx-autostart
+exec --no-startup-id xsetroot -solid "#212121"
 
 # theme
-set $black  #263238
-set $black2 #37474f
-set $black3 #455a64
-set $white  #eceff1
-set $green  #8bc34a
-set $blue   #2196f3
-set $red    #f44336
+set $black  #212121
+set $black2 #424242
+set $black3 #616161
+set $white  #e0e0e0
+set $green  #81c784
+set $blue   #64b5f6
+set $red    #e57373
 
 #                       title-border  bg     text    indic   child-border
 client.focused          $black        $black $black  $black  $green
@@ -134,4 +134,3 @@ bar {
 	        binding_mode       $black2 $black2 $white 
 	}
 }
-
