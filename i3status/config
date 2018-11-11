@@ -1,40 +1,14 @@
 general {
         colors = true
         interval = 5
-        color_good = "#d7ff87"
-        color_bad = "#ff87af"
-        color_degraded = "#ffffff"
+        color_good = "#8bc34a"
+        color_bad = "#f44336"
+        color_degraded = "#eceff1"
 }
 
 order += "tztime local"
-order += "wireless wlp3s0"
-order += "path_exists l2tp"
-order += "battery 0"
-
-wireless wlp3s0 {
-        format_up = "%essid"
-        format_down = "No Wi-Fi"
-}
-
-battery 0 {
-        format = "%status %percentage"
-        format_down = "No battery"
-        status_chr = "⚡"
-        status_bat = "🔋"
-        status_unk = "? "
-        status_full = "☻ "
-        path = "/sys/class/power_supply/BAT%d/uevent"
-        low_threshold = 20
-}
-
-path_exists l2tp {
-        # path exists when a VPN tunnel launched by nmcli/nm-applet is active
-        path = "/var/run/xl2tpd/l2tp-control"
-        format = "17media"
-        format_down = "No VPN"
-}
 
 tztime local {
-        format = "%Y年 %m月 %d日  %H:%M"
-        timezone = "Asia/Taipei"
+        # format = "%Y-%m-%d %H:%M:%S"
+	format = "%Y年 %m月 %d日  %H:%M"
 }
