@@ -1,91 +1,42 @@
-# Command / Windows key 當作 modifier
+# i3 config file (v4)
 set $mod Mod4
 
-# i3通用的字形
-# 會被i3bar使用 除非 bar {} 中有其他字形
+# font
 font pango: Noto Sans 12
 
-# Return / Enter 開alacritty
-bindsym $mod+Return exec alacritty -e tmux
+# binding
+bindsym $mod+Return exec alacritty
+bindsym $mod+n exec google-chrome-stable
+bindsym $mod+m exec --no-startup-id dmenu_run
 
-# 關閉目前的window
-bindsym $mod+Shift+q kill
-
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# 視窗border寬度1px
-default_border pixel 1
-
-# 自動隱藏border
-hide_edge_borders smart
-
-# 改變操作視窗 vim
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
-
-# 改變操作視窗 方向鍵
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
-# 移動操作視窗 vim
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
+bindsym $mod+i layout tabbed
+bindsym $mod+o layout toggle split
+bindsym $mod+u fullscreen toggle
+bindsym $mod+q kill
+bindsym $mod+p focus parent
+bindsym $mod+semicolon split h
+bindsym $mod+apostrophe split v
 
-# 移動操作視窗 方向鍵
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
-
-# 往右邊長
-bindsym $mod+apostrophe split h
-
-# 往下長
-bindsym $mod+Shift+apostrophe split v
-
-# 全螢幕 / 取消全螢幕
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# tiling / floating 模式
 bindsym $mod+Shift+space floating toggle
-
-# 操作 tiling 或 floating 模式
 bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+minus move scratchpad
+bindsym $mod+minus scratchpad show
 
-# 操作父視窗
-bindsym $mod+a focus parent
-
-# 操作子視窗
-#bindsym $mod+d focus child
-
-# 開啟瀏覽器
-bindsym $mod+b exec google-chrome-stable
-
-# class                 border  backgr. text    indicator child_border
-client.focused          #afd7ff #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #303030 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #303030 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #303030 #303030 #ffffff #000000   #0c0c0c
-client.background       #000000
-
-# 切換workspace
+bindsym --whole-window $mod+button3 kill
+bindsym --whole-window $mod+button4 move left
+bindsym --whole-window $mod+button5 move right
+bindsym $mod+Left resize grow width 1 px or 1 ppt
+bindsym $mod+Up resize grow height 1 px or 1 ppt
+bindsym $mod+Right resize shrink width 1 px or 1 ppt
+bindsym $mod+Down resize shrink height 1 px or 1 ppt
 bindsym $mod+1 workspace 1
 bindsym $mod+2 workspace 2
 bindsym $mod+3 workspace 3
@@ -95,65 +46,95 @@ bindsym $mod+6 workspace 6
 bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+Shift+1 move container to workspace 1; workspace 1
+bindsym $mod+Shift+2 move container to workspace 2; workspace 2
+bindsym $mod+Shift+3 move container to workspace 3; workspace 3
+bindsym $mod+Shift+4 move container to workspace 4; workspace 4
+bindsym $mod+Shift+5 move container to workspace 5; workspace 5
+bindsym $mod+Shift+6 move container to workspace 6; workspace 6
+bindsym $mod+Shift+7 move container to workspace 7; workspace 7
+bindsym $mod+Shift+8 move container to workspace 8; workspace 8
+bindsym $mod+Shift+9 move container to workspace 9; workspace 9
 
-# 移動目前視窗到 workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
-
-# 重跑config
-# bindsym $mod+Shift+c reload
-
-# 重跑i3 (保存你的layout/session, 更新i3時可以用)
+bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# i3 (登出 X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
 
-# resize 模式 (或用滑操作)
-mode "resize" {
-        # 左寬 右窄 上長 下短
-        bindsym h resize grow width 2 px or 2 ppt
-        bindsym l resize shrink width 2 px or 2 ppt
-        bindsym k resize grow height 2 px or 2 ppt
-        bindsym j resize shrink height 2 px or 2 ppt
+floating_modifier $mod
 
-        bindsym Left resize grow 2 width px or 2 ppt
-        bindsym Right resize shrink width 2 px or 2 ppt
-        bindsym Up resize grow height 2 px or 2 ppt
-        bindsym Down resize shrink height 2 px or 2 ppt
+default_orientation auto
 
-        # 回到正常模式 Enter 或 esc
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+# tiling|stacking|tabbed
+workspace_layout default
 
-bindsym $mod+r mode "resize"
+default_border pixel 1
+default_floating_border pixel 1
 
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
+# Hide borders
+hide_edge_borders none
+
+# workspace back and forth (with/without active container)
+workspace_auto_back_and_forth no
+
+# autostart
+exec google-chrome
+exec alacritty
+exec --no-startup-id pulseaudio --start
+exec --no-startup-id nm-applet
+exec --no-startup-id volumeicon
+exec --no-startup-id xfce4-power-manager
+exec --no-startup-id pamac-tray
+exec --no-startup-id clipit
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id blueman-applet
+exec --no-startup-id fcitx-autostart
+exec_always --no-startup-id fix_xcursor
+
+# theme
+set $black  #263238
+set $black2 #37474f
+set $black3 #455a64
+set $white  #eceff1
+set $green  #8bc34a
+set $blue   #2196f3
+set $red    #f44336
+
+#                       title-border  bg     text    indic   child-border
+client.focused          $black        $black $black  $black  $green
+client.focused_inactive $black        $black $white  $black  $black
+client.unfocused        $black        $black $white  $black  $black
+client.urgent           $black        $black $white  $black  $red
+client.placeholder      $black        $black $white  $black  $black
+client.background       $black
+
 bar {
-        separator_symbol " | "
-        status_command i3status
-        mode hide
-        colors {
-               background #303030
-               statusline #ffffff
-               separator #8a8a8a
-               focused_workspace  #303030 #303030 #afd7ff
-               active_workspace   #303030 #303030 #ffffff
-               inactive_workspace #303030 #303030 #8a8a8a
-               urgent_workspace   #303030 #303030 #ff87af
-    }
+	i3bar_command i3bar
+	status_command i3status
+
+	mode hide
+	hidden_state hide
+        modifier $mod
+
+	position bottom
+
+	bindsym button4 nop
+	bindsym button5 nop
+
+	colors {
+
+		background $black2
+	        statusline $white
+	        separator $black3
+
+#                                  border  bg      text
+	        focused_workspace  $black2 $black2 $green 
+	        active_workspace   $black2 $black2 $white 
+	        inactive_workspace $black2 $black2 $white 
+	        urgent_workspace   $black2 $black2 $red   
+	        binding_mode       $black2 $black2 $white 
+	}
 }
 
-exec google-chrome-stable
-exec fcitx
