@@ -92,11 +92,10 @@ exec --no-startup-id xsetroot -solid "#212121"
 
 # theme
 set $black  #212121
-set $black2 #424242
-set $black3 #616161
-set $white  #e0e0e0
-set $green  #81c784
-set $blue   #64b5f6
+set $gray   #616161
+set $white  #eeeeee
+set $green  #d4e157
+set $blue   #82b1ff
 set $red    #e57373
 
 #                       title-border  bg     text    indic   child-border
@@ -122,15 +121,15 @@ bar {
 
 	colors {
 
-		background $black2
+		background $black
 	        statusline $white
-	        separator $black3
+	        separator $gray
 
 #                                  border  bg      text
-	        focused_workspace  $black2 $black2 $green 
-	        active_workspace   $black2 $black2 $white 
-	        inactive_workspace $black2 $black2 $white 
-	        urgent_workspace   $black2 $black2 $red   
-	        binding_mode       $black2 $black2 $white 
+	        focused_workspace  $black  $black  $green 
+	        active_workspace   $black  $black  $white 
+	        inactive_workspace $black  $black  $white 
+	        urgent_workspace   $black  $black  $red   
+	        binding_mode       $black  $black  $white 
 	}
 }
