@@ -1,9 +1,9 @@
 general {
         colors = true
         interval = 5
-        color_good = "#8bc34a"
-        color_bad = "#f44336"
-        color_degraded = "#eceff1"
+        color_good = "#d4d157"
+        color_bad = "#e57373"
+        color_degraded = "#616161"
 }
 
 order += "tztime local"
