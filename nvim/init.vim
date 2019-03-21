@@ -1,3 +1,6 @@
-set runtimepath+=~/.vim,~/.vim/after
-set packpath+=~/.vim
-source ~/.vimrc
+call plug#begin()
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+call plug#end()
+
+colorscheme mine
