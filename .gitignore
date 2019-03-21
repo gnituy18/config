@@ -21,3 +21,4 @@ tags
 
 # Ignore installed plugins
 .vim/plugins
+nvim/plugged
