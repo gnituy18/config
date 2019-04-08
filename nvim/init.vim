@@ -3,6 +3,7 @@ Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
 call plug#end()
 
 set mouse=a
@@ -10,10 +11,16 @@ set tabstop=4
 set shiftwidth=4
 
 colorscheme mine
-augroup typescript
+augroup acmd
 	autocmd!
 	autocmd FileType typescript setlocal expandtab shiftwidth=2 softtabstop=2
+	autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 augroup END
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
 
 " ALE
 let g:ale_fixers = {
