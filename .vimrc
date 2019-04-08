@@ -1,3 +1,5 @@
+" This file is deprecated. See nvim/init.vim instead.
+
 call plug#begin('~/.vim/plugins')
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
@@ -40,7 +42,7 @@ colorscheme my-highlights
 " Editing
 let mapleader=','
 set list
-set lcs=trail:\ 
+set lcs=trail:\
 set cursorline
 set encoding=utf8
 set foldmethod=indent
