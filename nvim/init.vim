@@ -6,9 +6,14 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
+
+let mapleader=','
+
+set updatetime=100
 set mouse=a
 set tabstop=4
 set shiftwidth=4
+set relativenumber
 
 colorscheme mine
 augroup acmd
@@ -21,6 +26,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+nnoremap <Leader>f :E<CR>
 
 " ALE
 let g:ale_fixers = {
@@ -29,13 +35,17 @@ let g:ale_fixers = {
 \	'javascript.jsx': ['prettier'],
 \	'typescript': ['prettier'],
 \	'typescript.tsx': ['prettier'],
+\	'html': ['prettier'],
+\	'markdown': ['prettier'],
 \}
 let g:ale_linters = {
 \	'javascript': ['tsserver'],
 \	'javascript.jsx': ['tsserver'],
 \	'typescript': ['tsserver'],
 \	'typescript.tsx': ['tsserver'],
+\	'html': ['tsserver'],
 \	'vim': ['vint'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
+nnoremap <Leader>gd :ALEGoToDefinitionInTab<CR>
