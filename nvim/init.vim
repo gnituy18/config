@@ -14,6 +14,7 @@ set mouse=a
 set tabstop=4
 set shiftwidth=4
 set relativenumber
+set cursorline
 
 colorscheme mine
 augroup acmd

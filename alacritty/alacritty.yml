@@ -119,7 +119,7 @@ font:
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
   offset:
-    x: 1 
+    x: 1
     y: 2
 
   # Glyph offset determines the locations of the glyphs within their cells with
@@ -181,7 +181,7 @@ colors:
     black:   '0x212121'
     red:     '0xe57373'
     green:   '0xd4e157'
-    yellow:  '0xffb74d'
+    yellow:  '0xffa726'
     blue:    '0x82b1ff'
     magenta: '0xce93d8'
     cyan:    '0x80cbc4'
@@ -189,14 +189,14 @@ colors:
 
   # Bright colors
   bright:
-    black:   '0x616161'
+    black:   '0x424242'
     red:     '0xff80ab'
     green:   '0xccff90'
     yellow:  '0xffd54f'
     blue:    '0x81d4fa'
     magenta: '0xe1bee7'
     cyan:    '0x80deea'
-    white:   '0xfafafa'
+    white:   '0x616161'
 
   # Dim colors
   #
@@ -310,7 +310,7 @@ selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
-  save_to_clipboard: true 
+  save_to_clipboard: true
 
 # Allow terminal applications to change Alacritty's window title.
 dynamic_title: true
