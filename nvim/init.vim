@@ -6,7 +6,6 @@ Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 call plug#end()
 
-
 let mapleader=','
 
 set updatetime=100
@@ -15,6 +14,8 @@ set tabstop=4
 set shiftwidth=4
 set relativenumber
 set cursorline
+set matchpairs+=j
+set matchpairs+=<:>
 
 colorscheme mine
 augroup acmd
