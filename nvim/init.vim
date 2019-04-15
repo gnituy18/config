@@ -14,7 +14,6 @@ set tabstop=4
 set shiftwidth=4
 set relativenumber
 set cursorline
-set matchpairs+=j
 set matchpairs+=<:>
 
 colorscheme mine
