@@ -1,11 +1,19 @@
-"	0	Black	8	DarkGray
-"	1	Red     9	Pink
-"	2	Green   10	LightGreen
-"	3	Orange	11	Yellow
-"	4	Blue    12	LightBlue
-"	5	Magenta 13	LightMagenta
-"	6	Cyan    14	LightCyan
-"	7	White   15	LightGray
+"	0	Black			Background
+"	1	Red     		Type, Error, Gir Delete,
+"	2	Green   		Import, Success Msg, Git Add,
+"	3	Orange			Var
+"	4	Blue    		Select
+"	5	Magenta
+"	6	Cyan
+"	7	White   		Text, Active Text
+"	8	DarkGray		Background Current
+"	9	Pink
+"	10	LightGreen
+"	11	Yellow			Highlight, Search, Git Modified
+"	12	LightBlue
+"	13	LightMagenta
+"	14	LightCyan
+"	15	LightGray		Comment, Inactive Text
 
 set background=light
 highlight clear
@@ -15,9 +23,9 @@ let colors_name = 'mine'
 highlight	Normal			ctermbg=0		ctermfg=7		cterm=none
 highlight	NormalNC		ctermbg=0		ctermfg=7		cterm=none
 highlight	Title			ctermbg=none 	ctermfg=4		cterm=none
-highlight	StatusLine		ctermbg=8		ctermfg=7		cterm=none
+highlight	StatusLine		ctermbg=none	ctermfg=7		cterm=none
 highlight	StatusLineNC	ctermbg=none	ctermfg=15		cterm=none
-highlight	StatusLineTerm	ctermbg=8		ctermfg=7		cterm=none
+highlight	StatusLineTerm	ctermbg=none	ctermfg=7		cterm=none
 highlight	StatusLineTermNC	ctermbg=none	ctermfg=15		cterm=none
 highlight	LineNr			ctermbg=none	ctermfg=15		cterm=none
 highlight	CursorLineNr	ctermbg=none	ctermfg=15		cterm=none
@@ -38,7 +46,7 @@ highlight	Cursor			ctermbg=7		ctermfg=0		cterm=none
 highlight	CursorIM		ctermbg=7		ctermfg=0		cterm=none
 highlight	TermCursor		ctermbg=7		ctermfg=0		cterm=none
 highlight	TermCursorNC	ctermbg=7		ctermfg=0		cterm=none
-highlight	MatchParen		ctermbg=6		ctermfg=0		cterm=none
+highlight	MatchParen		ctermbg=11		ctermfg=0		cterm=none
 highlight	ErrorMsg		ctermbg=none	ctermfg=1		cterm=none
 highlight	WarningMsg		ctermbg=none	ctermfg=11		cterm=none
 highlight	DiffAdd			ctermbg=none	ctermfg=2		cterm=none
@@ -48,6 +56,7 @@ highlight	DiffText		ctermbg=none	ctermfg=11		cterm=none
 highlight	Folded			ctermbg=8		ctermfg=6		cterm=none
 highlight	FoldColumn		ctermbg=8		ctermfg=6		cterm=none
 highlight	ModeMsg			ctermbg=none	ctermfg=2		cterm=none
+highlight	MoreMsg			ctermbg=none	ctermfg=15		cterm=none
 highlight	NonText			ctermbg=none	ctermfg=9		cterm=none
 highlight	Pmenu			ctermbg=8		ctermfg=7		cterm=none
 highlight	PmenuSel		ctermbg=4		ctermfg=0		cterm=none
@@ -67,7 +76,6 @@ highlight	Statement		ctermbg=none	ctermfg=4		cterm=none
 highlight	Type			ctermbg=none	ctermfg=1		cterm=none
 highlight	PreProc			ctermbg=none	ctermfg=2		cterm=none
 highlight	Special			ctermbg=none	ctermfg=5		cterm=none
-highlight	SpecialKey		ctermbg=none	ctermfg=9		cterm=none
 highlight	Underlined		ctermbg=none	ctermfg=6		cterm=none
 highlight	Error			ctermbg=1		ctermfg=0		cterm=none
-highlight	Todo			ctermbg=3		ctermfg=0		cterm=none
+highlight	Todo			ctermbg=11		ctermfg=0		cterm=none
