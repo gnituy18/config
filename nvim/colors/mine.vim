@@ -1,19 +1,22 @@
 "	0	Black			Background
-"	1	Red     		Type, Error, Gir Delete,
-"	2	Green   		Import, Success Msg, Git Add,
-"	3	Orange			Var
-"	4	Blue    		Select
-"	5	Magenta
-"	6	Cyan
 "	7	White   		Text, Active Text
 "	8	DarkGray		Background Current
+"	15	LightGray		Comment, Inactive Text
+"
+"	1	Red     		Type, Error, Gir Delete,
+"	3	Orange			Var
+"	11	Yellow			Highlight, Search, Git Modified
+"	2	Green   		Import, Success Msg, Git Add,
+"	4	Blue    		Select
+"	6	Cyan			Links, NonText
+"	5	Purple			Special Char
+"
 "	9	Pink
 "	10	LightGreen
-"	11	Yellow			Highlight, Search, Git Modified
 "	12	LightBlue
-"	13	LightMagenta
+
+"	13	LightPurple
 "	14	LightCyan
-"	15	LightGray		Comment, Inactive Text
 
 set background=light
 highlight clear
@@ -57,13 +60,13 @@ highlight	Folded			ctermbg=8		ctermfg=6		cterm=none
 highlight	FoldColumn		ctermbg=8		ctermfg=6		cterm=none
 highlight	ModeMsg			ctermbg=none	ctermfg=2		cterm=none
 highlight	MoreMsg			ctermbg=none	ctermfg=15		cterm=none
-highlight	NonText			ctermbg=none	ctermfg=9		cterm=none
+highlight	NonText			ctermbg=none	ctermfg=15		cterm=none
 highlight	Pmenu			ctermbg=8		ctermfg=7		cterm=none
 highlight	PmenuSel		ctermbg=4		ctermfg=0		cterm=none
 highlight	PmenuSbar		ctermbg=8		ctermfg=none	cterm=none
 highlight	PmenuThumb		ctermbg=15		ctermfg=none	cterm=none
 highlight	Question		ctermbg=none	ctermfg=2		cterm=none
-highlight	SpecialKey		ctermbg=none	ctermfg=9		cterm=none
+highlight	SpecialKey		ctermbg=none	ctermfg=15		cterm=none
 highlight	SpellBad		ctermbg=1		ctermfg=0		cterm=none
 highlight	SpellCap		ctermbg=1		ctermfg=0		cterm=none
 highlight	SpellLocal		ctermbg=1		ctermfg=0		cterm=none
