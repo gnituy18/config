@@ -46,6 +46,7 @@ let g:ale_linters = {
 \	'typescript.tsx': ['tsserver'],
 \	'html': ['tsserver'],
 \	'vim': ['vint'],
+\	'sh': ['language_server'],
 \}
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
