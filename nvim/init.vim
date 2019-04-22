@@ -12,6 +12,7 @@ set updatetime=100
 set mouse=a
 set tabstop=4
 set shiftwidth=4
+set number
 set relativenumber
 set cursorline
 set matchpairs+=<:>
@@ -48,6 +49,7 @@ let g:ale_linters = {
 \	'vim': ['vint'],
 \	'sh': ['language_server'],
 \}
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 let g:ale_completion_enabled = 1
 nnoremap <Leader>gd :ALEGoToDefinitionInTab<CR>
+nnoremap <Leader>af :ALEFix<CR>
