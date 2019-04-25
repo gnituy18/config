@@ -33,6 +33,7 @@ nnoremap <Leader>f :E<CR>
 " ALE
 let g:ale_fixers = {
 \	'*': ['remove_trailing_lines', 'trim_whitespace'],
+\	'go': ['gofmt'],
 \	'javascript': ['prettier'],
 \	'javascript.jsx': ['prettier'],
 \	'typescript': ['prettier'],
@@ -41,6 +42,7 @@ let g:ale_fixers = {
 \	'markdown': ['prettier'],
 \}
 let g:ale_linters = {
+\	'go': ['golangserver'],
 \	'javascript': ['tsserver'],
 \	'javascript.jsx': ['tsserver'],
 \	'typescript': ['tsserver'],
