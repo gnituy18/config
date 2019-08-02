@@ -55,3 +55,5 @@ let g:ale_fix_on_save = 0
 let g:ale_completion_enabled = 1
 nnoremap <Leader>gd :ALEGoToDefinitionInTab<CR>
 nnoremap <Leader>af :ALEFix<CR>
+
+source ~/local.vim
