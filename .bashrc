@@ -15,3 +15,4 @@ alias shutdown='shutdown -h 0'
 alias tmux='tmux -u'
 
 export PATH="$HOME/bin:$HOME/go/bin:$PATH"
+export GOPATH="$HOME/go"
