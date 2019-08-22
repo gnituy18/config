@@ -57,29 +57,4 @@ if executable('gopls')
         \ })
 endif
 
-" ALE
-" let g:ale_fixers = {
-" \	'*': ['remove_trailing_lines', 'trim_whitespace'],
-" \	'go': ['gofmt'],
-" \	'javascript': ['prettier'],
-" \	'javascript.jsx': ['prettier'],
-" \	'typescript': ['prettier'],
-" \	'typescript.tsx': ['prettier'],
-" \	'html': ['prettier'],
-" \	'markdown': ['prettier'],
-" \}
-" let g:ale_linters = {
-" \	'go': ['golangserver'],
-" \	'javascript': ['tsserver'],
-" \	'javascript.jsx': ['tsserver'],
-" \	'typescript': ['tsserver'],
-" \	'typescript.tsx': ['tsserver'],
-" \	'html': ['tsserver'],
-" \	'vim': ['vint'],
-" \	'sh': ['language_server'],
-" \}
-" let g:ale_fix_on_save = 0
-" let g:ale_completion_enabled = 1
-" let g:ale_go_langserver_options = '-diagnostics -func-snippet-enabled -lint-tool golint'
-
 source ~/local.vim
