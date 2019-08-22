@@ -52,6 +52,7 @@ highlight	TermCursorNC	ctermbg=7		ctermfg=0		cterm=none
 highlight	MatchParen		ctermbg=11		ctermfg=0		cterm=none
 highlight	ErrorMsg		ctermbg=none	ctermfg=1		cterm=none
 highlight	WarningMsg		ctermbg=none	ctermfg=11		cterm=none
+highlight	Warning			ctermbg=11		ctermfg=0		cterm=none
 highlight	DiffAdd			ctermbg=none	ctermfg=2		cterm=none
 highlight	DiffChange		ctermbg=none	ctermfg=11		cterm=none
 highlight	DiffDelete		ctermbg=none	ctermfg=1		cterm=none

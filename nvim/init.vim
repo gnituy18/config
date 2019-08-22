@@ -2,13 +2,12 @@ call plug#begin()
 Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'leafgarland/typescript-vim'
-" Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
-Plug 'dart-lang/dart-vim-plugin'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'lighttiger2505/deoplete-vim-lsp'
+Plug 'ryanolsonx/vim-lsp-typescript'
 Plug 'liuchengxu/vista.vim'
 call plug#end()
 
@@ -22,7 +21,6 @@ set number
 set relativenumber
 set cursorline
 set matchpairs+=<:>
-set hidden
 
 colorscheme mine
 augroup acmd
@@ -38,17 +36,24 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>d :E<CR>
 nnoremap <Leader>sd :Sex<CR>
 nnoremap <Leader>vd :Vex<CR>
-nnoremap <Leader>vd :Vex<CR>
-inoremap <C-j> <C-x><C-o>
-nnoremap <Leader>gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <Leader>i :call LanguageClient#textDocument_hover()<CR>
-nnoremap <Leader>f :call LanguageClient#textDocument_formatting()<CR>
-nnoremap <Leader>s :Vista lcn<CR>
+nnoremap <Leader>gd <plug>(lsp-definition)
+nnoremap <Leader>i <plug>(lsp-hover)
+nnoremap <Leader>f <plug>(lsp-document-format)
+nnoremap <Leader>t :Vista<CR>
 
-let g:LanguageClient_serverCommands = {
-    \ 'javascript': ['typescript-language-server', '--stdio'],
-    \ 'typescript': ['typescript-language-server', '--stdio'],
-    \ }
+let g:deoplete#enable_at_startup = 1
+let g:vista_default_executive = 'vim_lsp'
+let g:vista_fzf_preview = ['right:30%']
+let g:vista_icon_indent = [">	", "	"]
+highlight	lspReference	ctermbg=8		ctermfg=none	cterm=none
+
+if executable('gopls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'gopls',
+        \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
+        \ 'whitelist': ['go'],
+        \ })
+endif
 
 " ALE
 " let g:ale_fixers = {
@@ -74,7 +79,5 @@ let g:LanguageClient_serverCommands = {
 " let g:ale_fix_on_save = 0
 " let g:ale_completion_enabled = 1
 " let g:ale_go_langserver_options = '-diagnostics -func-snippet-enabled -lint-tool golint'
-" nnoremap <Leader>gd :ALEGoToDefinitionInTab<CR>
-" nnoremap <Leader>af :ALEFix<CR>
 
 source ~/local.vim
