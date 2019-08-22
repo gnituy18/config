@@ -7,7 +7,6 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'lighttiger2505/deoplete-vim-lsp'
-Plug 'ryanolsonx/vim-lsp-typescript'
 Plug 'liuchengxu/vista.vim'
 call plug#end()
 
@@ -46,7 +45,7 @@ nnoremap <C-p> :LspPreviousReference<CR>
 let g:deoplete#enable_at_startup = 1
 let g:vista_default_executive = 'vim_lsp'
 let g:vista_fzf_preview = ['right:30%']
-let g:vista_icon_indent = [">	", "	"]
+let g:vista_icon_indent = ["> ", "	"]
 highlight	lspReference	ctermbg=8		ctermfg=none	cterm=none
 
 if executable('gopls')
@@ -55,6 +54,14 @@ if executable('gopls')
         \ 'cmd': {server_info->['gopls', '-mode', 'stdio']},
         \ 'whitelist': ['go'],
         \ })
+endif
+
+if executable('typescript-language-server')
+  au User lsp_setup call lsp#register_server({
+    \ 'name': 'typescript support using typescript-language-server',
+    \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio --tsserver-path=tsserver']},
+    \ 'whitelist': ['typescript', 'typescript.tsx'],
+    \ })
 endif
 
 source ~/local.vim
