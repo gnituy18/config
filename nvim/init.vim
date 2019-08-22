@@ -36,10 +36,12 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>d :E<CR>
 nnoremap <Leader>sd :Sex<CR>
 nnoremap <Leader>vd :Vex<CR>
-nnoremap <Leader>gd <plug>(lsp-definition)
-nnoremap <Leader>i <plug>(lsp-hover)
-nnoremap <Leader>f <plug>(lsp-document-format)
-nnoremap <Leader>t :Vista<CR>
+nnoremap <Leader>gd :LspPeekDefinition<CR>
+nnoremap <Leader>i :LspHover<CR>
+nnoremap <Leader>f :LspDocumentFormat<CR>
+nnoremap <Leader>t :Vista finder fzf<CR>
+nnoremap <C-n> :LspNextReference<CR>
+nnoremap <C-p> :LspPreviousReference<CR>
 
 let g:deoplete#enable_at_startup = 1
 let g:vista_default_executive = 'vim_lsp'
