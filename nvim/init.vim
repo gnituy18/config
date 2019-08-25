@@ -35,7 +35,7 @@ nnoremap <C-l> <C-w>l
 nnoremap <Leader>d :E<CR>
 nnoremap <Leader>sd :Sex<CR>
 nnoremap <Leader>vd :Vex<CR>
-nnoremap <Leader>gd :LspPeekDefinition<CR>
+nnoremap <Leader>gd :LspDefinition<CR>
 nnoremap <Leader>i :LspHover<CR>
 nnoremap <Leader>f :LspDocumentFormat<CR>
 nnoremap <Leader>t :Vista finder fzf<CR>
