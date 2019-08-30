@@ -8,7 +8,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 call plug#end()
 
-let mapleader=','
+let mapleader=' '
 
 set updatetime=100
 set mouse=a
@@ -28,11 +28,15 @@ augroup acmd
 	autocmd BufWritePost init.vim source $MYVIMRC
 augroup END
 
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gr <Plug>(coc-references)
-nmap <silent> <Leader>i :tabe $MYVIMRC<CR>
+nmap <silent> <Leader>d <Plug>(coc-definition)
+nmap <silent> <Leader>r <Plug>(coc-references)
+nmap <silent> <Leader>v :tabe $MYVIMRC<CR>
 nmap <silent> <Leader>f <Plug>(coc-format)
 vmap <silent> <Leader>f <Plug>(coc-format-selected)
+nmap <silent> <Leader>j :BLines<CR>
+nmap <silent> <Leader>k :Rg<CR>
+nmap <silent> <Leader>l :Files<CR>
+
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
