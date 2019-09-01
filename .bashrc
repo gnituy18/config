@@ -11,8 +11,9 @@ if [ -f ~/.fzf.bash ]; then
 fi
 
 PS1='\[\e[0;34m\]\w\[\e[0m\]\[\e[0;31m\]$(__git_ps1 " (%s)")\[\e[0m\]\[\e[0;32m\] $\[\e[0m\] '
+
 alias shutdown='shutdown -h 0'
 alias tmux='tmux -u'
 
-export PATH="$HOME/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go"
