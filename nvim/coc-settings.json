@@ -1,3 +1,14 @@
 {
+	"languageserver": {
+		"golang": {
+			"command": "gopls",
+			"rootPatterns": [
+				"go.mod"
+			],
+			"filetypes": [
+				"go"
+			]
+		}
+	},
 	"typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true
 }

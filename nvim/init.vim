@@ -18,6 +18,7 @@ set number
 set relativenumber
 set cursorline
 set matchpairs+=<:>
+set ignorecase
 
 colorscheme mine
 
@@ -36,6 +37,8 @@ vmap <silent> <Leader>f <Plug>(coc-format-selected)
 nmap <silent> <Leader>j :BLines<CR>
 nmap <silent> <Leader>k :Rg<CR>
 nmap <silent> <Leader>l :Files<CR>
+nmap <silent> <Leader>wq :wq<CR>
+nmap <silent> <Leader>q :q!<CR>
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
