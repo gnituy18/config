@@ -3,7 +3,10 @@
 		"golang": {
 			"command": "gopls",
 			"rootPatterns": [
-				"go.mod"
+				"go.mod",
+				".vim/",
+				".git/",
+				".hg/"
 			],
 			"filetypes": [
 				"go"

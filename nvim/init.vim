@@ -39,6 +39,8 @@ nmap <silent> <Leader>k :Rg<CR>
 nmap <silent> <Leader>l :Files<CR>
 nmap <silent> <Leader>wq :wq<CR>
 nmap <silent> <Leader>q :q!<CR>
+nmap <silent> <Leader>/ :noh<CR>
+nmap <silent> <Leader>e :E<CR>
 
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -53,7 +55,6 @@ nnoremap <C-l> <C-w>l
 " nnoremap <Leader>sd :Sex<CR>
 " nnoremap <Leader>vd :Vex<CR>
 " nnoremap <Leader>td :Tex<CR>
-" nnoremap <Leader>c :noh<CR>
 " nnoremap <Leader>i :LspHover<CR>
 " nnoremap <Leader>t :Vista fzf<CR>
 
