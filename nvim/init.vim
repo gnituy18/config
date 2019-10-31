@@ -24,6 +24,8 @@ colorscheme mine
 
 augroup acmd
 	autocmd!
+	autocmd BufRead *.tsx set filetype=typescript.tsx
+	autocmd BufRead *.jsx set filetype=typescript.jsx
 	autocmd FileType typescript setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd BufWritePost init.vim source $MYVIMRC
