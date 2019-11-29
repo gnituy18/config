@@ -34,6 +34,7 @@ augroup END
 
 nmap <silent> <Leader>d <Plug>(coc-definition)
 nmap <silent> <Leader>r <Plug>(coc-references)
+nmap <silent> <Leader>i <Plug>(coc-implementation)
 nmap <silent> <Leader>v :tabe $MYVIMRC<CR>
 nmap <silent> <Leader>f <Plug>(coc-format)
 vmap <silent> <Leader>f <Plug>(coc-format-selected)
