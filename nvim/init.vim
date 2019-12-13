@@ -32,6 +32,7 @@ augroup acmd
 	autocmd BufWritePost init.vim source $MYVIMRC
 augroup END
 
+nmap <silent> <leader>a <Plug>(coc-codeaction)
 nmap <silent> <Leader>d <Plug>(coc-definition)
 nmap <silent> <Leader>r <Plug>(coc-references)
 nmap <silent> <Leader>i <Plug>(coc-implementation)
