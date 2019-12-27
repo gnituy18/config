@@ -63,6 +63,16 @@ nnoremap <C-l> <C-w>l
 " nnoremap <Leader>td :Tex<CR>
 " nnoremap <Leader>i :LspHover<CR>
 " nnoremap <Leader>t :Vista fzf<CR>
+"
+let g:EasyMotion_keys = 'jkl;hfdsag'
+
+hi link EasyMotionTarget Search
+hi link EasyMotionShade Comment
+hi link EasyMotionTarget2First Search
+hi link EasyMotionTarget2Second Search
+hi link EasyMotionMoveHL Search
+hi link EasyMotionIncSearch Search
+
 
 let g:vista_default_executive = 'coc'
 let g:vista_fzf_preview = ['right:40%']
