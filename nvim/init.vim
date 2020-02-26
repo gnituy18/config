@@ -45,6 +45,7 @@ nmap <silent> <Leader>k :Rg<CR>
 nmap <silent> <Leader>l :Files<CR>
 nmap <silent> <Leader>wq :wq<CR>
 nmap <silent> <Leader>q :q!<CR>
+nmap <silent> <Leader>Q :qa!<CR>
 nmap <silent> <Leader>/ :noh<CR>
 nmap <silent> <Leader>e :Ex<CR>
 nmap f <Plug>(easymotion-s)
