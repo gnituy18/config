@@ -9,11 +9,13 @@ fi
 if [ -f ~/.fzf.bash ]; then
 	source ~/.fzf.bash
 fi
-
-PS1='\[\e[0;34m\]\w\[\e[0m\]\[\e[0;31m\]$(__git_ps1 " (%s)")\[\e[0m\]\[\e[0;32m\] $\[\e[0m\] '
+export FZF_DEFAULT_OPTS="--preview 'cat {}' --layout=reverse"
 
 alias shutdown='shutdown -h 0'
 alias tmux='tmux -u'
 
 export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go"
+
+PS1='\[\e[0;34m\]\w\[\e[0m\]\[\e[0;31m\]$(__git_ps1 " (%s)")\[\e[0m\]\[\e[0;32m\] $\[\e[0m\] '
+PS2='\[\e[0m\]\[\e[0;32m\]>\[\e[0m\] '
