@@ -9,10 +9,12 @@ fi
 if [ -f ~/.fzf.bash ]; then
 	source ~/.fzf.bash
 fi
+
 export FZF_DEFAULT_OPTS="--preview 'cat {}' --layout=reverse"
 
 alias shutdown='shutdown -h 0'
 alias tmux='tmux -u'
+alias sed="gsed"
 
 export PATH="$HOME/bin:$HOME/scripts:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export GOPATH="$HOME/go"
