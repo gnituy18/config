@@ -18,5 +18,8 @@ case $cmd in
 			gsed "/$name/d" -i $todo
 		fi
 		;;
+	file)
+		nvim $todo
+		;;
 	*) cat $todo ;;
 esac
