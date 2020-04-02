@@ -1,0 +1,19 @@
+#!/bin/bash
+
+cmd=$1
+item=$2
+todo=~/drive/todo.yaml
+
+case $cmd in
+	add) 
+		echo $item >> $todo 
+		;;
+	rm) 
+		name=$(cat $todo | fzf)
+		if [ "$name" != "" ] ; then 
+			echo $name
+			sed "/$name/a/" $todo
+		fi
+		;;
+	*) cat $todo ;;
+esac
