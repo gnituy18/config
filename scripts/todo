@@ -6,13 +6,16 @@ todo=~/drive/todo.yaml
 
 case $cmd in
 	add) 
-		echo $item >> $todo 
+		lastNum=$(tail -1 $todo | gsed -r 's/(^[0-9]+)\. (.*)/\1/')
+		if [ "$lastNum" != "" ] ; then
+			echo "$(($lastNum + 1)). $item" >> $todo 
+		fi
 		;;
 	rm) 
 		name=$(cat $todo | fzf)
 		if [ "$name" != "" ] ; then 
-			echo $name
-			sed "/$name/a/" $todo
+			echo "$name removed"
+			gsed "/$name/d" -i $todo
 		fi
 		;;
 	*) cat $todo ;;
