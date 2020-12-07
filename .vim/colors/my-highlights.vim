@@ -1,3 +1,4 @@
+" This file is deprecated
 set background=dark
 
 highlight clear
