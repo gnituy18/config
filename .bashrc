@@ -10,8 +10,6 @@ if [ -f ~/.fzf.bash ]; then
 	source ~/.fzf.bash
 fi
 
-export FZF_DEFAULT_OPTS="--preview  --layout=reverse"
-
 alias shutdown='shutdown -h 0'
 alias tmux='tmux -u'
 alias sed="gsed"

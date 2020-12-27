@@ -1,72 +1,51 @@
-plugins = {
-  '/usr/local/opt/fzf',
-  'junegunn/fzf.vim',
-  'tpope/vim-fugitive',
-  'airblade/vim-gitgutter',
-  'easymotion/vim-easymotion',
-  'neovim/nvim-lspconfig'
-}
+require "plugins"
+require "lsp"
 
-vim.cmd('call plug#begin()')
-for i, p in pairs(plugins) do 
-	vim.cmd(string.format('Plug \'%s\'', p)) 
-end
-vim.cmd('call plug#end()')
-
-require'lspconfig'.gopls.setup{}
-
-vim.g.mapleader = ' '
+-- setting
+vim.g.mapleader = " "
 vim.o.updatetime = 500
-vim.o.mouse = 'a'
+vim.o.mouse = "a"
+vim.o.ignorecase = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
-vim.wo.number = true
-vim.wo.relativenumber = true
+vim.o.matchpairs = vim.o.matchpairs .. ",<:>"
+vim.o.omnifunc = "v:lua.vim.lsp.omnifunc"
+vim.o.completeopt = "menu"
 vim.wo.cursorline = true
-vim.o.matchpairs = vim.o.matchpairs .. ',<:>'
-vim.o.ignorecase = true
+vim.wo.number = true
 
-vim.cmd('autocmd FileType go setlocal omnifunc=v:lua.vim.lsp.omnifunc')
+vim.cmd("colorscheme mine")
 
-vim.cmd('colorscheme mine') 
-vim.cmd('nnoremap <C-j> <C-w>j')
-vim.cmd('nnoremap <C-k> <C-w>k')
-vim.cmd('nnoremap <C-h> <C-w>h')
-vim.cmd('nnoremap <C-l> <C-w>l')
-vim.cmd('nmap <silent> <Leader>j :BLines<CR>')
-vim.cmd('nmap <silent> <Leader>k :Rg<CR>')
-vim.cmd('nmap <silent> <Leader>l :Files<CR>')
-vim.cmd('nmap <silent> <Leader>wq :wq<CR>')
-vim.cmd('nmap <silent> <Leader>q :q!<CR>')
-vim.cmd('nmap <silent> <Leader>Q :qa!<CR>')
-vim.cmd('nmap <silent> <Leader>/ :noh<CR>')
-vim.cmd('nmap <silent> <Leader>e :Ex<CR>')
-vim.cmd('nmap f <Plug>(easymotion-s)')
-vim.cmd('hi link EasyMotionTarget Search')
-vim.cmd('hi link EasyMotionShade Comment')
-vim.cmd('hi link EasyMotionTarget2First Search')
-vim.cmd('hi link EasyMotionTarget2Second Search')
-vim.cmd('hi link EasyMotionMoveHL Search')
-vim.cmd('hi link EasyMotionIncSearch Search')
-vim.cmd('hi SignColumn ctermbg=0')
+-- replace f with easymotion-overwin-f
+vim.api.nvim_set_keymap("n", "f", "<Plug>(easymotion-overwin-f)", {})
 
-vim.cmd('noremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>')
-vim.cmd('noremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>')
-vim.cmd('noremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.cmd('noremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.cmd('noremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>')
-vim.cmd('noremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>')
-vim.cmd('noremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>')
-vim.cmd('noremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>')
-vim.cmd('noremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.cmd('noremap <silent> <Leader>f <cmd>lua vim.lsp.buf.formatting_sync(nil, 1000)<CR>')
+-- editor
+vim.api.nvim_set_keymap("n", "<Leader>q", "<Cmd>q!<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>w", "<Cmd>w<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>e", "<Cmd>Tex<CR>", {})
 
--- nmap <silent> <Leader>v :tabe $MYVIMRC<CR>
---
--- " nnoremap <Tab>
--- " nnoremap <S-Tab>
--- " nnoremap <Space>
--- " nnoremap <C-m> 
--- " nnoremap <Leader>sd :Sex<CR>
--- " nnoremap <Leader>vd :Vex<CR>
--- " nnoremap <Leader>td :Tex<CR>
+-- helper
+vim.api.nvim_set_keymap("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>s", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>d", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>lua vim.lsp.buf.formatting(nil)<CR>", {})
+vim.api.nvim_set_keymap("i", "<C-j>", "<C-x><C-o>", {})
+
+-- jumping
+vim.api.nvim_set_keymap("n", "<Leader>j", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>k", "<Cmd>lua vim.lsp.buf.references()<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>lua vim.lsp.buf.implementation()<CR>", {})
+
+-- search
+vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Rg<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>.", "<Cmd>Files<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>/", "<Cmd>noh<CR>", {})
+
+-- tabs
+for i=1,5 do
+	vim.api.nvim_set_keymap("n", "<Leader>"..i, i.."gt", {})
+end
+
+-- TODO
+-- 誇好顏色
+-- color of all plugins
