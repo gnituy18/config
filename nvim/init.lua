@@ -3,6 +3,7 @@ require "lsp"
 
 -- setting
 vim.g.mapleader = " "
+vim.g.loaded_matchparen = 1
 vim.o.updatetime = 500
 vim.o.mouse = "a"
 vim.o.ignorecase = true
@@ -42,10 +43,6 @@ vim.api.nvim_set_keymap("n", "<Leader>.", "<Cmd>Files<CR>", {})
 vim.api.nvim_set_keymap("n", "<Leader>/", "<Cmd>noh<CR>", {})
 
 -- tabs
-for i=1,5 do
+for i=1,9 do
 	vim.api.nvim_set_keymap("n", "<Leader>"..i, i.."gt", {})
 end
-
--- TODO
--- 誇好顏色
--- color of all plugins

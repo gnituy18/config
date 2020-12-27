@@ -72,6 +72,7 @@ highlight	SpellBad		ctermbg=1		ctermfg=0		cterm=none
 highlight	SpellCap		ctermbg=1		ctermfg=0		cterm=none
 highlight	SpellLocal		ctermbg=1		ctermfg=0		cterm=none
 highlight	SpellRare		ctermbg=1		ctermfg=0		cterm=none
+highlight	SignColumn		ctermbg=none	ctermfg=none	cterm=none
 
 highlight	Comment			ctermbg=none	ctermfg=15		cterm=none
 highlight	Constant		ctermbg=none	ctermfg=11		cterm=none
@@ -83,3 +84,10 @@ highlight	Special			ctermbg=none	ctermfg=5		cterm=none
 highlight	Underlined		ctermbg=none	ctermfg=6		cterm=none
 highlight	Error			ctermbg=1		ctermfg=0		cterm=none
 highlight	Todo			ctermbg=11		ctermfg=0		cterm=none
+
+highlight	EasyMotionTarget		ctermbg=none ctermfg=11	cterm=none
+highlight	EasyMotionShade			ctermbg=none ctermfg=15	cterm=none
+highlight	EasyMotionTarget2First	ctermbg=none ctermfg=11	cterm=none
+highlight	EasyMotionTarget2Second	ctermbg=none ctermfg=11	cterm=none
+
+highlight LspDiagnosticsDefaultError	ctermbg=none	ctermfg=1
