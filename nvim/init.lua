@@ -23,7 +23,7 @@ vim.api.nvim_set_keymap("n", "f", "<Plug>(easymotion-overwin-f)", {})
 -- editor
 vim.api.nvim_set_keymap("n", "<Leader>q", "<Cmd>q!<CR>", {})
 vim.api.nvim_set_keymap("n", "<Leader>w", "<Cmd>w<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>e", "<Cmd>Tex<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>e", "<Cmd>Ex<CR>", {})
 
 -- helper
 vim.api.nvim_set_keymap("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", {})
