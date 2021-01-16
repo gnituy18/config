@@ -1,0 +1,55 @@
+{
+  "manifest_version": 2,
+  "version": "1.0",
+  "name": "sfhp",
+  "theme": {
+    "images": {
+      "additional_backgrounds": [
+        "images/bg-000-5672c42860d5b06e1058dc477397f3ef.svg"
+      ]
+    },
+    "properties": {
+      "additional_backgrounds_alignment": [
+        "top"
+      ],
+      "additional_backgrounds_tiling": [
+        "repeat"
+      ]
+    },
+    "colors": {
+      "toolbar": "rgb(255, 255, 255)",
+      "toolbar_text": "rgb(0, 0, 0)",
+      "frame": "rgb(238, 238, 238)",
+      "tab_background_text": "rgb(0, 0, 0)",
+      "toolbar_field": "rgb(255, 255, 255)",
+      "toolbar_field_text": "rgb(0, 0, 0)",
+      "tab_line": "rgb(255, 255, 255)",
+      "popup": "rgb(255, 255, 255)",
+      "popup_text": "rgb(0, 0, 0)",
+      "button_background_active": "rgb(238, 238, 238)",
+      "button_background_hover": "rgb(238, 238, 238)",
+      "frame_inactive": "rgb(238, 238, 238)",
+      "icons_attention": "rgb(255, 213, 79)",
+      "icons": "rgb(0, 0, 0)",
+      "ntp_background": "rgb(255, 255, 255)",
+      "ntp_text": "rgb(0, 0, 0)",
+      "popup_border": "rgb(238, 238, 238)",
+      "popup_highlight_text": "rgb(0, 0, 0)",
+      "popup_highlight": "rgb(130, 177, 255)",
+      "tab_background_separator": "rgb(238, 238, 238)",
+      "tab_loading": "rgb(238, 238, 238)",
+      "tab_selected": "rgb(255, 255, 255)",
+      "tab_text": "rgb(0, 0, 0)",
+      "toolbar_bottom_separator": "rgb(238, 238, 238)",
+      "toolbar_field_border_focus": "rgb(238, 238, 238)",
+      "toolbar_field_border": "rgb(238, 238, 238)",
+      "toolbar_field_focus": "rgb(255, 255, 255)",
+      "toolbar_field_highlight_text": "rgb(0, 0, 0)",
+      "toolbar_field_highlight": "rgb(130, 177, 255)",
+      "toolbar_field_separator": "rgb(238, 238, 238)",
+      "toolbar_field_text_focus": "rgb(0, 0, 0)",
+      "toolbar_top_separator": "rgb(238, 238, 238)",
+      "toolbar_vertical_separator": "rgb(238, 238, 238)"
+    }
+  }
+}
