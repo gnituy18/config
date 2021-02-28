@@ -1,7 +1,7 @@
 -- Install vim-plug before running this script
 
 plugins = {
-	"'/usr/local/opt/fzf'",
+	"'junegunn/fzf', { 'do': { -> fzf#install() } }",
 	"'junegunn/fzf.vim'",
 	"'tpope/vim-fugitive'",
 	"'airblade/vim-gitgutter'",
