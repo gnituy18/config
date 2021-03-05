@@ -1,2 +1,3 @@
 #!/bin/bash
-nvim ~/drive/asst.yaml
+
+nvim -p ~/drive/asst/todo.yaml ~/drive/asst/principle.yaml ~/drive/asst/mission.yaml
