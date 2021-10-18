@@ -7,7 +7,8 @@ plugins = {
 	"'airblade/vim-gitgutter'",
 	"'easymotion/vim-easymotion'",
 	"'neovim/nvim-lspconfig'",
-	"'ojroques/nvim-lspfuzzy', {'branch': 'main'}"
+	"'ojroques/nvim-lspfuzzy', {'branch': 'main'}",
+	"'evanleck/vim-svelte', {'branch': 'main'}"
 }
 
 vim.call("plug#begin")
