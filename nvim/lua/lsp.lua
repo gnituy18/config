@@ -2,6 +2,7 @@ lsp = require "lspconfig"
 lspfuzzy = require "lspfuzzy"
 
 lspfuzzy.setup {}
+vim.g.fzf_preview_window = {'up:+{2}-/2'}
 lsp.gopls.setup {}
 lsp.svelte.setup{}
 lsp.tsserver.setup {}
