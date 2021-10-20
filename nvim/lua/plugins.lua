@@ -8,7 +8,8 @@ plugins = {
 	"'easymotion/vim-easymotion'",
 	"'neovim/nvim-lspconfig'",
 	"'ojroques/nvim-lspfuzzy', {'branch': 'main'}",
-	"'evanleck/vim-svelte', {'branch': 'main'}"
+	"'evanleck/vim-svelte', {'branch': 'main'}",
+	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }"
 }
 
 vim.call("plug#begin")
