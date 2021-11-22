@@ -1,9 +1,34 @@
-## 我的各種設定檔
-1. neovim
-1. alacritty
-1. iTerm (deprecated)
-1. i3
-1. i3 status
-1. tmux
-1. bash
+## MacOS Setup
+
+1. 指揮中心
+    - 指揮中心: 滑鼠按鈕5
+    - 應用程式視窗: 滑鼠按鈕4
+    - 熱點
+        - 右上: 通知中心
+        - 右下: 啟動台
+1. 鍵盤 > 變更鍵
+    - Caps Lock: Control
+    - Control: Command
+    - Command: Caps Lock
+1. Dock
+1. 下載
+    - Chrome
+    - Google Drive
+    - Alacritty
+    - neovim
+    - brew
+    - RobotoMono
+1. brew install
+    - tmux
+    - git
+    -  fzf
+        - $(brew --prefix)/opt/fzf/install
+    - ripgrep
+    - bash
+        - sudo echo "/usr/local/bin/bash" >> /etc/shells
+        - sudo chsh -s /usr/local/bin/bash
+1. ssh-keygen
+    - touch ~/.ssh/config
 1. git
+    - git clone git@github.com:gnituy18/config.git
+    - cd config && ./setup.sh
