@@ -21,8 +21,9 @@
 1. brew install
     - tmux
     - git
-    -  fzf
+    - fzf
         - $(brew --prefix)/opt/fzf/install
+	- bat
     - ripgrep
     - bash
         - sudo echo "/usr/local/bin/bash" >> /etc/shells
