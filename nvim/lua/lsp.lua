@@ -1,11 +1,7 @@
 lsp = require "lspconfig"
 lspfuzzy = require "lspfuzzy"
 
-vim.g.fzf_preview_window = {"up,50%:+{2}/2"}
-vim.g.fzf_layout = {down = 40}
-
 lspfuzzy.setup {jump_one = false}
-
 lsp.svelte.setup {}
 lsp.tsserver.setup {}
 lsp.yamlls.setup {}
