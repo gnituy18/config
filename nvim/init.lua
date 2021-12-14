@@ -1,10 +1,12 @@
 require "plugins"
+require "fzf"
+require "setting"
 require "lsp"
 
 -- setting
 vim.g.mapleader = " "
 vim.g.loaded_matchparen = 1
-vim.o.updatetime = 500
+vim.o.updatetime = 300
 vim.o.mouse = "a"
 vim.o.ignorecase = true
 vim.o.tabstop = 4
