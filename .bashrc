@@ -14,6 +14,7 @@ alias shutdown='shutdown -h 0'
 alias tmux='tmux -u'
 alias sed="gsed"
 
+export PROMPT_COMMAND="history -a; history -n"
 export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
 export BAT_THEME="base16"
 export GOPATH="$HOME/go"
