@@ -1,8 +1,7 @@
 #!/bin/bash
 
 nvim -p \
-~/drive/asst/blackboard.yaml \
-~/drive/asst/todo.yaml \
+~/drive/asst/board.yaml \
 ~/drive/asst/principle.yaml \
 ~/drive/asst/idea.yaml \
 ~/drive/asst/mission.yaml
