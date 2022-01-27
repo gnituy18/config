@@ -9,7 +9,8 @@ plugins = {
 	"'neovim/nvim-lspconfig'",
 	"'ojroques/nvim-lspfuzzy', {'branch': 'main'}",
 	"'evanleck/vim-svelte', {'branch': 'main'}",
-	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }"
+	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }",
+	"'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}"
 }
 
 vim.call("plug#begin")
