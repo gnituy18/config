@@ -3,5 +3,5 @@
 nvim -p \
 ~/drive/asst/board.yaml \
 ~/drive/asst/principle.yaml \
-~/drive/asst/idea.yaml \
+~/drive/asst/problems.yaml \
 ~/drive/asst/mission.yaml

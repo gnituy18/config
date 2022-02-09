@@ -1,7 +1,8 @@
 require "plugins"
-require "fzf"
 require "setting"
+require "treesitter"
 require "lsp"
+require "fzf"
 
 -- setting
 vim.g.mapleader = " "
