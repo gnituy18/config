@@ -7,10 +7,11 @@ plugins = {
 	"'airblade/vim-gitgutter'",
 	"'easymotion/vim-easymotion'",
 	"'neovim/nvim-lspconfig'",
+	"'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}",
+	"'github/copilot.vim'",
 	"'ojroques/nvim-lspfuzzy', {'branch': 'main'}",
 	"'evanleck/vim-svelte', {'branch': 'main'}",
-	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }",
-	"'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}"
+	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }"
 }
 
 vim.call("plug#begin")
