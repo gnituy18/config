@@ -31,8 +31,9 @@ vim.api.nvim_set_keymap("n", "<Leader>e", "<Cmd>Ex<CR>", {})
 -- helper
 vim.api.nvim_set_keymap("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", {})
 vim.api.nvim_set_keymap("n", "<Leader>s", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>d", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>d", "<Cmd>lua vim.diagnostic.open_float(nil, {focusable=false})<CR>", {})
 vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>lua vim.lsp.buf.formatting(nil)<CR>", {})
+vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
 vim.api.nvim_set_keymap("i", "<C-j>", "<C-x><C-o>", {})
 
 -- jumping
