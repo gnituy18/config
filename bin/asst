@@ -5,6 +5,6 @@ nvim -p \
 ~/drive/notes/gritter.md \
 ~/drive/notes/inspector.tw.md \
 ~/drive/notes/archive.md \
-~/drive/asst/principle.md \
+~/drive/asst/principle.yaml \
 ~/drive/asst/problems.yaml \
 ~/drive/asst/mission.yaml
