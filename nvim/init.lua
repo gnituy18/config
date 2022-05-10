@@ -9,44 +9,46 @@ vim.g.mapleader = " "
 vim.g.loaded_matchparen = 1
 vim.o.updatetime = 300
 vim.o.mouse = "a"
+vim.o.clipboard = "unnamed"
 vim.o.ignorecase = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.matchpairs = vim.o.matchpairs .. ",<:>"
 vim.o.omnifunc = "v:lua.vim.lsp.omnifunc"
 vim.o.completeopt = "menu"
+vim.g.netrw_liststyle = 3
 vim.wo.cursorline = true
 vim.wo.number = true
 
 vim.cmd("colorscheme mine")
 
 -- replace f with easymotion-overwin-f
-vim.api.nvim_set_keymap("n", "f", "<Plug>(easymotion-overwin-f)", {})
+vim.keymap.set("n", "f", "<Plug>(easymotion-overwin-f)")
 
 -- editor
-vim.api.nvim_set_keymap("n", "<Leader>q", "<Cmd>q!<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>w", "<Cmd>w<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>e", "<Cmd>Ex<CR>", {})
+vim.keymap.set("n", "<Leader>q", "<Cmd>q!<CR>")
+vim.keymap.set("n", "<Leader>w", "<Cmd>w<CR>")
+vim.keymap.set("n", "<Leader>e", "<Cmd>Ex<CR>")
 
 -- helper
-vim.api.nvim_set_keymap("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>s", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>d", "<Cmd>lua vim.diagnostic.open_float(nil, {focusable=false})<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>f", "<Cmd>lua vim.lsp.buf.formatting(nil)<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>", {})
-vim.api.nvim_set_keymap("i", "<C-j>", "<C-x><C-o>", {})
+vim.keymap.set("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
+vim.keymap.set("n", "<Leader>s", "<Cmd>lua vim.lsp.buf.document_symbol()<CR>")
+vim.keymap.set("n", "<Leader>d", "<Cmd>lua vim.diagnostic.open_float(nil, {focusable=false})<CR>")
+vim.keymap.set("n", "<Leader>f", "<Cmd>lua vim.lsp.buf.formatting(nil)<CR>")
+vim.keymap.set("n", "<Leader>h", "<Cmd>lua vim.lsp.buf.hover()<CR>")
+vim.keymap.set("i", "<C-j>", "<C-x><C-o>")
 
 -- jumping
-vim.api.nvim_set_keymap("n", "<Leader>j", "<Cmd>lua vim.lsp.buf.definition()<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>k", "<Cmd>lua vim.lsp.buf.references()<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>lua vim.lsp.buf.implementation()<CR>", {})
+vim.keymap.set("n", "<Leader>j", "<Cmd>lua vim.lsp.buf.definition()<CR>")
+vim.keymap.set("n", "<Leader>k", "<Cmd>lua vim.lsp.buf.references()<CR>")
+vim.keymap.set("n", "<Leader>l", "<Cmd>lua vim.lsp.buf.implementation()<CR>")
 
 -- search
-vim.api.nvim_set_keymap("n", "<Leader>,", "<Cmd>Rg<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>.", "<Cmd>Files<CR>", {})
-vim.api.nvim_set_keymap("n", "<Leader>/", "<Cmd>noh<CR>", {})
+vim.keymap.set("n", "<Leader>,", "<Cmd>Rg<CR>")
+vim.keymap.set("n", "<Leader>.", "<Cmd>Files<CR>")
+vim.keymap.set("n", "<Leader>/", "<Cmd>noh<CR>")
 
 -- tabs
-for i=1,9 do
-	vim.api.nvim_set_keymap("n", "<Leader>"..i, i.."gt", {})
+for i = 1, 9 do
+	vim.keymap.set("n", "<Leader>" .. i, i .. "gt")
 end
