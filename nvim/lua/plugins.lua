@@ -6,6 +6,7 @@ plugins = {
 	"'tpope/vim-fugitive'",
 	"'airblade/vim-gitgutter'",
 	"'easymotion/vim-easymotion'",
+	"'williamboman/nvim-lsp-installer'",
 	"'neovim/nvim-lspconfig'",
 	"'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}",
 	"'github/copilot.vim'",
