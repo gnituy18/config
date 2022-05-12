@@ -17,7 +17,6 @@ vim.o.shiftwidth = 4
 vim.o.matchpairs = vim.o.matchpairs .. ",<:>"
 vim.o.omnifunc = "v:lua.vim.lsp.omnifunc"
 vim.o.completeopt = "menu"
-vim.g.netrw_liststyle = 3
 vim.wo.cursorline = true
 vim.wo.number = true
 
@@ -29,7 +28,7 @@ vim.keymap.set("n", "f", "<Plug>(easymotion-overwin-f)")
 -- editor
 vim.keymap.set("n", "<Leader>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Leader>w", "<Cmd>w<CR>")
-vim.keymap.set("n", "<Leader>e", "<Cmd>Ex<CR>")
+vim.keymap.set("n", "<Leader>e", "<Cmd>NvimTreeToggle<CR>")
 
 -- helper
 vim.keymap.set("n", "<Leader>a", "<Cmd>lua vim.lsp.buf.code_action()<CR>")
