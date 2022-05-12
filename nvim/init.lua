@@ -3,6 +3,7 @@ require "setting"
 require "treesitter"
 require "lsp"
 require "fzf"
+require'nvim-tree'.setup {}
 
 -- setting
 vim.g.mapleader = " "

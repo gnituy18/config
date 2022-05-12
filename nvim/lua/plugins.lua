@@ -12,7 +12,9 @@ plugins = {
 	"'github/copilot.vim'",
 	"'ojroques/nvim-lspfuzzy', {'branch': 'main'}",
 	"'evanleck/vim-svelte', {'branch': 'main'}",
-	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }"
+	"'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }",
+	"'kyazdani42/nvim-web-devicons'",
+	"'kyazdani42/nvim-tree.lua'",
 }
 
 vim.call("plug#begin")
