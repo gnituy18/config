@@ -1,9 +1,76 @@
-require "plugins"
-require "setting"
-require "treesitter"
-require "nvimtree"
-require "lsp"
-require "fzf"
+require "packer".startup(function()
+	use 'wbthomason/packer.nvim'
+	use 'lewis6991/gitsigns.nvim'
+	use {
+		'phaazon/hop.nvim',
+		branch = 'v1',
+	}
+	use 'williamboman/nvim-lsp-installer'
+	use 'neovim/nvim-lspconfig'
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
+	use { "ellisonleao/glow.nvim", branch = 'main' }
+	use {
+		'kyazdani42/nvim-tree.lua',
+		requires = {
+			'kyazdani42/nvim-web-devicons',
+		},
+	}
+	use 'github/copilot.vim'
+end)
+
+require 'gitsigns'.setup {}
+
+require 'nvim-tree'.setup {
+	open_on_setup = true,
+	hijack_cursor = true,
+	update_cwd = true,
+	view = {
+		auto_resize = true,
+	}
+}
+
+require "nvim-treesitter.configs".setup {
+	ensure_installed = "all",
+	highlight = {
+		enable = true
+	},
+	incremental_selection = {
+		enable = true
+	},
+	indent = {
+		enable = true
+	}
+}
+
+installer = require "nvim-lsp-installer"
+lsp = require "lspconfig"
+
+installer.setup({
+	ensure_installed = { "gopls", "tsserver", "sumneko_lua", "yamlls", "svelte" },
+	automatic_installation = true,
+})
+
+lsp.gopls.setup {}
+lsp.sumneko_lua.setup {
+	settings = {
+		Lua = {
+			diagnostics = {
+				enable = true,
+				globals = { "vim", "use" },
+				disable = { "lowercase-global" }
+			}
+		}
+	}
+}
+lsp.html.setup {}
+lsp.jsonls.setup {}
+lsp.tsserver.setup {}
+lsp.svelte.setup {}
+
+vim.api.nvim_buf_set_option(0, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
 -- setting
 vim.g.mapleader = " "
@@ -21,6 +88,10 @@ vim.wo.cursorline = true
 vim.wo.number = true
 
 vim.cmd("colorscheme mine")
+
+vim.diagnostic.config({
+	virtual_text = { prefix = "" },
+})
 
 -- replace f with easymotion-overwin-f
 vim.keymap.set("n", "f", "<Plug>(easymotion-overwin-f)")
