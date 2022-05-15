@@ -66,7 +66,7 @@ require 'gitsigns'.setup {
 		map('n', '<Space>hu', gs.undo_stage_hunk)
 		map('n', '<Space>hR', gs.reset_buffer)
 		map('n', '<Space>hp', gs.preview_hunk)
-		map('n', '<Space>hb', function() gs.blame_line { full = true } end)
+		map('n', '<Space>b', function() gs.blame_line { full = true } end)
 		map('n', '<Space>tb', gs.toggle_current_line_blame)
 		map('n', '<Space>hd', gs.diffthis)
 		map('n', '<Space>hD', function() gs.diffthis('~') end)
@@ -79,9 +79,7 @@ require 'gitsigns'.setup {
 
 require 'hop'.setup {}
 
-require 'nvim-tree'.setup {
-	hijack_cursor = true,
-}
+require 'nvim-tree'.setup {}
 
 require "nvim-treesitter.configs".setup {
 	ensure_installed = "all",
