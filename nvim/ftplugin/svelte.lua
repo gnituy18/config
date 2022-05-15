@@ -1,2 +1,2 @@
-vim.bo.expandtab = true
-vim.bo.shiftwidth = 2
+vi.bo.expandtab = true
+vi.bo.shiftwidth = 2
