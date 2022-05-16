@@ -32,6 +32,11 @@ require "packer".startup(function()
 			'kyazdani42/nvim-web-devicons',
 		},
 	}
+	use {
+		'nvim-telescope/telescope.nvim',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
+	use 'RRethy/vim-illuminate'
 	use 'williamboman/nvim-lsp-installer'
 	use 'neovim/nvim-lspconfig'
 end)
@@ -81,6 +86,8 @@ require 'hop'.setup {}
 
 require 'nvim-tree'.setup {}
 
+require('telescope').setup {}
+
 require "nvim-treesitter.configs".setup {
 	ensure_installed = "all",
 	highlight = {
@@ -93,6 +100,10 @@ require "nvim-treesitter.configs".setup {
 		enable = true
 	}
 }
+
+vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
+vim.api.nvim_command [[ hi def link LspReferenceWrite CursorLine ]]
+vim.api.nvim_command [[ hi def link LspReferenceRead CursorLine ]]
 
 local servers = { "gopls", "tsserver", "sumneko_lua", "jsonls", "cssls", "yamlls", "html", "svelte" }
 local settings = {
@@ -135,7 +146,9 @@ vim.keymap.set("n", "<Space>d", function() vim.diagnostic.open_float(nil, { focu
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
+	require 'illuminate'.on_attach(client)
+
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	local aopts = { noremap = true, silent = true, buffer = bufnr }
