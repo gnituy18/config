@@ -17,7 +17,8 @@ require "packer".startup(function()
 	use 'github/copilot.vim'
 	use {
 		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate'
+		run = ':TSUpdate',
+		tag = 'nightly'
 	}
 	use 'tpope/vim-fugitive'
 	use 'lewis6991/gitsigns.nvim'
@@ -26,16 +27,13 @@ require "packer".startup(function()
 		branch = 'v1',
 	}
 	use { "ellisonleao/glow.nvim", branch = 'main' }
-	use {
-		'kyazdani42/nvim-tree.lua',
-		requires = {
-			'kyazdani42/nvim-web-devicons',
-		},
-	}
+	use 'kyazdani42/nvim-web-devicons'
+	use 'kyazdani42/nvim-tree.lua'
 	use {
 		'nvim-telescope/telescope.nvim',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
+	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 	use 'RRethy/vim-illuminate'
 	use 'williamboman/nvim-lsp-installer'
 	use 'neovim/nvim-lspconfig'
@@ -84,9 +82,34 @@ require 'gitsigns'.setup {
 
 require 'hop'.setup {}
 
-require 'nvim-tree'.setup {}
+require 'nvim-tree'.setup {
+	git = {
+		ignore = false,
+	},
+}
 
-require('telescope').setup {}
+require('telescope').setup {
+	defaults = {
+		layout_strategy = 'vertical',
+		layout_config = {
+			vertical = {
+				width = { padding = 2 },
+				height = { padding = 1 },
+			},
+		},
+	},
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		}
+	}
+}
+require('telescope').load_extension('fzf')
+vim.cmd [[highlight TelescopeSelection ctermbg=8 ctermfg=none cterm=none]]
+vim.cmd [[highlight TelescopePreviewLine ctermbg=8 ctermfg=none cterm=none]]
 
 require "nvim-treesitter.configs".setup {
 	ensure_installed = "all",
@@ -131,6 +154,9 @@ for i = 1, 9 do
 	vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
+vim.keymap.set("n", "<Space>m", require('telescope.builtin').current_buffer_fuzzy_find)
+vim.keymap.set("n", "<Space>,", require('telescope.builtin').find_files)
+vim.keymap.set("n", "<Space>.", require('telescope.builtin').live_grep)
 vim.keymap.set("i", "<C-j>", "<C-x><C-o>")
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Space>w", "<Cmd>w<CR>")
