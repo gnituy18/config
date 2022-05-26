@@ -17,8 +17,7 @@ alias sed="gsed"
 opt_hist() {
 	TMP="$(mktemp)"
 	tail -r ~/.bash_history  > $TMP
-	awk '!x[$0]++' $TMP
-	tail -r $TMP > ~/.bash_history
+	awk '!x[$0]++' $TMP | tail -r > ~/.bash_history
 	rm $TMP
 }
 
