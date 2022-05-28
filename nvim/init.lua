@@ -37,6 +37,7 @@ require "packer".startup(function()
 	use 'RRethy/vim-illuminate'
 	use 'williamboman/nvim-lsp-installer'
 	use 'neovim/nvim-lspconfig'
+	use 'karb94/neoscroll.nvim'
 end)
 
 require 'gitsigns'.setup {
@@ -82,7 +83,35 @@ require 'gitsigns'.setup {
 
 require 'hop'.setup {}
 
+require 'neoscroll'.setup({
+	mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
+		'<C-y>', '<C-e>', 'zt', 'zz', 'zb', 'gg', 'G' },
+})
+-- vim.keymap.set('n', '<C-u>', function() require 'neoscroll'.scroll(-vim.wo.scroll, true, 50) end)
+-- vim.keymap.set('n', '<C-d>', function() require 'neoscroll'.scroll(vim.wo.scroll, true, 50) end)
+-- vim.keymap.set('n', '<C-b>', function() require 'neoscroll'.scroll(-vim.api.nvim_win_get_height(0), true, 50) end)
+-- vim.keymap.set('n', '<C-f>', function() require 'neoscroll'.scroll(vim.api.nvim_win_get_height(0), true, 50) end)
+-- vim.keymap.set('n', '<C-y>', function() require 'neoscroll'.scroll(-0.10, false, 100) end)
+-- vim.keymap.set('n', '<C-e>', function() require 'neoscroll'.scroll(0.10, false, 100) end)
+-- vim.keymap.set('n', 'zt', function() require 'neoscroll'.zt(50) end)
+-- vim.keymap.set('n', 'zz', function() require 'neoscroll'.zz(50) end)
+-- vim.keymap.set('n', 'zb', function() require 'neoscroll'.zb(50) end)
+vim.keymap.set('n', 'gg', function() require 'neoscroll'.gg(30) end)
+vim.keymap.set('n', 'G', function()
+	print(vim.fn.line("w$"))
+	local lines = require 'neoscroll.utils'.get_lines_below(vim.fn.line("w$"))
+	local window_height = vim.api.nvim_win_get_height(0)
+	local cursor_win_line = vim.fn.winline()
+	local win_lines_below_cursor = window_height - cursor_win_line
+	local corrected_time = math.floor(100 * (math.abs(lines) / (window_height / 2)) + 0.5)
+	require 'neoscroll'.scroll(win_lines_below_cursor + lines - 5, true, corrected_time)
+end)
+
 require 'nvim-tree'.setup {
+	filters = {
+		dotfiles = false,
+		custom = { '.DS_Store' },
+	},
 	git = {
 		ignore = false,
 	},
@@ -135,7 +164,7 @@ local settings = {
 			Lua = {
 				diagnostics = {
 					enable = true,
-					globals = { "vim", "use", "hop" },
+					globals = { "vim", "use" },
 					disable = { "lowercase-global" }
 				}
 			}
