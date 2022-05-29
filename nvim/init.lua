@@ -13,32 +13,130 @@ vim.cmd("colorscheme mine")
 
 -- plugins
 require "packer".startup(function()
+	-- deps
 	use 'wbthomason/packer.nvim'
-	use 'github/copilot.vim'
-	use {
-		'nvim-treesitter/nvim-treesitter',
-		run = ':TSUpdate',
-		tag = 'nightly'
-	}
-	use 'tpope/vim-fugitive'
-	use 'lewis6991/gitsigns.nvim'
-	use {
-		'phaazon/hop.nvim',
-		branch = 'v1',
-	}
-	use { "ellisonleao/glow.nvim", branch = 'main' }
+	use 'nvim-lua/plenary.nvim'
+
+	-- editor
+	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use 'RRethy/vim-illuminate'
+	use 'phaazon/hop.nvim'
+	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
 	use 'kyazdani42/nvim-tree.lua'
-	use {
-		'nvim-telescope/telescope.nvim',
-		requires = { { 'nvim-lua/plenary.nvim' } }
-	}
+	use 'nvim-telescope/telescope.nvim'
 	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-	use 'RRethy/vim-illuminate'
+
+	-- git
+	use 'tpope/vim-fugitive'
+	use 'lewis6991/gitsigns.nvim'
+
+	-- productivity
 	use 'williamboman/nvim-lsp-installer'
 	use 'neovim/nvim-lspconfig'
-	use 'karb94/neoscroll.nvim'
+	use { "ellisonleao/glow.nvim", branch = 'main' }
+	use 'github/copilot.vim'
+
 end)
+
+require "nvim-treesitter.configs".setup {
+	ensure_installed = "all",
+	highlight = {
+		enable = true
+	}
+}
+vim.g.Illuminate_ftblacklist = { "NvimTree" }
+
+require 'hop'.setup {}
+vim.keymap.set("n", "F", require 'hop'.hint_words)
+vim.keymap.set("n", "f", function() require 'hop'.hint_char1({ current_line_only = true }) end)
+
+require 'cinnamon'.setup {
+	extra_keymaps = true,
+	extended_keymaps = true,
+	scroll_limit = 1000,
+	default_delay = 1
+}
+vim.keymap.set({ 'n', 'x' }, 'gg', function() require 'cinnamon.scroll'.scroll('gg', 0, 0) end)
+vim.keymap.set({ 'n', 'x' }, 'G', function() require 'cinnamon.scroll'.scroll('G', 0, 1) end)
+
+require 'nvim-tree'.setup {
+	disable_netrw = true,
+	open_on_setup = true,
+	open_on_setup_file = true,
+	create_in_closed_folder = true,
+	open_on_tab = true,
+	hijack_cursor = true,
+	diagnostics = {
+		enable = true
+	},
+	filters = {
+		dotfiles = false,
+		custom = { '.DS_Store' },
+	},
+	renderer = {
+		indent_markers = {
+			enable = true,
+		},
+		icons = {
+			symlink_arrow = ' → ',
+			glyphs = {
+				git = {
+					untracked = '⭑',
+					ignored = '',
+				},
+			},
+		},
+	},
+	git = {
+		ignore = false,
+	},
+	live_filter = {
+		always_show_folders = false
+	}
+}
+vim.o.splitright = true
+vim.keymap.set("n", "t", "<Cmd>NvimTreeFindFileToggle<CR>")
+vim.keymap.set("n", "T", "<Cmd>NvimTreeFindFile<CR>")
+vim.keymap.set("n", "<Space>t", "<Cmd>NvimTreeCollapseKeepBuffers<CR>")
+vim.cmd [[highlight NvimTreeSymlink ctermbg=none ctermfg=14 cterm=none]]
+vim.cmd [[highlight NvimTreeRootFolder ctermbg=none ctermfg=4 cterm=none]]
+vim.cmd [[highlight NvimTreeFolderIcon ctermbg=none ctermfg=4 cterm=none]]
+vim.cmd [[highlight NvimTreeIndentMarker ctermbg=none ctermfg=15 cterm=none]]
+vim.cmd [[highlight NvimTreeGitDirty ctermbg=none ctermfg=1 cterm=none]]
+vim.cmd [[highlight NvimTreeGitStaged ctermbg=none ctermfg=2 cterm=none]]
+vim.cmd [[highlight NvimTreeGitMerge ctermbg=none ctermfg=5 cterm=none]]
+vim.cmd [[highlight NvimTreeGitRenamed ctermbg=none ctermfg=11 cterm=none]]
+vim.cmd [[highlight NvimTreeGitNew ctermbg=none ctermfg=11 cterm=none]]
+vim.cmd [[highlight NvimTreeGitDeleted ctermbg=none ctermfg=1 cterm=none]]
+
+require 'telescope'.setup {
+	defaults = {
+		layout_strategy = 'vertical',
+		layout_config = {
+			vertical = {
+				preview_height = { padding = 10 },
+				width = { padding = 2 },
+				height = { padding = 0 },
+			},
+		},
+	},
+	extensions = {
+		fzf = {
+			fuzzy = true,
+			override_generic_sorter = true,
+			override_file_sorter = true,
+			case_mode = "smart_case",
+		}
+	}
+}
+require 'telescope'.load_extension('fzf')
+vim.keymap.set("n", "<Space>m", require 'telescope.builtin'.current_buffer_fuzzy_find)
+vim.keymap.set("n", "<Space>,", require 'telescope.builtin'.find_files)
+vim.keymap.set("n", "<Space>.", require 'telescope.builtin'.live_grep)
+vim.cmd [[highlight TelescopeSelection ctermbg=8 ctermfg=none cterm=none]]
+vim.cmd [[highlight TelescopePreviewLine ctermbg=8 ctermfg=none cterm=none]]
+vim.cmd [[highlight TelescopeBorder ctermbg=none ctermfg=15 cterm=none]]
 
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
@@ -81,78 +179,6 @@ require 'gitsigns'.setup {
 	end
 }
 
-require 'hop'.setup {}
-
-require 'neoscroll'.setup({
-	mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
-		'<C-y>', '<C-e>', 'zt', 'zz', 'zb', 'gg', 'G' },
-})
--- vim.keymap.set('n', '<C-u>', function() require 'neoscroll'.scroll(-vim.wo.scroll, true, 50) end)
--- vim.keymap.set('n', '<C-d>', function() require 'neoscroll'.scroll(vim.wo.scroll, true, 50) end)
--- vim.keymap.set('n', '<C-b>', function() require 'neoscroll'.scroll(-vim.api.nvim_win_get_height(0), true, 50) end)
--- vim.keymap.set('n', '<C-f>', function() require 'neoscroll'.scroll(vim.api.nvim_win_get_height(0), true, 50) end)
--- vim.keymap.set('n', '<C-y>', function() require 'neoscroll'.scroll(-0.10, false, 100) end)
--- vim.keymap.set('n', '<C-e>', function() require 'neoscroll'.scroll(0.10, false, 100) end)
--- vim.keymap.set('n', 'zt', function() require 'neoscroll'.zt(50) end)
--- vim.keymap.set('n', 'zz', function() require 'neoscroll'.zz(50) end)
--- vim.keymap.set('n', 'zb', function() require 'neoscroll'.zb(50) end)
-vim.keymap.set('n', 'gg', function() require 'neoscroll'.gg(30) end)
-vim.keymap.set('n', 'G', function()
-	print(vim.fn.line("w$"))
-	local lines = require 'neoscroll.utils'.get_lines_below(vim.fn.line("w$"))
-	local window_height = vim.api.nvim_win_get_height(0)
-	local cursor_win_line = vim.fn.winline()
-	local win_lines_below_cursor = window_height - cursor_win_line
-	local corrected_time = math.floor(100 * (math.abs(lines) / (window_height / 2)) + 0.5)
-	require 'neoscroll'.scroll(win_lines_below_cursor + lines - 5, true, corrected_time)
-end)
-
-require 'nvim-tree'.setup {
-	filters = {
-		dotfiles = false,
-		custom = { '.DS_Store' },
-	},
-	git = {
-		ignore = false,
-	},
-}
-
-require('telescope').setup {
-	defaults = {
-		layout_strategy = 'vertical',
-		layout_config = {
-			vertical = {
-				width = { padding = 2 },
-				height = { padding = 1 },
-			},
-		},
-	},
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		}
-	}
-}
-require('telescope').load_extension('fzf')
-vim.cmd [[highlight TelescopeSelection ctermbg=8 ctermfg=none cterm=none]]
-vim.cmd [[highlight TelescopePreviewLine ctermbg=8 ctermfg=none cterm=none]]
-
-require "nvim-treesitter.configs".setup {
-	ensure_installed = "all",
-	highlight = {
-		enable = true
-	},
-	incremental_selection = {
-		enable = true
-	},
-	indent = {
-		enable = true
-	}
-}
-
 vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
 vim.api.nvim_command [[ hi def link LspReferenceWrite CursorLine ]]
 vim.api.nvim_command [[ hi def link LspReferenceRead CursorLine ]]
@@ -183,18 +209,14 @@ for i = 1, 9 do
 	vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
-vim.keymap.set("n", "<Space>m", require('telescope.builtin').current_buffer_fuzzy_find)
-vim.keymap.set("n", "<Space>,", require('telescope.builtin').find_files)
-vim.keymap.set("n", "<Space>.", require('telescope.builtin').live_grep)
 vim.keymap.set("i", "<C-j>", "<C-x><C-o>")
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
+vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
 vim.keymap.set("n", "<Space>w", "<Cmd>w<CR>")
-vim.keymap.set("n", "<Space>t", "<Cmd>NvimTreeToggle<CR>")
+vim.keymap.set("n", "<Space>W", "<Cmd>wa<CR>")
 vim.keymap.set("n", "<Space>/", "<Cmd>noh<CR>")
 vim.keymap.set("i", "<C-n>", "<Plug>(copilot-next)")
 vim.keymap.set("i", "<C-p>", "<Plug>(copilot-previous)")
-vim.keymap.set("n", "F", require 'hop'.hint_words)
-vim.keymap.set("n", "f", function() require 'hop'.hint_char1({ current_line_only = true }) end)
 
 local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<Space>d", function() vim.diagnostic.open_float(nil, { focusable = false }) end, opts)
@@ -207,8 +229,8 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	local aopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, aopts)
-	vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, aopts)
+	vim.keymap.set('n', 'gd', function() require 'cinnamon.scroll'.scroll('definition') end, aopts)
+	vim.keymap.set('n', 'gD', function() require 'cinnamon.scroll'.scroll('declaration') end, aopts)
 	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, aopts)
 	vim.keymap.set('n', 'gr', vim.lsp.buf.references, aopts)
 	vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, aopts)

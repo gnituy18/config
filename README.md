@@ -17,7 +17,8 @@
     - Alacritty
     - neovim
     - brew
-    - RobotoMono
+    - Roboto Mono
+1. forge nerd font
 1. brew install
     - tmux
     - git
