@@ -57,15 +57,11 @@ require 'cinnamon'.setup {
 	scroll_limit = 1000,
 	default_delay = 1
 }
-vim.keymap.set({ 'n', 'x' }, 'gg', function() require 'cinnamon.scroll'.scroll('gg', 0, 0) end)
-vim.keymap.set({ 'n', 'x' }, 'G', function() require 'cinnamon.scroll'.scroll('G', 0, 1) end)
 
 require 'nvim-tree'.setup {
 	disable_netrw = true,
 	open_on_setup = true,
-	open_on_setup_file = true,
 	create_in_closed_folder = true,
-	open_on_tab = true,
 	hijack_cursor = true,
 	diagnostics = {
 		enable = true
