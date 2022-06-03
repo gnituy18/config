@@ -24,8 +24,7 @@ require "packer".startup(function()
 	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
 	use 'kyazdani42/nvim-tree.lua'
-	use 'nvim-telescope/telescope.nvim'
-	use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+	use 'ibhagwan/fzf-lua'
 
 	-- git
 	use 'tpope/vim-fugitive'
@@ -105,34 +104,6 @@ vim.cmd [[highlight NvimTreeGitMerge ctermbg=none ctermfg=5 cterm=none]]
 vim.cmd [[highlight NvimTreeGitRenamed ctermbg=none ctermfg=11 cterm=none]]
 vim.cmd [[highlight NvimTreeGitNew ctermbg=none ctermfg=11 cterm=none]]
 vim.cmd [[highlight NvimTreeGitDeleted ctermbg=none ctermfg=1 cterm=none]]
-
-require 'telescope'.setup {
-	defaults = {
-		layout_strategy = 'vertical',
-		layout_config = {
-			vertical = {
-				preview_height = { padding = 10 },
-				width = { padding = 2 },
-				height = { padding = 0 },
-			},
-		},
-	},
-	extensions = {
-		fzf = {
-			fuzzy = true,
-			override_generic_sorter = true,
-			override_file_sorter = true,
-			case_mode = "smart_case",
-		}
-	}
-}
-require 'telescope'.load_extension('fzf')
-vim.keymap.set("n", "<Space>m", require 'telescope.builtin'.current_buffer_fuzzy_find)
-vim.keymap.set("n", "<Space>,", require 'telescope.builtin'.find_files)
-vim.keymap.set("n", "<Space>.", require 'telescope.builtin'.live_grep)
-vim.cmd [[highlight TelescopeSelection ctermbg=8 ctermfg=none cterm=none]]
-vim.cmd [[highlight TelescopePreviewLine ctermbg=8 ctermfg=none cterm=none]]
-vim.cmd [[highlight TelescopeBorder ctermbg=none ctermfg=15 cterm=none]]
 
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
