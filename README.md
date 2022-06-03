@@ -22,6 +22,7 @@
 1. brew install
     - tmux
     - git
+	- delta
     - fzf
         - $(brew --prefix)/opt/fzf/install
 	- bat
