@@ -1,6 +1,7 @@
 [core]
 	editor = nvim
 	excludesfile = /Users/sfhp/.gitignore
+	pager = delta
 [user]
 	name = gnituy18
 	email = sfhp@protonmail.com
