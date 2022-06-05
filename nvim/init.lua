@@ -13,18 +13,17 @@ vim.cmd("colorscheme mine")
 
 -- plugins
 require "packer".startup(function()
-	-- deps
 	use 'wbthomason/packer.nvim'
 	use 'nvim-lua/plenary.nvim'
 
 	-- editor
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use 'ibhagwan/fzf-lua'
 	use 'RRethy/vim-illuminate'
 	use 'phaazon/hop.nvim'
 	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
 	use 'kyazdani42/nvim-tree.lua'
-	use 'ibhagwan/fzf-lua'
 
 	-- git
 	use 'tpope/vim-fugitive'
