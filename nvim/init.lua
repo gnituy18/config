@@ -175,6 +175,8 @@ for i = 1, 9 do
 	vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
+vim.keymap.set("n", ",", require'fzf-lua'.files)
+vim.keymap.set("n", "m", require'fzf-lua'.live_grep)
 vim.keymap.set("i", "<C-j>", "<C-x><C-o>")
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
