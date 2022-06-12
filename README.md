@@ -15,21 +15,23 @@
     - Chrome
     - Google Drive
     - Alacritty
-    - neovim
+    - Amethist
     - brew
+    - neovim
     - Roboto Mono
-1. forge nerd font
+    - nerd font
 1. brew install
     - tmux
-    - git
-	- delta
-    - fzf
-        - $(brew --prefix)/opt/fzf/install
-	- bat
-    - ripgrep
     - bash
         - sudo echo "/usr/local/bin/bash" >> /etc/shells
         - sudo chsh -s /usr/local/bin/bash
+    - git
+    - nnn
+    - fzf
+    - bat
+    - delta
+    - ripgrep
+    - fd
 1. ssh-keygen
     - touch ~/.ssh/config
 1. git
