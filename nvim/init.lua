@@ -18,12 +18,15 @@ require "packer".startup(function()
 
 	-- editor
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use {
+		"luukvbaal/nnn.nvim",
+		config = function() require("nnn").setup() end
+	}
 	use 'ibhagwan/fzf-lua'
 	use 'RRethy/vim-illuminate'
 	use 'phaazon/hop.nvim'
 	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
-	use 'kyazdani42/nvim-tree.lua'
 
 	-- git
 	use 'tpope/vim-fugitive'
@@ -43,7 +46,11 @@ require "nvim-treesitter.configs".setup {
 		enable = true
 	}
 }
-vim.g.Illuminate_ftblacklist = { "NvimTree" }
+
+require 'nnn'.setup {
+	auto_close = true,
+	replace_netrw = "picker"
+}
 
 require 'hop'.setup {}
 vim.keymap.set("n", "F", require 'hop'.hint_words)
@@ -56,53 +63,6 @@ require 'cinnamon'.setup {
 	default_delay = 1
 }
 
-require 'nvim-tree'.setup {
-	disable_netrw = true,
-	open_on_setup = true,
-	create_in_closed_folder = true,
-	hijack_cursor = true,
-	diagnostics = {
-		enable = true
-	},
-	filters = {
-		dotfiles = false,
-		custom = { '.DS_Store' },
-	},
-	renderer = {
-		indent_markers = {
-			enable = true,
-		},
-		icons = {
-			symlink_arrow = ' → ',
-			glyphs = {
-				git = {
-					untracked = '⭑',
-					ignored = '',
-				},
-			},
-		},
-	},
-	git = {
-		ignore = false,
-	},
-	live_filter = {
-		always_show_folders = false
-	}
-}
-vim.o.splitright = true
-vim.keymap.set("n", "t", "<Cmd>NvimTreeFindFileToggle<CR>")
-vim.keymap.set("n", "T", "<Cmd>NvimTreeFindFile<CR>")
-vim.keymap.set("n", "<Space>t", "<Cmd>NvimTreeCollapseKeepBuffers<CR>")
-vim.cmd [[highlight NvimTreeSymlink ctermbg=none ctermfg=14 cterm=none]]
-vim.cmd [[highlight NvimTreeRootFolder ctermbg=none ctermfg=4 cterm=none]]
-vim.cmd [[highlight NvimTreeFolderIcon ctermbg=none ctermfg=4 cterm=none]]
-vim.cmd [[highlight NvimTreeIndentMarker ctermbg=none ctermfg=15 cterm=none]]
-vim.cmd [[highlight NvimTreeGitDirty ctermbg=none ctermfg=1 cterm=none]]
-vim.cmd [[highlight NvimTreeGitStaged ctermbg=none ctermfg=2 cterm=none]]
-vim.cmd [[highlight NvimTreeGitMerge ctermbg=none ctermfg=5 cterm=none]]
-vim.cmd [[highlight NvimTreeGitRenamed ctermbg=none ctermfg=11 cterm=none]]
-vim.cmd [[highlight NvimTreeGitNew ctermbg=none ctermfg=11 cterm=none]]
-vim.cmd [[highlight NvimTreeGitDeleted ctermbg=none ctermfg=1 cterm=none]]
 
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
@@ -175,8 +135,8 @@ for i = 1, 9 do
 	vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
-vim.keymap.set("n", ",", require'fzf-lua'.files)
-vim.keymap.set("n", "m", require'fzf-lua'.live_grep)
+vim.keymap.set("n", ",", require 'fzf-lua'.files)
+vim.keymap.set("n", "m", require 'fzf-lua'.live_grep)
 vim.keymap.set("i", "<C-j>", "<C-x><C-o>")
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
