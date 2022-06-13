@@ -18,10 +18,7 @@ require "packer".startup(function()
 
 	-- editor
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-	use {
-		"luukvbaal/nnn.nvim",
-		config = function() require("nnn").setup() end
-	}
+	use 'luukvbaal/nnn.nvim'
 	use 'ibhagwan/fzf-lua'
 	use 'RRethy/vim-illuminate'
 	use 'phaazon/hop.nvim'
@@ -49,7 +46,16 @@ require "nvim-treesitter.configs".setup {
 
 require 'nnn'.setup {
 	auto_close = true,
-	replace_netrw = "picker"
+	replace_netrw = "picker",
+	mappings = {
+		{ "<C-t>", require 'nnn'.builtin.open_in_tab },
+		{ "<C-s>", require 'nnn'.builtin.open_in_split },
+		{ "<C-v>", require 'nnn'.builtin.open_in_vsplit },
+		{ "<C-p>", require 'nnn'.builtin.open_in_preview },
+		{ "<C-y>", require 'nnn'.builtin.copy_to_clipboard },
+		{ "<C-w>", require 'nnn'.builtin.cd_to_path },
+		{ "<C-e>", require 'nnn'.builtin.populate_cmdline },
+	}
 }
 
 require 'hop'.setup {}
