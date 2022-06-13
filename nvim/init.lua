@@ -57,6 +57,7 @@ require 'nnn'.setup {
 		{ "<C-e>", require 'nnn'.builtin.populate_cmdline },
 	}
 }
+vim.keymap.set("n", "t", "<Cmd>NnnPicker<CR>")
 
 require 'hop'.setup {}
 vim.keymap.set("n", "F", require 'hop'.hint_words)
