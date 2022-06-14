@@ -18,9 +18,9 @@ require "packer".startup(function()
 
 	-- editor
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+	use 'RRethy/vim-illuminate'
 	use 'luukvbaal/nnn.nvim'
 	use 'ibhagwan/fzf-lua'
-	use 'RRethy/vim-illuminate'
 	use 'phaazon/hop.nvim'
 	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
@@ -37,6 +37,9 @@ require "packer".startup(function()
 
 end)
 
+vim.keymap.set("n", "<C-n>", function() require 'illuminate'.next_reference { wrap = true } end)
+vim.keymap.set("n", "<C-p>", function() require 'illuminate'.next_reference { reverse = true, wrap = true } end)
+
 require "nvim-treesitter.configs".setup {
 	ensure_installed = "all",
 	highlight = {
@@ -46,18 +49,31 @@ require "nvim-treesitter.configs".setup {
 
 require 'nnn'.setup {
 	auto_close = true,
-	replace_netrw = "picker",
+	replace_netrw = "explorer",
+	explorer = {
+		cmd = "nnn",
+		width = 24,
+		side = "topleft",
+		session = "global",
+		tabs = true,
+	},
+	picker = {
+		cmd = "nnn",
+		style = {
+			width = 0.99,
+			height = 0.99,
+			xoffset = 0.5,
+			yoffset = 0.5,
+			border = "single"
+		},
+	},
 	mappings = {
 		{ "<C-t>", require 'nnn'.builtin.open_in_tab },
 		{ "<C-s>", require 'nnn'.builtin.open_in_split },
 		{ "<C-v>", require 'nnn'.builtin.open_in_vsplit },
-		{ "<C-p>", require 'nnn'.builtin.open_in_preview },
-		{ "<C-y>", require 'nnn'.builtin.copy_to_clipboard },
-		{ "<C-w>", require 'nnn'.builtin.cd_to_path },
-		{ "<C-e>", require 'nnn'.builtin.populate_cmdline },
 	}
 }
-vim.keymap.set("n", "t", "<Cmd>NnnPicker<CR>")
+vim.keymap.set("n", "<Space>j", "<Cmd>NnnExplorer %:p:h<CR>")
 
 require 'fzf-lua'.setup {
 	winopts = {
@@ -67,9 +83,9 @@ require 'fzf-lua'.setup {
 		}
 	}
 }
-vim.keymap.set("n", ",", require 'fzf-lua'.files)
-vim.keymap.set("n", "m", require 'fzf-lua'.live_grep)
-vim.keymap.set("n", "<Space>b", require 'fzf-lua'.buffers)
+vim.keymap.set("n", "<Space>k", require 'fzf-lua'.buffers)
+vim.keymap.set("n", "<Space>l", require 'fzf-lua'.files)
+vim.keymap.set("n", "<Space>;", require 'fzf-lua'.live_grep)
 
 require 'hop'.setup {}
 vim.keymap.set("n", "F", require 'hop'.hint_words)
@@ -78,10 +94,9 @@ vim.keymap.set("n", "f", function() require 'hop'.hint_char1({ current_line_only
 require 'cinnamon'.setup {
 	extra_keymaps = true,
 	extended_keymaps = true,
-	scroll_limit = 1000,
+	scroll_limit = 300,
 	default_delay = 1
 }
-
 
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
@@ -159,7 +174,6 @@ vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
 vim.keymap.set("n", "<Space>w", "<Cmd>w<CR>")
 vim.keymap.set("n", "<Space>W", "<Cmd>wa<CR>")
-vim.keymap.set("n", "<Space>/", "<Cmd>noh<CR>")
 vim.keymap.set("i", "<C-n>", "<Plug>(copilot-next)")
 vim.keymap.set("i", "<C-p>", "<Plug>(copilot-previous)")
 
