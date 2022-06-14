@@ -83,9 +83,9 @@ require 'fzf-lua'.setup {
 		}
 	}
 }
-vim.keymap.set("n", "<Space>k", require 'fzf-lua'.buffers)
-vim.keymap.set("n", "<Space>l", require 'fzf-lua'.files)
-vim.keymap.set("n", "<Space>;", require 'fzf-lua'.live_grep)
+vim.keymap.set("n", "<Space>h", require 'fzf-lua'.buffers)
+vim.keymap.set("n", "<Space>k", require 'fzf-lua'.files)
+vim.keymap.set("n", "<Space>l", require 'fzf-lua'.live_grep)
 
 require 'hop'.setup {}
 vim.keymap.set("n", "F", require 'hop'.hint_words)
