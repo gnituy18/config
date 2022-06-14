@@ -59,6 +59,18 @@ require 'nnn'.setup {
 }
 vim.keymap.set("n", "t", "<Cmd>NnnPicker<CR>")
 
+require 'fzf-lua'.setup {
+	winopts = {
+		preview = {
+			vertical = 'up:50%',
+			layout   = "vertical",
+		}
+	}
+}
+vim.keymap.set("n", ",", require 'fzf-lua'.files)
+vim.keymap.set("n", "m", require 'fzf-lua'.live_grep)
+vim.keymap.set("n", "<Space>b", require 'fzf-lua'.buffers)
+
 require 'hop'.setup {}
 vim.keymap.set("n", "F", require 'hop'.hint_words)
 vim.keymap.set("n", "f", function() require 'hop'.hint_char1({ current_line_only = true }) end)
@@ -142,8 +154,6 @@ for i = 1, 9 do
 	vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
-vim.keymap.set("n", ",", require 'fzf-lua'.files)
-vim.keymap.set("n", "m", require 'fzf-lua'.live_grep)
 vim.keymap.set("i", "<C-j>", "<C-x><C-o>")
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
