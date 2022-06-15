@@ -24,6 +24,7 @@ require "packer".startup(function()
 	use 'phaazon/hop.nvim'
 	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
+	use "lukas-reineke/indent-blankline.nvim"
 
 	-- git
 	use 'tpope/vim-fugitive'
@@ -83,9 +84,9 @@ require 'fzf-lua'.setup {
 		}
 	}
 }
-vim.keymap.set("n", "<Space>h", require 'fzf-lua'.buffers)
 vim.keymap.set("n", "<Space>k", require 'fzf-lua'.files)
 vim.keymap.set("n", "<Space>l", require 'fzf-lua'.live_grep)
+vim.keymap.set("n", "<Space>;", require 'fzf-lua'.buffers)
 
 require 'hop'.setup {}
 vim.keymap.set("n", "F", require 'hop'.hint_words)
@@ -97,6 +98,10 @@ require 'cinnamon'.setup {
 	scroll_limit = 300,
 	default_delay = 1
 }
+
+vim.cmd [[hi IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
+vim.api.nvim_command [[ hi IndentBlanklineChar ctermfg=8 ]]
+vim.g.indent_blankline_filetype = { 'json', 'yaml' }
 
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
