@@ -25,6 +25,7 @@ require "packer".startup(function()
 	use 'declancm/cinnamon.nvim'
 	use 'kyazdani42/nvim-web-devicons'
 	use "lukas-reineke/indent-blankline.nvim"
+	use "tversteeg/registers.nvim"
 
 	-- git
 	use 'tpope/vim-fugitive'
@@ -99,7 +100,6 @@ require 'cinnamon'.setup {
 	default_delay = 1
 }
 
-vim.cmd [[hi IndentBlanklineIndent1 guifg=#E06C75 gui=nocombine]]
 vim.api.nvim_command [[ hi IndentBlanklineChar ctermfg=8 ]]
 vim.g.indent_blankline_filetype = { 'json', 'yaml' }
 
