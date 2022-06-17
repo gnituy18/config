@@ -782,6 +782,8 @@ key_bindings:
   - { key: Key8, mods: Alt, chars: "\x1b8" }
   - { key: Key9, mods: Alt, chars: "\x1b9" }
   - { key: Key0, mods: Alt, chars: "\x1b0" }
+  - { key: Comma, mods: Alt, chars: "\x1b," }
+
   #- { key: Copy,                                        action: Copy           }
   #- { key: L,         mods: Control,                    action: ClearLogNotice }
   #- { key: L,         mods: Control, mode: ~Vi|~Search, chars: "\x0c"          }
