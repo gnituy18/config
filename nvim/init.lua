@@ -39,9 +39,6 @@ require "packer".startup(function()
 
 end)
 
-vim.keymap.set("n", "<C-n>", function() require 'illuminate'.next_reference { wrap = true } end)
-vim.keymap.set("n", "<C-p>", function() require 'illuminate'.next_reference { reverse = true, wrap = true } end)
-
 require "nvim-treesitter.configs".setup {
 	ensure_installed = "all",
 	highlight = {
@@ -49,31 +46,29 @@ require "nvim-treesitter.configs".setup {
 	}
 }
 
+vim.keymap.set("n", "<C-n>", function() require 'illuminate'.next_reference { wrap = true } end)
+vim.keymap.set("n", "<C-p>", function() require 'illuminate'.next_reference { reverse = true, wrap = true } end)
+
 require 'nnn'.setup {
-	auto_close = true,
 	replace_netrw = "explorer",
 	explorer = {
 		cmd = "nnn",
-		width = 24,
+		width = 32,
 		side = "topleft",
 		session = "global",
 		tabs = true,
-	},
-	picker = {
-		cmd = "nnn",
-		style = {
-			width = 0.99,
-			height = 0.99,
-			xoffset = 0.5,
-			yoffset = 0.5,
-			border = "single"
-		},
 	},
 	mappings = {
 		{ "<C-t>", require 'nnn'.builtin.open_in_tab },
 		{ "<C-s>", require 'nnn'.builtin.open_in_split },
 		{ "<C-v>", require 'nnn'.builtin.open_in_vsplit },
-	}
+	},
+	windownav = {
+		left = "<C-w>h",
+		right = "<C-w>l",
+		next = "<C-w>w",
+		prev = "<C-w>W",
+	},
 }
 vim.keymap.set("n", "<Space>j", "<Cmd>NnnExplorer %:p:h<CR>")
 
@@ -90,8 +85,7 @@ vim.keymap.set("n", "<Space>l", require 'fzf-lua'.live_grep)
 vim.keymap.set("n", "<Space>;", require 'fzf-lua'.buffers)
 
 require 'hop'.setup {}
-vim.keymap.set("n", "F", require 'hop'.hint_words)
-vim.keymap.set("n", "f", function() require 'hop'.hint_char1({ current_line_only = true }) end)
+vim.keymap.set("n", "<Space>f", require 'hop'.hint_words)
 
 require 'cinnamon'.setup {
 	extra_keymaps = true,
