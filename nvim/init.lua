@@ -19,7 +19,6 @@ require "packer".startup(function()
 	-- editor
 	use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 	use 'RRethy/vim-illuminate'
-	use 'luukvbaal/nnn.nvim'
 	use 'ibhagwan/fzf-lua'
 	use 'phaazon/hop.nvim'
 	use 'declancm/cinnamon.nvim'
@@ -34,9 +33,7 @@ require "packer".startup(function()
 	-- productivity
 	use 'williamboman/nvim-lsp-installer'
 	use 'neovim/nvim-lspconfig'
-	use { "ellisonleao/glow.nvim", branch = 'main' }
 	use 'github/copilot.vim'
-
 end)
 
 require "nvim-treesitter.configs".setup {
@@ -49,40 +46,21 @@ require "nvim-treesitter.configs".setup {
 vim.keymap.set("n", "<C-n>", function() require 'illuminate'.next_reference { wrap = true } end)
 vim.keymap.set("n", "<C-p>", function() require 'illuminate'.next_reference { reverse = true, wrap = true } end)
 
-require 'nnn'.setup {
-	replace_netrw = "explorer",
-	explorer = {
-		cmd = "nnn",
-		width = 32,
-		side = "topleft",
-		session = "global",
-		tabs = true,
-	},
-	mappings = {
-		{ "<C-t>", require 'nnn'.builtin.open_in_tab },
-		{ "<C-s>", require 'nnn'.builtin.open_in_split },
-		{ "<C-v>", require 'nnn'.builtin.open_in_vsplit },
-	},
-	windownav = {
-		left = "<C-w>h",
-		right = "<C-w>l",
-		next = "<C-w>w",
-		prev = "<C-w>W",
-	},
-}
-vim.keymap.set("n", "<Space>j", "<Cmd>NnnExplorer %:p:h<CR>")
-
 require 'fzf-lua'.setup {
 	winopts = {
-		preview = {
-			vertical = 'up:50%',
-			layout   = "vertical",
+		border     = 'none',
+		fullscreen = true,
+		preview    = {
+			vertical     = 'up:50%',
+			horizontal   = 'left:50%',
+			flip_columns = 150,
+			scrollbar    = false,
 		}
 	}
 }
+vim.keymap.set("n", "<Space>j", require 'fzf-lua'.buffers)
 vim.keymap.set("n", "<Space>k", require 'fzf-lua'.files)
 vim.keymap.set("n", "<Space>l", require 'fzf-lua'.live_grep)
-vim.keymap.set("n", "<Space>;", require 'fzf-lua'.buffers)
 
 require 'hop'.setup {}
 vim.keymap.set("n", "<Space>f", require 'hop'.hint_words)
@@ -90,7 +68,7 @@ vim.keymap.set("n", "<Space>f", require 'hop'.hint_words)
 require 'cinnamon'.setup {
 	extra_keymaps = true,
 	extended_keymaps = true,
-	scroll_limit = 300,
+	scroll_limit = 100,
 	default_delay = 1
 }
 
@@ -138,10 +116,6 @@ require 'gitsigns'.setup {
 	end
 }
 
-vim.api.nvim_command [[ hi def link LspReferenceText CursorLine ]]
-vim.api.nvim_command [[ hi def link LspReferenceWrite CursorLine ]]
-vim.api.nvim_command [[ hi def link LspReferenceRead CursorLine ]]
-
 local servers = { "gopls", "tsserver", "sumneko_lua", "jsonls", "cssls", "yamlls", "html", "svelte" }
 local settings = {
 	sumneko_lua = {
@@ -187,17 +161,17 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	local aopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gd', function() require 'cinnamon.scroll'.scroll('definition') end, aopts)
-	vim.keymap.set('n', 'gD', function() require 'cinnamon.scroll'.scroll('declaration') end, aopts)
-	vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, aopts)
-	vim.keymap.set('n', 'gr', vim.lsp.buf.references, aopts)
-	vim.keymap.set('n', 'gt', vim.lsp.buf.type_definition, aopts)
+	vim.keymap.set('n', 'gd', require 'fzf-lua'.lsp_definitions, aopts)
+	vim.keymap.set('n', 'gD', require 'fzf-lua'.lsp_declarations, aopts)
+	vim.keymap.set('n', 'gi', require 'fzf-lua'.lsp_implementations, aopts)
+	vim.keymap.set('n', 'gr', require 'fzf-lua'.lsp_references, aopts)
+	vim.keymap.set('n', 'gt', require 'fzf-lua'.lsp_typedefs, aopts)
 
 	vim.keymap.set('n', 'K', vim.lsp.buf.hover, aopts)
 	vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, aopts)
 
 	vim.keymap.set('n', '<Space>r', vim.lsp.buf.rename, aopts)
-	vim.keymap.set('n', '<Space>a', vim.lsp.buf.code_action, aopts)
+	vim.keymap.set('n', '<Space>a', require 'fzf-lua'.lsp_code_actions, aopts)
 	vim.keymap.set('n', '<Space>f', vim.lsp.buf.formatting, aopts)
 
 	vim.keymap.set('n', '<Space>wa', vim.lsp.buf.add_workspace_folder, aopts)
