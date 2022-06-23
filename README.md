@@ -21,15 +21,13 @@
     - Roboto Mono
     - nerd font
 1. brew install
-    - tmux
     - bash
         - sudo echo "/usr/local/bin/bash" >> /etc/shells
         - sudo chsh -s /usr/local/bin/bash
+    - tmux
     - git
-    - nnn
     - fzf
-    - bat
-    - delta
+    - httpie
     - ripgrep
     - fd
 1. ssh-keygen
