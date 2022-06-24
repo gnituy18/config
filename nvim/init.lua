@@ -75,6 +75,9 @@ require 'cinnamon'.setup {
 vim.api.nvim_command [[ hi IndentBlanklineChar ctermfg=8 ]]
 vim.g.indent_blankline_filetype = { 'json', 'yaml' }
 
+vim.api.nvim_command [[ hi GitSignsAddInline ctermbg=2 ctermfg=0]]
+vim.api.nvim_command [[ hi GitSignsChangeInline ctermbg=11 ctermfg=0 ]]
+vim.api.nvim_command [[ hi GitSignsDeleteInline ctermbg=1 ctermfg=0 ]]
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
