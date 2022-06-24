@@ -78,6 +78,8 @@ vim.g.indent_blankline_filetype = { 'json', 'yaml' }
 vim.cmd 'hi GitSignsAddInline ctermbg=2 ctermfg=0'
 vim.cmd 'hi GitSignsChangeInline ctermbg=11 ctermfg=0'
 vim.cmd 'hi GitSignsDeleteInline ctermbg=1 ctermfg=0'
+
+-- TODO remove this: https://github.com/lewis6991/gitsigns.nvim/issues/582 
 vim.cmd 'hi link GitSignsDeleteLn DiffDelete'
 require 'gitsigns'.setup {
 	on_attach = function(bufnr)
