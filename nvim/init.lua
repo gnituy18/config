@@ -1,4 +1,3 @@
--- setting
 vim.o.number = true
 vim.o.cursorline = true
 vim.o.mouse = "a"
@@ -8,10 +7,8 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.matchpairs = vim.o.matchpairs .. ",<:>"
 
--- colorscheme
-vim.cmd("colorscheme mine")
+vim.cmd "colorscheme mine"
 
--- plugins
 require "packer".startup(function()
 	use 'wbthomason/packer.nvim'
 
