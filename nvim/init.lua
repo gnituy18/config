@@ -7,7 +7,7 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.matchpairs = vim.o.matchpairs .. ",<:>"
 
-vim.cmd "colorscheme mine"
+vim.cmd "colorscheme cs"
 
 require "packer".startup(function()
 	use 'wbthomason/packer.nvim'
