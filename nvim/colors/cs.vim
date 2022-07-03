@@ -86,7 +86,7 @@ hi Constant	ctermbg=none ctermfg=3 cterm=none
 " 	 Boolean	a boolean constant: TRUE, false
 " 	 Float		a floating point constant: 2.3e10
 " 
-hi Identifier ctermbg=none ctermfg=10 cterm=none
+hi Identifier ctermbg=none ctermfg=2 cterm=none
 " 	 Function	function name (also: methods for classes)
 " 
 hi Statement ctermbg=none ctermfg=4 cterm=none
