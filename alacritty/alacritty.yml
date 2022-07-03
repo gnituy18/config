@@ -282,23 +282,23 @@ colors:
   # Normal colors
   normal:
     black:   '0x131313'
-    red:     '0xff80aa'
-    green:   '0xaaff80'
-    yellow:  '0xffd480'
-    blue:    '0x80aaff'
-    magenta: '0xd580ff'
-    cyan:    '0x80ffd4'
+    red:     '0xff809f'
+    green:   '0x9fff80'
+    yellow:  '0xffdf80'
+    blue:    '0x809fff'
+    magenta: '0xdf80ff'
+    cyan:    '0x80ffdf'
     white:   '0x202020'
 
   # Bright colors
   bright:
-    black:   '0x333333'
-    red:     '0xff80ea'
-    green:   '0xeaff80'
-    yellow:  '0xff9580'
-    blue:    '0x80eaff'
-    magenta: '0x9580ff'
-    cyan:    '0x80ff95'
+    black:   '0x404040'
+    red:     '0xff80df'
+    green:   '0xdfff80'
+    yellow:  '0xff9f80'
+    blue:    '0x80dfff'
+    magenta: '0x9f80ff'
+    cyan:    '0x80ff9f'
     white:   '0xeeeeee'
 
   # Dim colors
