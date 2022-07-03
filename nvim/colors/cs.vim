@@ -87,8 +87,8 @@ hi Constant	ctermbg=none ctermfg=3 cterm=none
 " 	 Float		a floating point constant: 2.3e10
 " 
 hi Identifier ctermbg=none ctermfg=2 cterm=none
-" 	 Function	function name (also: methods for classes)
-" 
+hi Function ctermbg=none ctermfg=11 cterm=none
+
 hi Statement ctermbg=none ctermfg=4 cterm=none
 " 	 Conditional	if, then, else, endif, switch, etc.
 " 	 Repeat		for, do, while, etc.
@@ -108,7 +108,7 @@ hi Type	ctermbg=none ctermfg=1 cterm=none
 " 	 Structure	struct, union, enum, etc.
 " 	 Typedef	A typedef
 " 
-hi Special ctermbg=none ctermfg=5 cterm=none
+hi Special ctermbg=none ctermfg=15 cterm=none
 " 	 SpecialChar	special character in a constant
 " 	 Tag		you can use CTRL-] on this
 " 	 Delimiter	character that needs attention
