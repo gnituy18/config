@@ -2,6 +2,7 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.o.mouse = "a"
 vim.o.clipboard = "unnamed"
+vim.o.completeopt = "menu"
 vim.o.ignorecase = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
@@ -146,11 +147,11 @@ local on_attach = function(_, bufnr)
 	vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	local aopts = { noremap = true, silent = true, buffer = bufnr }
-	vim.keymap.set('n', 'gd', require 'fzf-lua'.lsp_definitions, aopts)
-	vim.keymap.set('n', 'gD', require 'fzf-lua'.lsp_declarations, aopts)
-	vim.keymap.set('n', 'gi', require 'fzf-lua'.lsp_implementations, aopts)
-	vim.keymap.set('n', 'gr', require 'fzf-lua'.lsp_references, aopts)
-	vim.keymap.set('n', 'gt', require 'fzf-lua'.lsp_typedefs, aopts)
+	vim.keymap.set('n', 'gd', function() require 'fzf-lua'.lsp_definitions({ jump_to_single_result = true }) end, aopts)
+	vim.keymap.set('n', 'gD', function() require 'fzf-lua'.lsp_declarations({ jump_to_single_result = true }) end, aopts)
+	vim.keymap.set('n', 'gi', function() require 'fzf-lua'.lsp_implementations({ jump_to_single_result = true }) end, aopts)
+	vim.keymap.set('n', 'gr', function() require 'fzf-lua'.lsp_references({ jump_to_single_result = true }) end, aopts)
+	vim.keymap.set('n', 'gt', function() require 'fzf-lua'.lsp_typedefs({ jump_to_single_result = true }) end, aopts)
 
 	vim.keymap.set('n', '<Space>h', vim.lsp.buf.hover, aopts)
 	vim.keymap.set('n', '<Space>s', vim.lsp.buf.signature_help, aopts)
