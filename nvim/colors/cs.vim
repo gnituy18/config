@@ -29,7 +29,7 @@ hi LineNr ctermbg=none ctermfg=8 cterm=none
 hi CursorLineNr ctermbg=7 ctermfg=15 cterm=none
 hi CursorLineSign ctermbg=none ctermfg=none cterm=none
 " CursorLineFold	Like FoldColumn when 'cursorline' is set for the cursor line.
-hi MatchParen ctermbg=none ctermfg=none cterm=reverse
+hi MatchParen ctermbg=6 ctermfg=0 cterm=none
 hi ModeMsg ctermbg=none ctermfg=8 cterm=none
 " MsgArea		Area for messages and cmdline
 " MsgSeparator	Separator for scrolled messages, `msgsep` flag of 'display'
