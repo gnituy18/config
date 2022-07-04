@@ -1,20 +1,6 @@
 highlight clear
 let colors_name = 'cs'
 
-" data: red
-" identifier: green
-" language: blue
-"
-
-" editor status symbol off: 7 
-" editor status symbol on:  8
-" editor status off: 8
-" editor status on: 15 
-"
-" editor status msg info: 4 
-" editor status msg warning: 3
-" editor status msg error: 1
-
 " ColorColumn	used for the columns set with 'colorcolumn'
 " Conceal		placeholder characters substituted for concealed text (see 'conceallevel')
 " Cursor		character under the cursor
@@ -58,7 +44,7 @@ hi PmenuSbar ctermbg=0 ctermfg=none cterm=none
 hi PmenuThumb ctermbg=7 ctermfg=none cterm=none
 hi Question ctermbg=none ctermfg=15 cterm=none
 " QuickFixLine	Current |quickfix| item in the quickfix window. Combined with |hl-CursorLine| when the cursor is there.
-hi Search ctermbg=3 ctermfg=0 cterm=none
+hi Search ctermbg=6 ctermfg=0 cterm=none
 hi SpecialKey ctermbg=none ctermfg=5 cterm=none
 " SpellBad		Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
 " SpellCap		Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
@@ -111,11 +97,11 @@ hi Type	ctermbg=none ctermfg=1 cterm=none
 hi Special ctermbg=none ctermfg=15 cterm=none
 " 	 SpecialChar	special character in a constant
 " 	 Tag		you can use CTRL-] on this
-" 	 Delimiter	character that needs attention
+hi Delimiter ctermbg=none ctermfg=13 cterm=none
 " 	 SpecialComment	special things inside a comment
 " 	 Debug		debugging statements
 " 
-hi Underlined ctermbg=none ctermfg=6 cterm=underline
+hi Underlined ctermbg=none ctermfg=12 cterm=underline
 " 
 " 	*Ignore		left blank, hidden  |hl-Ignore|
 " 
