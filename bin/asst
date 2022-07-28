@@ -3,7 +3,6 @@
 nvim -p \
 ~/drive/asst/board.yaml \
 ~/drive/notes/gritter.md \
-~/drive/notes/inspector.tw.md \
 ~/drive/notes/archive.md \
 ~/drive/asst/principle.yaml \
 ~/drive/asst/problems.yaml \
