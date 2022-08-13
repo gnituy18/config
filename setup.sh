@@ -1,18 +1,17 @@
 #!/bin/bash
 
-ln -s /Users/sfhp/config/bin /Users/sfhp/bin
+ln -s /Users/hsuyuting/config/bin /Users/hsuyuting/bin
+ln -s /Users/hsuyuting/config/.bash_profile /Users/hsuyuting/.bash_profile
+ln -s /Users/hsuyuting/config/.bashrc /Users/hsuyuting/.bashrc
+ln -s /Users/hsuyuting/config/.profile /Users/hsuyuting/.profile
+ln -s /Users/hsuyuting/config/.gitignore /Users/hsuyuting/.gitignore
+ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig
+ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf
 
-ln -s /Users/sfhp/config/.bash_profile /Users/sfhp/.bash_profile
-ln -s /Users/sfhp/config/.bashrc /Users/sfhp/.bashrc
-ln -s /Users/sfhp/config/.profile /Users/sfhp/.profile
-ln -s /Users/sfhp/config/.gitignore /Users/sfhp/.gitignore
-ln -s /Users/sfhp/config/.gitconfig /Users/sfhp/.gitconfig
-ln -s /Users/sfhp/config/.tmux.conf /Users/sfhp/.tmux.conf
+ln -s /Users/hsuyuting/config/nvim /Users/hsuyuting/.config/nvim
+ln -s /Users/hsuyuting/config/alacritty /Users/hsuyuting/.config/alacritty
 
-ln -s /Users/sfhp/config/nvim /Users/sfhp/.config/nvim
-ln -s /Users/sfhp/config/alacritty /Users/sfhp/.config/alacritty
-
-touch /Users/sfhp/local.sh
+touch /Users/hsuyuting/local.sh
 
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
