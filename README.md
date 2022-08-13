@@ -1,8 +1,6 @@
 ## MacOS Setup
 
 1. 指揮中心
-    - 指揮中心: 滑鼠按鈕5
-    - 應用程式視窗: 滑鼠按鈕4
     - 熱點
         - 右上: 通知中心
         - 右下: 啟動台
@@ -19,11 +17,10 @@
     - brew
     - neovim
     - Roboto Mono
-    - nerd font
 1. brew install
     - bash
-        - sudo echo "/usr/local/bin/bash" >> /etc/shells
-        - sudo chsh -s /usr/local/bin/bash
+        - echo "/opt/homebrew/bin/bash" >> /etc/shells
+        - chsh -s /opt/homebrew/bin/bash
     - tmux
     - git
     - fzf
@@ -31,7 +28,6 @@
     - ripgrep
     - fd
 1. ssh-keygen
-    - touch ~/.ssh/config
 1. git
     - git clone git@github.com:gnituy18/config.git
     - cd config && ./setup.sh
