@@ -27,7 +27,7 @@ export HISTCONTROL=ignoredups:ignorespace
 export PROMPT_COMMAND='history -a && history -c && history -r && opt_hist'
 export NNN_OPTS="H"
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
 export BAT_THEME="base16"
 export GOPATH="$HOME/go"
 
