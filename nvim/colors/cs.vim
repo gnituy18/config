@@ -108,4 +108,5 @@ hi Underlined ctermbg=none ctermfg=12 cterm=underline
 hi Error ctermbg=none ctermfg=1 cterm=underline
 hi Todo ctermbg=none ctermfg=3 cterm=underline
 
+hi DiagnosticInfo ctermbg=none ctermfg=4 cterm=none
 hi DiagnosticHint ctermbg=none ctermfg=8 cterm=none
