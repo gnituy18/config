@@ -3,7 +3,7 @@
 	excludesfile = /Users/sfhp/.gitignore
 [user]
 	name = gnituy18
-	email = sfhp@protonmail.com
+	email = hsuyuting@proton.me
 [alias]
 	co = checkout
 	ci = commit
