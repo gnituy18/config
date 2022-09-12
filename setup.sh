@@ -12,6 +12,3 @@ ln -s /Users/hsuyuting/config/nvim /Users/hsuyuting/.config/nvim
 ln -s /Users/hsuyuting/config/alacritty /Users/hsuyuting/.config/alacritty
 
 touch /Users/hsuyuting/local.sh
-
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
