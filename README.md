@@ -12,15 +12,14 @@
 1. 下載
     - Chrome
     - Google Drive
-    - Alacritty
-    - Amethist
+    - Alacritty & terminfo
     - brew
-    - neovim
     - Roboto Mono
 1. brew install
     - bash
         - echo "/opt/homebrew/bin/bash" >> /etc/shells
         - chsh -s /opt/homebrew/bin/bash
+    - neovim
     - tmux
     - git
     - fzf
