@@ -1,9 +1,9 @@
 #!/bin/bash
 
 nvim -p \
-~/drive/asst/board.yaml \
-~/drive/notes/gritter.md \
-~/drive/notes/archive.md \
-~/drive/asst/principle.yaml \
-~/drive/asst/problems.yaml \
-~/drive/asst/mission.yaml
+~/asst/board.yaml \
+~/notes/gritter.md \
+~/notes/blink.md \
+~/asst/principle.yaml \
+~/asst/problems.yaml \
+~/asst/mission.yaml
