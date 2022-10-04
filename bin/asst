@@ -3,7 +3,7 @@
 nvim -p \
 ~/asst/board.yaml \
 ~/notes/gritter.md \
-~/notes/blink.md \
+~/notes/sweets.md \
 ~/asst/principle.yaml \
 ~/asst/problems.yaml \
 ~/asst/mission.yaml
