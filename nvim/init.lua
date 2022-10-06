@@ -159,7 +159,7 @@ local on_attach = function(_, bufnr)
 
 	vim.keymap.set('n', '<Space>r', vim.lsp.buf.rename, aopts)
 	vim.keymap.set('n', '<Space>a', require 'fzf-lua'.lsp_code_actions, aopts)
-	vim.keymap.set('n', '<Space>f', vim.lsp.buf.format, aopts)
+	vim.keymap.set('n', '<Space>f', function() vim.lsp.buf.format { async = true } end, aopts)
 end
 
 for _, server in ipairs(servers) do
