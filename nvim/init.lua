@@ -24,8 +24,9 @@ require "packer".startup(function()
 	use 'lewis6991/gitsigns.nvim'
 
 	-- productivity
-	use 'williamboman/nvim-lsp-installer'
-	use 'neovim/nvim-lspconfig'
+    use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
+    use "neovim/nvim-lspconfig"
 	use 'github/copilot.vim'
 end)
 
@@ -120,7 +121,7 @@ local settings = {
 	}
 }
 
-require "nvim-lsp-installer".setup({
+require "mason-lspconfig".setup({
 	ensure_installed = servers,
 	automatic_installation = true,
 })
@@ -158,7 +159,7 @@ local on_attach = function(_, bufnr)
 
 	vim.keymap.set('n', '<Space>r', vim.lsp.buf.rename, aopts)
 	vim.keymap.set('n', '<Space>a', require 'fzf-lua'.lsp_code_actions, aopts)
-	vim.keymap.set('n', '<Space>f', vim.lsp.buf.formatting, aopts)
+	vim.keymap.set('n', '<Space>f', vim.lsp.buf.format, aopts)
 end
 
 for _, server in ipairs(servers) do
