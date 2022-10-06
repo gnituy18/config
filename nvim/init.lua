@@ -24,9 +24,9 @@ require "packer".startup(function()
 	use 'lewis6991/gitsigns.nvim'
 
 	-- productivity
-    use "williamboman/mason.nvim"
-    use "williamboman/mason-lspconfig.nvim"
-    use "neovim/nvim-lspconfig"
+	use "williamboman/mason.nvim"
+	use "williamboman/mason-lspconfig.nvim"
+	use "neovim/nvim-lspconfig"
 	use 'github/copilot.vim'
 end)
 
@@ -120,11 +120,11 @@ local settings = {
 		}
 	}
 }
-
-require "mason-lspconfig".setup({
+require "mason".setup()
+require "mason-lspconfig".setup {
 	ensure_installed = servers,
 	automatic_installation = true,
-})
+}
 
 -- key mappings
 for i = 1, 9 do
