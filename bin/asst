@@ -1,6 +1,0 @@
-#!/bin/bash
-
-nvim -p \
-~/asst/board.yaml \
-~/asst/problems.yaml \
-~/asst/hsuyuting.yaml
