@@ -5,8 +5,6 @@ vim.o.clipboard = "unnamed"
 vim.o.completeopt = "menu"
 vim.o.ignorecase = true
 vim.o.tabstop = 4
-vim.o.shiftwidth = 4
-vim.o.matchpairs = vim.o.matchpairs .. ",<:>"
 
 vim.cmd "colorscheme cs"
 
@@ -106,7 +104,7 @@ require 'gitsigns'.setup {
 	end
 }
 
-local servers = { "gopls", "tsserver", "sumneko_lua", "jsonls", "cssls", "yamlls", "html", "svelte" }
+local servers = { "rust_analyzer", "gopls", "tsserver", "sumneko_lua", "jsonls", "cssls", "yamlls", "html", "svelte" }
 local settings = {
 	sumneko_lua = {
 		settings = {
