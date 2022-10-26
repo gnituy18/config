@@ -88,7 +88,17 @@ require "cinnamon".setup {
 	default_delay = 1
 }
 
-require "fzf-lua".setup {}
+require "fzf-lua".setup {
+	winopts = {
+		border     = 'none',
+		fullscreen = true,
+		preview    = {
+			vertical     = 'up:50%',
+			horizontal   = 'right:50%',
+			flip_columns = 150,
+		}
+	}
+}
 vim.keymap.set("n", "<Space>j", require "fzf-lua".buffers)
 vim.keymap.set("n", "<Space>k", require "fzf-lua".files)
 vim.keymap.set("n", "<Space>l", require "fzf-lua".live_grep)
