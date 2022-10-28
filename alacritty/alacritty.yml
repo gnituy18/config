@@ -192,8 +192,8 @@ font:
 colors:
   # Default colors
   primary:
-    background: '0x131313'
-    foreground: '0xeeeeee'
+    background: '0x101010'
+    foreground: '0xe0e0e0'
 
     # Bright and dim foreground colors
     #
@@ -211,8 +211,8 @@ colors:
   # Allowed values are CellForeground/CellBackground, which reference the
   # affected cell, or hexadecimal colors like #ff00ff.
   cursor:
-    text: '#131313'
-    cursor: '#eeeeee'
+    text: '#101010'
+    cursor: '#e0e0e0'
 
   # Vi mode cursor colors
   #
@@ -281,7 +281,7 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x131313'
+    black:   '0x101010'
     red:     '0xff809f'
     green:   '0xdfff80'
     yellow:  '0xffdf80'
@@ -292,14 +292,14 @@ colors:
 
   # Bright colors
   bright:
-    black:   '0x404040'
+    black:   '0x505050'
     red:     '0xff80df'
     green:   '0x9fff80'
     yellow:  '0xff9f80'
     blue:    '0x80dfff'
     magenta: '0x9f80ff'
     cyan:    '0x80ff9f'
-    white:   '0xeeeeee'
+    white:   '0xe0e0e0'
 
   # Dim colors
   #
