@@ -44,7 +44,12 @@ require "packer".startup(function()
 	use "hrsh7th/cmp-nvim-lsp-signature-help"
 end)
 
-require "nvim-treesitter.configs".setup { ensure_installed = "all" }
+require "nvim-treesitter.configs".setup {
+	ensure_installed = "all",
+	indent = {
+		enable = true
+	}
+}
 
 require "gitsigns".setup {
 	on_attach = function(bufnr)
