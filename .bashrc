@@ -10,19 +10,15 @@ if [ -f ~/.fzf.bash ]; then
 	source ~/.fzf.bash
 fi
 
-alias tmux='tmux -u'
-alias sed="gsed"
-
+export HISTCONTROL=-1
+export HISTSIZE=-1
+export HISTCONTROL=ignoredups:ignorespace
 opt_hist() {
 	TMP="$(mktemp)"
 	tail -r ~/.bash_history  > $TMP
 	awk '!x[$0]++' $TMP | tail -r > ~/.bash_history
 	rm $TMP
 }
-
-export HISTCONTROL=-1
-export HISTSIZE=-1
-export HISTCONTROL=ignoredups:ignorespace
 export PROMPT_COMMAND='history -a && history -c && history -r && opt_hist'
 
 export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
