@@ -1,9 +1,9 @@
 [core]
 	editor = nvim
-	excludesfile = /Users/sfhp/.gitignore
+	excludesfile = /Users/hsuyuting/.gitignore
 [user]
 	name = gnituy18
-	email = hsuyuting@proton.me
+	email = you@hsuyuting.com
 [alias]
 	co = checkout
 	ci = commit
