@@ -2,10 +2,7 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
-vim.o.mouse = "a"
 vim.o.clipboard = "unnamed"
-vim.o.ignorecase = true
-vim.o.smartcase = true
 
 vim.cmd "colorscheme cs"
 
