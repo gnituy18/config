@@ -40,6 +40,10 @@ require "packer".startup(function()
 	use "L3MON4D3/LuaSnip"
 	use "saadparwaiz1/cmp_luasnip"
 	use "hrsh7th/cmp-nvim-lsp-signature-help"
+	use({
+		"iamcco/markdown-preview.nvim",
+		run = function() vim.fn["mkdp#util#install"]() end,
+	})
 end)
 
 require "nvim-treesitter.configs".setup {
