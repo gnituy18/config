@@ -126,7 +126,8 @@ vim.keymap.set("n", "f", require "hop".hint_char1)
 vim.keymap.set("i", "]c", "<Plug>(copilot-next)")
 vim.keymap.set("i", "[c", "<Plug>(copilot-previous)")
 
-local servers = { "rust_analyzer", "gopls", "tsserver", "sumneko_lua", "jsonls", "cssls", "yamlls", "html", "svelte" }
+local servers = { "rust_analyzer", "gopls", "sumneko_lua", "tsserver", "jsonls", "cssls", "yamlls", "html", "svelte",
+	"vuels" }
 local settings = {
 	sumneko_lua = {
 		settings = {
