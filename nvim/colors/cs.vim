@@ -86,7 +86,7 @@ hi Statement ctermbg=none ctermfg=4 cterm=none
 hi PreProc ctermbg=none ctermfg=4 cterm=none
 " 	 Include	preprocessor #include
 " 	 Define		preprocessor #define
-" 	 Macro		same as Define
+hi Macro ctermbg=none ctermfg=11 cterm=none
 " 	 PreCondit	preprocessor #if, #else, #endif, etc.
 " 
 hi Type	ctermbg=none ctermfg=1 cterm=none
