@@ -130,7 +130,7 @@ vim.keymap.set("i", "]c", "<Plug>(copilot-next)")
 vim.keymap.set("i", "[c", "<Plug>(copilot-previous)")
 
 local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "jsonls", "cssls", "yamlls", "html", "svelte",
-	"vuels" }
+	"volar" }
 local settings = {
 	lua_ls = {
 		settings = {
