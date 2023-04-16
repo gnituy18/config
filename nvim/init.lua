@@ -4,9 +4,8 @@ vim.o.tabstop = 4
 vim.o.shiftwidth = 4
 vim.o.clipboard = "unnamed"
 vim.o.ignorecase = true
-vim.o.smartcase = true
 
-vim.cmd "colorscheme cs"
+vim.cmd.colorscheme("cs")
 
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
 vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
@@ -19,11 +18,11 @@ end
 
 require "packer".startup(function()
 	-- packer
-	use 'wbthomason/packer.nvim'
+	use "wbthomason/packer.nvim"
 
 	-- information
 	use {
-		'nvim-treesitter/nvim-treesitter',
+		"nvim-treesitter/nvim-treesitter",
 		run = function()
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
 			ts_update()
@@ -38,20 +37,35 @@ require "packer".startup(function()
 	use "phaazon/hop.nvim"
 
 	-- productivity
-	use "github/copilot.vim"
 	use "neovim/nvim-lspconfig"
-	use "williamboman/mason.nvim"
+	use {
+		"williamboman/mason.nvim",
+		run = ":MasonUpdate"
+	}
 	use "williamboman/mason-lspconfig.nvim"
-	use "hrsh7th/cmp-buffer"
-	use "hrsh7th/cmp-nvim-lsp"
+
 	use "hrsh7th/nvim-cmp"
-	use "L3MON4D3/LuaSnip"
-	use "saadparwaiz1/cmp_luasnip"
+	use "hrsh7th/cmp-buffer"
+	use "hrsh7th/cmp-path"
+	use "hrsh7th/cmp-cmdline"
+	use "hrsh7th/cmp-nvim-lsp"
+	use "hrsh7th/cmp-nvim-lsp-document-symbol"
 	use "hrsh7th/cmp-nvim-lsp-signature-help"
-	use({
-		"iamcco/markdown-preview.nvim",
-		run = function() vim.fn["mkdp#util#install"]() end,
-	})
+	use "github/copilot.vim"
+	-- use { "zbirenbaum/copilot.lua",
+	-- 	cmd = "Copilot",
+	-- 	event = "InsertEnter",
+	-- 	config = function()
+	-- 		require "copilot".setup {}
+	-- 	end,
+	-- }
+	-- use {
+	-- 	"zbirenbaum/copilot-cmp",
+	-- 	after = { "copilot.lua" },
+	-- 	config = function()
+	-- 		require("copilot_cmp").setup {}
+	-- 	end
+	-- }
 end)
 
 require "nvim-treesitter.configs".setup {
@@ -99,7 +113,7 @@ require "gitsigns".setup {
 }
 
 vim.g.indent_blankline_filetype = { "json", "yaml" }
-vim.cmd "hi IndentBlanklineChar ctermfg=8"
+require "indent_blankline".setup {}
 
 require "cinnamon".setup {
 	extra_keymaps = true,
@@ -110,11 +124,11 @@ require "cinnamon".setup {
 
 require "fzf-lua".setup {
 	winopts = {
-		border     = 'none',
+		border     = "none",
 		fullscreen = true,
 		preview    = {
-			vertical     = 'up:50%',
-			horizontal   = 'right:50%',
+			vertical     = "up:50%",
+			horizontal   = "right:50%",
 			flip_columns = 150,
 		}
 	}
@@ -125,9 +139,6 @@ vim.keymap.set("n", "<Space>l", require "fzf-lua".live_grep)
 
 require "hop".setup {}
 vim.keymap.set("n", "f", require "hop".hint_char1)
-
-vim.keymap.set("i", "]c", "<Plug>(copilot-next)")
-vim.keymap.set("i", "[c", "<Plug>(copilot-previous)")
 
 local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "jsonls", "cssls", "yamlls", "html", "svelte",
 	"volar" }
@@ -145,7 +156,7 @@ local settings = {
 	}
 }
 
-require "mason".setup()
+require "mason".setup {}
 require "mason-lspconfig".setup {
 	ensure_installed = servers,
 	automatic_installation = true,
@@ -157,8 +168,6 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
 local on_attach = function(_, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gd", function() require "fzf-lua".lsp_definitions({ jump_to_single_result = true }) end, bufopts)
 	vim.keymap.set("n", "gD", function() require "fzf-lua".lsp_declarations({ jump_to_single_result = true }) end, bufopts)
@@ -175,33 +184,45 @@ local on_attach = function(_, bufnr)
 	vim.keymap.set("n", "<Space>f", function() vim.lsp.buf.format { async = true } end, bufopts)
 end
 
-local capabilities = require "cmp_nvim_lsp".default_capabilities()
-
 for _, server in ipairs(servers) do
 	require "lspconfig"[server].setup {
 		on_attach = on_attach,
 		settings = settings[server] and settings[server].settings or nil,
-		capabilities = capabilities,
+		capabilities = require "cmp_nvim_lsp".default_capabilities()
 	}
 end
 
-require "cmp".setup({
-	snippet = {
-		expand = function(args)
-			require "luasnip".lsp_expand(args.body)
-		end,
-	},
+require "cmp".setup {
 	mapping = require "cmp".mapping.preset.insert({
-		['<C-b>'] = require "cmp".mapping.scroll_docs(-4),
-		['<C-f>'] = require "cmp".mapping.scroll_docs(4),
-		['<C-j>'] = require "cmp".mapping.complete(),
-		['<C-e>'] = require "cmp".mapping.abort(),
-		['<CR>'] = require "cmp".mapping.confirm(),
+		["<C-b>"] = require "cmp".mapping.scroll_docs(-4),
+		["<C-f>"] = require "cmp".mapping.scroll_docs(4),
+		["<C-j>"] = require "cmp".mapping.complete(),
+		["<C-e>"] = require "cmp".mapping.abort(),
+		["<CR>"] = require "cmp".mapping.confirm(),
 	}),
+	sources = require "cmp".config.sources {
+		-- { name = "copilot" },
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "path" },
+	}, {
+		{ name = "buffer" },
+	},
+}
+require "cmp".setup.cmdline({ '/', '?' }, {
+	mapping = require "cmp".mapping.preset.cmdline(),
 	sources = require "cmp".config.sources({
-		{ name = 'nvim_lsp_signature_help' },
-		{ name = 'nvim_lsp' },
-		{ name = 'luasnip' },
-		{ name = 'buffer' },
+		{ name = 'nvim_lsp_document_symbol' }
+	}, {
+		{ name = 'buffer' }
+	})
+})
+
+require "cmp".setup.cmdline(':', {
+	mapping = require "cmp".mapping.preset.cmdline(),
+	sources = require "cmp".config.sources({
+		{ name = 'path' }
+	}, {
+		{ name = 'cmdline' }
 	})
 })
