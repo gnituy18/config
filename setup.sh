@@ -8,7 +8,11 @@ ln -s /Users/hsuyuting/config/.gitignore /Users/hsuyuting/.gitignore
 ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig
 ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf
 
+mkdir /Users/hsuyuting/.config
 ln -s /Users/hsuyuting/config/nvim /Users/hsuyuting/.config/nvim
 ln -s /Users/hsuyuting/config/alacritty /Users/hsuyuting/.config/alacritty
 
 touch /Users/hsuyuting/local.sh
+
+echo "/opt/homebrew/bin/bash" >> /etc/shells
+chsh -s /opt/homebrew/bin/bash
