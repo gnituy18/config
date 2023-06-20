@@ -2,7 +2,7 @@
 	editor = nvim
 	excludesfile = /Users/hsuyuting/.gitignore
 [user]
-	name = gnituy18
+	name = 許煜廷
 	email = you@hsuyuting.com
 [alias]
 	co = checkout
