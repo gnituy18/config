@@ -2,15 +2,12 @@ vim.o.number = true
 vim.o.cursorline = true
 vim.o.tabstop = 4
 vim.o.shiftwidth = 4
-vim.o.clipboard = "unnamed"
 vim.o.ignorecase = true
 
 vim.cmd.colorscheme("cs")
 
 vim.keymap.set("n", "<Space>q", "<Cmd>q!<CR>")
-vim.keymap.set("n", "<Space>Q", "<Cmd>qa!<CR>")
 vim.keymap.set("n", "<Space>w", "<Cmd>w<CR>")
-vim.keymap.set("n", "<Space>W", "<Cmd>wa<CR>")
 
 for i = 1, 9 do
 	vim.keymap.set("n", "<Space>" .. i, i .. "gt")
@@ -35,6 +32,8 @@ require "packer".startup(function()
 	use "declancm/cinnamon.nvim"
 	use "ibhagwan/fzf-lua"
 	use "phaazon/hop.nvim"
+	use "tpope/vim-repeat"
+	use "ggandor/leap.nvim"
 
 	-- productivity
 	use "neovim/nvim-lspconfig"
@@ -51,6 +50,7 @@ require "packer".startup(function()
 	use "hrsh7th/cmp-nvim-lsp"
 	use "hrsh7th/cmp-nvim-lsp-document-symbol"
 	use "hrsh7th/cmp-nvim-lsp-signature-help"
+
 	use "github/copilot.vim"
 	-- use { "zbirenbaum/copilot.lua",
 	-- 	cmd = "Copilot",
@@ -137,11 +137,11 @@ vim.keymap.set("n", "<Space>j", require "fzf-lua".buffers)
 vim.keymap.set("n", "<Space>k", require "fzf-lua".files)
 vim.keymap.set("n", "<Space>l", require "fzf-lua".live_grep)
 
-require "hop".setup {}
-vim.keymap.set("n", "f", require "hop".hint_char1)
+require "leap".add_default_mappings()
 
 local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "jsonls", "cssls", "yamlls", "html", "svelte",
 	"volar" }
+
 local settings = {
 	lua_ls = {
 		settings = {
@@ -170,7 +170,8 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 local on_attach = function(_, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 	vim.keymap.set("n", "gd", function() require "fzf-lua".lsp_definitions({ jump_to_single_result = true }) end, bufopts)
-	vim.keymap.set("n", "gD", function() require "fzf-lua".lsp_declarations({ jump_to_single_result = true }) end, bufopts)
+	vim.keymap.set("n", "gD", function() require "fzf-lua".lsp_declarations({ jump_to_single_result = true }) end,
+		bufopts)
 	vim.keymap.set("n", "gi", function() require "fzf-lua".lsp_implementations({ jump_to_single_result = true }) end,
 		bufopts)
 	vim.keymap.set("n", "gr", function() require "fzf-lua".lsp_references({ jump_to_single_result = true }) end, bufopts)
@@ -206,8 +207,8 @@ require "cmp".setup {
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "path" },
 	}, {
-		{ name = "buffer" },
-	},
+	{ name = "buffer" },
+},
 }
 require "cmp".setup.cmdline({ '/', '?' }, {
 	mapping = require "cmp".mapping.preset.cmdline(),
