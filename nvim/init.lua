@@ -31,7 +31,6 @@ require "packer".startup(function()
 	-- moving
 	use "declancm/cinnamon.nvim"
 	use "ibhagwan/fzf-lua"
-	use "phaazon/hop.nvim"
 	use "tpope/vim-repeat"
 	use "ggandor/leap.nvim"
 
