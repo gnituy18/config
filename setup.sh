@@ -11,6 +11,9 @@ brew install bash neovim tmux git fzf ripgrep fd
 sudo echo "/opt/homebrew/bin/bash" >> /etc/shells
 sudo chsh -s /opt/homebrew/bin/bash
 
+# node
+nvm install --lts
+
 # config
 ln -s /Users/hsuyuting/config/bin /Users/hsuyuting/bin
 ln -s /Users/hsuyuting/config/.bash_profile /Users/hsuyuting/.bash_profile
