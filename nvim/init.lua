@@ -31,8 +31,10 @@ require "packer".startup(function()
 	-- moving
 	use "declancm/cinnamon.nvim"
 	use "ibhagwan/fzf-lua"
-	use "tpope/vim-repeat"
-	use "ggandor/leap.nvim"
+	use {
+		"ggandor/leap.nvim",
+		require = { "tpope/vim-repeat" },
+	}
 
 	-- productivity
 	use "neovim/nvim-lspconfig"
@@ -203,3 +205,5 @@ require "cmp".setup.cmdline(':', {
 		{ name = 'cmdline' }
 	})
 })
+
+vim.g.copilot_filetypes = { yaml = true, json = true }
