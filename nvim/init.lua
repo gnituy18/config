@@ -51,20 +51,6 @@ require "packer".startup(function()
 	use "hrsh7th/cmp-nvim-lsp-signature-help"
 
 	use "github/copilot.vim"
-	-- use { "zbirenbaum/copilot.lua",
-	-- 	cmd = "Copilot",
-	-- 	event = "InsertEnter",
-	-- 	config = function()
-	-- 		require "copilot".setup {}
-	-- 	end,
-	-- }
-	-- use {
-	-- 	"zbirenbaum/copilot-cmp",
-	-- 	after = { "copilot.lua" },
-	-- 	config = function()
-	-- 		require("copilot_cmp").setup {}
-	-- 	end
-	-- }
 end)
 
 require "nvim-treesitter.configs".setup {
@@ -201,7 +187,6 @@ require "cmp".setup {
 		["<CR>"] = require "cmp".mapping.confirm(),
 	}),
 	sources = require "cmp".config.sources {
-		-- { name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "path" },
@@ -209,14 +194,6 @@ require "cmp".setup {
 	{ name = "buffer" },
 },
 }
-require "cmp".setup.cmdline({ '/', '?' }, {
-	mapping = require "cmp".mapping.preset.cmdline(),
-	sources = require "cmp".config.sources({
-		{ name = 'nvim_lsp_document_symbol' }
-	}, {
-		{ name = 'buffer' }
-	})
-})
 
 require "cmp".setup.cmdline(':', {
 	mapping = require "cmp".mapping.preset.cmdline(),
