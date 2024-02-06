@@ -22,7 +22,6 @@ ln -s /Users/hsuyuting/config/.profile /Users/hsuyuting/.profile
 ln -s /Users/hsuyuting/config/.gitignore /Users/hsuyuting/.gitignore
 ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig
 ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf
-ln -s /Users/hsuyuting/Google\ Drive/我的雲端硬碟/a.yaml /Users/hsuyuting/a.yaml
 ln -s /Users/hsuyuting/Google\ Drive/我的雲端硬碟/notes/ /Users/hsuyuting/notes
 mkdir /Users/hsuyuting/.config
 ln -s /Users/hsuyuting/config/nvim /Users/hsuyuting/.config/nvim
