@@ -21,7 +21,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require "lazy".setup({
-  "nvim-treesitter/nvim-treesitter",
+  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
   "lukas-reineke/indent-blankline.nvim",
   "karb94/neoscroll.nvim",
@@ -43,6 +43,7 @@ require "lazy".setup({
 
 require "nvim-treesitter.configs".setup({
   ensure_installed = "all",
+  sync_install = false,
   highlight = { enable = true },
   indent = { enable = true },
 })
