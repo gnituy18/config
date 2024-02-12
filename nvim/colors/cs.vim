@@ -97,7 +97,7 @@ hi Type	ctermbg=none ctermfg=1 cterm=none
 hi Special ctermbg=none ctermfg=15 cterm=none
 " 	 SpecialChar	special character in a constant
 " 	 Tag		you can use CTRL-] on this
-hi Delimiter ctermbg=none ctermfg=13 cterm=none
+hi Delimiter ctermbg=none ctermfg=5 cterm=none
 " 	 SpecialComment	special things inside a comment
 " 	 Debug		debugging statements
 " 
