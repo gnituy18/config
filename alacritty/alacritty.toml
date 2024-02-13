@@ -8,18 +8,18 @@ cursor = "#fafafa"
 
 [colors.normal]
 black = "#0a0a0a"
-white = "#171717"
+white = "#404040"
 blue = "#60a5fa"
-cyan = "#67e8f9"
+cyan = "#22d3ee"
 green = "#bef264"
-magenta = "#c084fc"
+magenta = "#a78bfa"
 red = "#fb7185"
 yellow = "#fcd34d"
 
 [colors.bright]
-black = "#404040"
+black = "#171717"
 white = "#fafafa"
-blue = "#38bdf8"
+blue = "#818cf8"
 cyan = "#2dd4bf"
 green = "#4ade80"
 magenta = "#e879f9"
