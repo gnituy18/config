@@ -1,27 +1,62 @@
 [colors.primary]
-foreground = "#fafafa"
-background = "#0a0a0a"
+foreground = "#efeff3"
+background = "#16161d"
 
 [colors.cursor]
-text = "#0a0a0a"
-cursor = "#fafafa"
+text = "#16161d"
+cursor = "#efeff3"
 
 [colors.normal]
-black = "#0a0a0a"
-red = "#fb7185"
-green = "#bef264"
-yellow = "#fcd34d"
-blue = "#60a5fa"
-magenta = "#a78bfa"
-cyan = "#22d3ee"
-white = "#404040"
+black = "#16161d"
+red = "#ff8080"
+green = "#d7ff5e"
+yellow = "#ffd75e"
+blue = "#809fff"
+magenta = "#cf9fff"
+cyan = "#00bfbf"
+white = "#47475e"
 
 [colors.bright]
-black = "#171717"
-red = "#f472b6"
-green = "#4ade80"
-yellow = "#fb923c"
-blue = "#818cf8"
-magenta = "#e879f9"
-cyan = "#2dd4bf"
-white = "#fafafa"
+black = "#22222d"
+red = "#bf6000"
+green = "#60bf00"
+yellow = "#ff9f40"
+blue = "#7c7c9c"
+magenta = "#ff80df"
+cyan = "#80ff9f"
+white = "#efeff3"
+
+# 1. 用Eigengrau當作背景顏色
+# 2. 二分法調整Eigengrau亮度當作前景顏色
+# 3. Cursor
+# 4. 挑選每個顏色Hue值
+# 5. 用二分法調整每個顏色HSL亮度
+# 6. 二分法選擇兩種灰色
+
+# 挑選的Hue值
+
+# 0	red
+# 15
+# 30	orange brown
+# 45	yellow
+# 60
+# 75	lime
+# 90	green
+# 105
+# 120
+# 135	cyan
+# 150
+# 165
+# 180	teal
+# 195
+# 210
+# 225	blue
+# 240	background
+# 255
+# 270	purple
+# 285
+# 300
+# 315	magenta
+# 330
+# 345
+# 360	red

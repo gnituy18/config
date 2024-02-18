@@ -29,7 +29,7 @@ hi TabLine ctermbg=none ctermfg=7 cterm=none
 hi TabLineFill ctermbg=none ctermfg=none cterm=none
 hi TabLineSel ctermbg=none ctermfg=15 cterm=none
 hi Title ctermbg=none ctermfg=4 cterm=none
-hi Visual ctermbg=4 ctermfg=0 cterm=none
+hi Visual ctermbg=12 ctermfg=none cterm=none
 hi WarningMsg ctermbg=none ctermfg=3 cterm=underline
 
 hi Comment ctermbg=none ctermfg=7 cterm=none
@@ -49,3 +49,5 @@ hi Type	ctermbg=none ctermfg=1 cterm=none
 hi Special ctermbg=none ctermfg=5 cterm=none
 
 hi Underlined ctermbg=none ctermfg=6 cterm=underline
+
+hi @markup ctermbg=none ctermfg=4 cterm=none
