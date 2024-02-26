@@ -1,7 +1,7 @@
 vim.o.number = true
 vim.o.cursorline = true
 
-vim.cmd.colorscheme("cs")
+vim.cmd.colorscheme("hsuyuting")
 
 for i = 1, 9 do
   vim.keymap.set("n", "<Space>" .. i, i .. "gt")
