@@ -1,4 +1,4 @@
-let colors_name = 'cs'
+let colors_name = 'hsuyuting'
 
 hi CursorLine ctermbg=8 ctermfg=none cterm=none
 hi Directory ctermbg=none ctermfg=4 cterm=none
@@ -49,5 +49,3 @@ hi Type	ctermbg=none ctermfg=1 cterm=none
 hi Special ctermbg=none ctermfg=5 cterm=none
 
 hi Underlined ctermbg=none ctermfg=6 cterm=underline
-
-hi @markup ctermbg=none ctermfg=4 cterm=none

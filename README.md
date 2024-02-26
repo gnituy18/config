@@ -3,7 +3,6 @@
 1. 設定熱點: 右上->通知中心
 1. Dock移到右邊
 1. iCloud同步文件跟桌面
-1. 下載 Arc 
 1. 下載brew
 1. `brew install bash neovim tmux git fzf ripgrep fd`
 1. `/opt/homebrew/opt/fzf/install`
@@ -21,4 +20,3 @@
 1. `ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig`
 1. `ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf`
 1. `touch ~/local.sh`
-1. 下載 packer
