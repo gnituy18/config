@@ -1,6 +1,8 @@
 vim.o.number = true
 vim.o.cursorline = true
 
+vim.o.ignorecase = true
+
 vim.cmd.colorscheme("hsuyuting")
 
 for i = 1, 9 do
