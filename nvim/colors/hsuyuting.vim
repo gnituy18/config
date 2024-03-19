@@ -49,3 +49,6 @@ hi Type	ctermbg=none ctermfg=1 cterm=none
 hi Special ctermbg=none ctermfg=5 cterm=none
 
 hi Underlined ctermbg=none ctermfg=6 cterm=underline
+
+hi link @tag.attribute Identifier
+hi link @tag.html Statement
