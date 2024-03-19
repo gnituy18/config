@@ -5,6 +5,12 @@ vim.o.ignorecase = true
 
 vim.cmd.colorscheme("hsuyuting")
 
+vim.filetype.add({
+  extension = {
+    templ = "templ",
+  },
+})
+
 for i = 1, 9 do
   vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
@@ -92,10 +98,12 @@ require "fzf-lua".setup {}
 vim.keymap.set("n", "<Space>j", require "fzf-lua".buffers)
 vim.keymap.set("n", "<Space>k", require "fzf-lua".files)
 vim.keymap.set("n", "<Space>l", require "fzf-lua".live_grep)
+vim.keymap.set("n", "<Space>o", require "fzf-lua".jumps)
 
 require "leap".add_default_mappings()
 
-local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "html", "tailwindcss", "cssls", "yamlls", "jsonls" }
+local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "html", "tailwindcss", "cssls", "yamlls", "jsonls",
+  "intelephense", }
 
 require "mason".setup {}
 require "mason-lspconfig".setup {
