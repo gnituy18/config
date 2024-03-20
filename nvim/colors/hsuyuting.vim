@@ -50,5 +50,7 @@ hi Special ctermbg=none ctermfg=5 cterm=none
 
 hi Underlined ctermbg=none ctermfg=6 cterm=underline
 
+hi link @string.special.url Underlined
+
 hi link @tag.attribute Identifier
 hi link @tag.html Statement
