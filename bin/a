@@ -1,3 +1,3 @@
 #!/bin/bash
 
-nvim -p ~/Documents/calendar.yaml ~/Documents/clipboard.html
+nvim -p ~/Documents/a.yaml
