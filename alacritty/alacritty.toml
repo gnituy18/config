@@ -47,7 +47,7 @@ green = "#d7ff5e"
 yellow = "#ffd75e"
 blue = "#809fff"
 magenta = "#cf9fff"
-cyan = "#00bfbf"
+cyan = "#00dfdf"
 white = "#47475e"
 
 [colors.bright]
