@@ -1,15 +1,7 @@
 vim.o.number = true
 vim.o.cursorline = true
 
-vim.o.ignorecase = true
-
 vim.cmd.colorscheme("hsuyuting")
-
-vim.filetype.add({
-  extension = {
-    templ = "templ",
-  },
-})
 
 for i = 1, 9 do
   vim.keymap.set("n", "<Space>" .. i, i .. "gt")
@@ -29,9 +21,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require "lazy".setup({
-  { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
-  "lukas-reineke/indent-blankline.nvim",
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {} },
   "karb94/neoscroll.nvim",
   "ibhagwan/fzf-lua",
   "tpope/vim-repeat",
@@ -46,7 +38,8 @@ require "lazy".setup({
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "hrsh7th/cmp-nvim-lsp-signature-help",
-  "github/copilot.vim",
+  "zbirenbaum/copilot.lua",
+  "zbirenbaum/copilot-cmp",
 })
 
 require "nvim-treesitter.configs".setup({
@@ -103,7 +96,7 @@ vim.keymap.set("n", "<Space>o", require "fzf-lua".jumps)
 require "leap".add_default_mappings()
 
 local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "html", "tailwindcss", "cssls", "yamlls", "jsonls",
-  "intelephense", }
+  "intelephense", "volar" }
 
 require "mason".setup {}
 require "mason-lspconfig".setup {
@@ -152,6 +145,7 @@ require "cmp".setup {
     ["<CR>"] = require "cmp".mapping.confirm(),
   }),
   sources = require "cmp".config.sources {
+    { name = "copilot" },
     { name = "nvim_lsp" },
     { name = "nvim_lsp_signature_help" },
     { name = "nvim_lsp_document_symbol" },
@@ -177,4 +171,14 @@ require "cmp".setup.cmdline(':', {
   })
 })
 
-vim.g.copilot_filetypes = { yaml = true, json = true }
+require("copilot").setup({
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+})
+
+require "copilot_cmp".setup({
+  filetypes = {
+    yaml = true,
+    markdown = true,
+  }
+})
