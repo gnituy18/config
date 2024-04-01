@@ -4,10 +4,10 @@
 1. Dock移到右邊
 1. iCloud同步文件跟桌面
 1. 下載brew
-1. `brew install bash neovim tmux git fzf ripgrep fd`
+1. `brew install alacritty bash neovim tmux git fzf ripgrep fd`
 1. `/opt/homebrew/opt/fzf/install`
-1. sudo echo "/opt/homebrew/bin/bash" >> /etc/shells
-1. 設定Default shell
+1. `sudo echo "/opt/homebrew/bin/bash" >> /etc/shells`
+1. 設定default shell
 1. 更新Github SSH key pair
 1. `git clone git@github.com:gnituy18/config.git`
 1. `mkdir /Users/hsuyuting/.config`
