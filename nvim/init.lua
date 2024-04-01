@@ -31,6 +31,8 @@ require "lazy".setup({
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/vim-vsnip",
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
@@ -38,8 +40,25 @@ require "lazy".setup({
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "hrsh7th/cmp-nvim-lsp-signature-help",
-  "zbirenbaum/copilot.lua",
-  "zbirenbaum/copilot-cmp",
+}, {
+  ui = {
+    border = "rounded",
+    icons = {
+      cmd = "⌘",
+      config = "🛠",
+      event = "📅",
+      ft = "📂",
+      init = "⚙",
+      keys = "🗝",
+      plugin = "🔌",
+      runtime = "💻",
+      require = "🌙",
+      source = "📄",
+      start = "🚀",
+      task = "📌",
+      lazy = "💤 ",
+    }
+  }
 })
 
 require "nvim-treesitter.configs".setup({
@@ -137,6 +156,16 @@ for _, server in ipairs(servers) do
 end
 
 require "cmp".setup {
+  snippet = {
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  preselect = require "cmp".PreselectMode.None,
+  window = {
+    completion = require "cmp".config.window.bordered(),
+    documentation = require "cmp".config.window.bordered(),
+  },
   mapping = require "cmp".mapping.preset.insert({
     ["<C-b>"] = require "cmp".mapping.scroll_docs(-4),
     ["<C-f>"] = require "cmp".mapping.scroll_docs(4),
@@ -144,22 +173,25 @@ require "cmp".setup {
     ["<C-e>"] = require "cmp".mapping.abort(),
     ["<CR>"] = require "cmp".mapping.confirm(),
   }),
-  sources = require "cmp".config.sources {
-    { name = "copilot" },
+  sources = require "cmp".config.sources({
+    {
+      { name = "nvim_lsp_signature_help" },
+    }, {
     { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
-    { name = "nvim_lsp_document_symbol" },
-    { name = "path" },
+    { name = "vsnip" },
   }, {
-  { name = "buffer" },
-},
+    { name = "buffer" },
+  },
+  })
 }
 
 require "cmp".setup.cmdline({ '/', '?' }, {
   mapping = require "cmp".mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
+  sources = require "cmp".config.sources({
+    { name = "nvim_lsp_document_symbol" },
+  }, {
+    { name = 'buffer' },
+  })
 })
 
 require "cmp".setup.cmdline(':', {
@@ -168,16 +200,6 @@ require "cmp".setup.cmdline(':', {
     { name = 'path' }
   }, {
     { name = 'cmdline' }
-  })
+  }),
+  matching = { disallow_symbol_nonprefix_matching = false },
 })
-
-require("copilot").setup({
-  suggestion = { enabled = true},
-  panel = { enabled = false },
-  filetypes = {
-    yaml = true,
-    markdown = true,
-  }
-})
-
-require "copilot_cmp".setup()
