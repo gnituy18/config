@@ -172,13 +172,12 @@ require "cmp".setup.cmdline(':', {
 })
 
 require("copilot").setup({
-  suggestion = { enabled = false },
+  suggestion = { enabled = true},
   panel = { enabled = false },
-})
-
-require "copilot_cmp".setup({
   filetypes = {
     yaml = true,
     markdown = true,
   }
 })
+
+require "copilot_cmp".setup()
