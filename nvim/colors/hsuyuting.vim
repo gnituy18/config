@@ -50,6 +50,8 @@ hi Special ctermbg=none ctermfg=5 cterm=none
 
 hi Underlined ctermbg=none ctermfg=6 cterm=underline
 
+hi CopilotSuggestion ctermbg=none ctermfg=7 cterm=none 
+
 hi link @string.special.url Underlined
 
 hi link @tag.attribute Identifier

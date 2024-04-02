@@ -20,6 +20,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+vim.g.copilot_no_tab_map = true
+
 require "lazy".setup({
   { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
@@ -31,15 +33,16 @@ require "lazy".setup({
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
-  "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-buffer",
   "hrsh7th/cmp-path",
   "hrsh7th/cmp-cmdline",
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-nvim-lsp-document-symbol",
   "hrsh7th/cmp-nvim-lsp-signature-help",
+  "hrsh7th/nvim-cmp",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/vim-vsnip",
+  "github/copilot.vim",
 }, {
   ui = {
     border = "rounded",
@@ -169,20 +172,19 @@ require "cmp".setup {
   mapping = require "cmp".mapping.preset.insert({
     ["<C-b>"] = require "cmp".mapping.scroll_docs(-4),
     ["<C-f>"] = require "cmp".mapping.scroll_docs(4),
-    ["<C-j>"] = require "cmp".mapping.complete(),
+    ["<C-k>"] = require "cmp".mapping.complete(),
     ["<C-e>"] = require "cmp".mapping.abort(),
     ["<CR>"] = require "cmp".mapping.confirm(),
   }),
   sources = require "cmp".config.sources({
-    {
       { name = "nvim_lsp_signature_help" },
     }, {
-    { name = "nvim_lsp" },
-    { name = "vsnip" },
-  }, {
-    { name = "buffer" },
-  },
-  })
+      { name = "nvim_lsp" },
+      { name = "vsnip" },
+    },
+    {
+      { name = "buffer" },
+    })
 }
 
 require "cmp".setup.cmdline({ '/', '?' }, {
@@ -203,3 +205,15 @@ require "cmp".setup.cmdline(':', {
   }),
   matching = { disallow_symbol_nonprefix_matching = false },
 })
+
+vim.g.copilot_filetypes = {
+  yaml = true,
+  json = true,
+}
+
+vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
+  expr = true,
+  replace_keycodes = false
+})
+
+vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')
