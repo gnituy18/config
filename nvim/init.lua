@@ -7,8 +7,24 @@ for i = 1, 9 do
   vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+    },
+    numhl = {
+      [vim.diagnostic.severity.WARN] = 'WarningMsg',
+      [vim.diagnostic.severity.ERROR] = 'ErrorMsg',
+    },
+  },
+  virtual_text = {
+    prefix = '🔥',
+  }
+})
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
@@ -19,8 +35,6 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
-
-vim.g.copilot_no_tab_map = true
 
 require "lazy".setup({
   { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
@@ -42,7 +56,6 @@ require "lazy".setup({
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-vsnip",
   "hrsh7th/vim-vsnip",
-  "github/copilot.vim",
 }, {
   ui = {
     border = "rounded",
@@ -205,15 +218,3 @@ require "cmp".setup.cmdline(':', {
   }),
   matching = { disallow_symbol_nonprefix_matching = false },
 })
-
-vim.g.copilot_filetypes = {
-  yaml = true,
-  json = true,
-}
-
-vim.keymap.set('i', '<C-J>', 'copilot#Accept("\\<CR>")', {
-  expr = true,
-  replace_keycodes = false
-})
-
-vim.keymap.set('i', '<C-L>', '<Plug>(copilot-accept-word)')

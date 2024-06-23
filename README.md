@@ -1,14 +1,18 @@
 ## MacOS Setup
 
+1. HHKB變更鍵: Option <-> Command
 1. 設定熱點: 右上->通知中心
-1. Dock移到右邊
-1. iCloud同步文件跟桌面
-1. 下載brew
-1. `brew install alacritty bash neovim tmux git fzf ripgrep fd`
+1. 設定Dock
+1. AppleID -> iCloud: 同步文件跟桌面
+1. 下載[brew](https://brew.sh/)
+1. `brew install alacritty bash tmux neovim git fzf ripgrep wget fd python`
 1. `/opt/homebrew/opt/fzf/install`
-1. `sudo echo "/opt/homebrew/bin/bash" >> /etc/shells`
-1. 設定default shell
-1. 更新Github SSH key pair
+1. 下載[nvm](https://github.com/nvm-sh/nvm)
+1. 下載[Go](https://go.dev/dl/)
+1. 下載[Rust](https://www.rust-lang.org/zh-TW/learn/get-started)
+1. [更新Github SSH key pair](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+1. `nvim /etc/shells` 貼上 `/opt/homebrew/bin/bash`
+1. `chsh` 貼上 `/opt/homebrew/bin/bash`
 1. `git clone git@github.com:gnituy18/config.git`
 1. `mkdir /Users/hsuyuting/.config`
 1. `ln -s /Users/hsuyuting/config/nvim /Users/hsuyuting/.config/nvim`
