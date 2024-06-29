@@ -3,7 +3,7 @@
 	excludesfile = /Users/hsuyuting/.gitignore
 [user]
 	name = 許煜廷
-	email = you@hsuyuting.com
+	email = me@hsuyuting.com
 [alias]
 	co = checkout
 	ci = commit
