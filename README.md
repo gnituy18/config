@@ -1,6 +1,5 @@
 ## MacOS Setup
 
-1. HHKB變更鍵: Option <-> Command
 1. 設定熱點: 右上->通知中心
 1. 設定Dock
 1. AppleID -> iCloud: 同步文件跟桌面
