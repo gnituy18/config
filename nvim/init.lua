@@ -84,6 +84,18 @@ require "nvim-treesitter.configs".setup({
   indent = { enable = true },
 })
 
+vim.wo.foldmethod = 'expr'
+vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldlevelstart = 99
+
+vim.filetype.add({
+  extension = {
+    gotmpl = 'gotmpl',
+  }
+})
+
+vim.treesitter.language.register('html', 'gotmpl')
+
 require "gitsigns".setup {
   on_attach = function(bufnr)
     local gs = package.loaded.gitsigns
@@ -130,7 +142,7 @@ vim.keymap.set("n", "<Space>o", require "fzf-lua".jumps)
 
 require "leap".add_default_mappings()
 
-local servers = { "rust_analyzer", "gopls", "lua_ls", "tsserver", "html", "tailwindcss", "cssls", "yamlls", "jsonls",
+local servers = { "rust_analyzer", "gopls", "lua_ls", "ts_ls", "html", "tailwindcss", "cssls", "yamlls", "jsonls",
   "intelephense", "volar" }
 
 require "mason".setup {}
