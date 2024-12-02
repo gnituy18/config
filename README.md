@@ -1,7 +1,7 @@
 ## MacOS Setup
 
-1. 設定熱點: 右上->通知中心
 1. 設定Dock
+1. 設定熱點: 右上->通知中心
 1. AppleID -> iCloud: 同步文件跟桌面
 1. 下載[brew](https://brew.sh/)
 1. `brew install alacritty bash tmux neovim git fzf ripgrep wget fd python`
