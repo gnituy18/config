@@ -1,17 +1,12 @@
-vim.o.number = true
-vim.o.cursorline = true
-
 vim.cmd.colorscheme("hsuyuting")
 
-for i = 1, 9 do
-  vim.keymap.set("n", "<Space>" .. i, i .. "gt")
-end
-
+vim.o.number = true
+vim.o.cursorline = true
 vim.diagnostic.config({
   signs = {
     text = {
-      [vim.diagnostic.severity.ERROR] = '',
       [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.ERROR] = '',
     },
     numhl = {
       [vim.diagnostic.severity.WARN] = 'WarningMsg',
@@ -19,20 +14,27 @@ vim.diagnostic.config({
     },
   },
   virtual_text = {
-    prefix = '🔥',
+    prefix = '🚨',
   }
 })
 
+for i = 1, 9 do
+  vim.keymap.set("n", "<Space>" .. i, i .. "gt")
+end
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out,                            "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -42,7 +44,6 @@ require "lazy".setup({
   { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {} },
   "karb94/neoscroll.nvim",
   "ibhagwan/fzf-lua",
-  "tpope/vim-repeat",
   "ggandor/leap.nvim",
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
