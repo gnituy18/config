@@ -4,7 +4,7 @@
 1. 設定熱點: 右上->通知中心
 1. AppleID -> iCloud: 同步文件跟桌面
 1. 下載[brew](https://brew.sh/)
-1. `brew install alacritty bash tmux neovim git fzf ripgrep wget fd python`
+1. `brew install alacritty bash tmux neovim git fzf ripgrep wget fd python luarocks`
 1. `/opt/homebrew/opt/fzf/install`
 1. 下載[nvm](https://github.com/nvm-sh/nvm)
 1. 下載[Go](https://go.dev/dl/)
