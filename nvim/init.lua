@@ -89,13 +89,7 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.o.foldlevelstart = 99
 
-vim.filetype.add({
-  extension = {
-    gotmpl = 'gotmpl',
-  }
-})
-
-vim.treesitter.language.register('html', 'gotmpl')
+vim.treesitter.language.register('html', 'tmpl')
 
 require "gitsigns".setup {
   on_attach = function(bufnr)
