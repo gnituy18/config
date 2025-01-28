@@ -38,7 +38,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require "lazy".setup({
+require("lazy").setup({
   { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
   { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {}, },
@@ -68,9 +68,8 @@ require "lazy".setup({
   }
 })
 
-require "nvim-treesitter.configs".setup({
+require("nvim-treesitter.configs").setup({
   ensure_installed = "all",
-  sync_install = false,
   highlight = { enable = true },
   indent = { enable = true },
 })
@@ -81,9 +80,9 @@ vim.o.foldlevelstart = 99
 
 vim.treesitter.language.register('html', 'tmpl')
 
-require "gitsigns".setup {
+require("gitsigns").setup({
   on_attach = function(bufnr)
-    local gs = package.loaded.gitsigns
+    local gs = require('gitsigns')
 
     local function map(mode, l, r, opts)
       opts = opts or {}
@@ -92,49 +91,53 @@ require "gitsigns".setup {
     end
 
     -- Navigation
-    map("n", "]h", function()
-      if vim.wo.diff then return "]h" end
-      vim.schedule(function() gs.next_hunk() end)
-      return "<Ignore>"
-    end, { expr = true })
+    map('n', ']h', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ ']c', bang = true })
+      else
+        gs.nav_hunk('next')
+      end
+    end)
 
-    map("n", "[h", function()
-      if vim.wo.diff then return "[h" end
-      vim.schedule(function() gs.prev_hunk() end)
-      return "<Ignore>"
-    end, { expr = true })
+    map('n', '[h', function()
+      if vim.wo.diff then
+        vim.cmd.normal({ '[c', bang = true })
+      else
+        gs.nav_hunk('prev')
+      end
+    end)
 
     -- Actions
     map("n", "<Space>hs", gs.stage_hunk)
-    map("n", "<Space>hS", gs.stage_buffer)
     map("n", "<Space>hr", gs.reset_hunk)
-    map("n", "<Space>hR", gs.reset_buffer)
-    map("n", "<Space>hU", gs.reset_buffer_index)
     map("n", "<Space>hp", gs.preview_hunk)
-    map("n", "<Space>gb", gs.blame_line)
+    map("n", "<Space>gb", function()
+      gs.blame_line({ full = true })
+    end)
+    map('n', '<Space>td', gs.toggle_deleted)
+    map('n', '<Space>hd', gs.diffthis)
   end
-}
+})
 
-require "ibl".setup {}
+require("ibl").setup()
 
-require "neoscroll".setup {}
+require("neoscroll").setup()
 
-require "fzf-lua".setup {}
-vim.keymap.set("n", "<Space>j", require "fzf-lua".buffers)
-vim.keymap.set("n", "<Space>k", require "fzf-lua".files)
-vim.keymap.set("n", "<Space>l", require "fzf-lua".live_grep)
-vim.keymap.set("n", "<Space>o", require "fzf-lua".jumps)
+require "fzf-lua".setup()
+vim.keymap.set("n", "<Space>j", require("fzf-lua").jumps)
+vim.keymap.set("n", "<Space>k", require("fzf-lua").files)
+vim.keymap.set("n", "<Space>l", require("fzf-lua").live_grep)
 
-require "leap".add_default_mappings()
+require("leap").add_default_mappings()
 
 local servers = { "rust_analyzer", "gopls", "lua_ls", "ts_ls", "html", "tailwindcss", "cssls", "yamlls", "jsonls",
   "intelephense", "volar" }
 
-require "mason".setup {}
-require "mason-lspconfig".setup {
+require("mason").setup()
+require("mason-lspconfig").setup({
   ensure_installed = servers,
   automatic_installation = true,
-}
+})
 
 vim.keymap.set("n", "<Space>d", function() vim.diagnostic.open_float(nil, { focusable = false }) end,
   { noremap = true, silent = true })
@@ -142,51 +145,51 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 for _, server in ipairs(servers) do
-  require "lspconfig"[server].setup {
+  require("lspconfig")[server].setup({
     on_attach = function(_, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set("n", "gd", function() require "fzf-lua".lsp_definitions({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions({ jump_to_single_result = true }) end,
         bufopts)
-      vim.keymap.set("n", "gD", function() require "fzf-lua".lsp_declarations({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gD", function() require("fzf-lua").lsp_declarations({ jump_to_single_result = true }) end,
         bufopts)
-      vim.keymap.set("n", "gi", function() require "fzf-lua".lsp_implementations({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations({ jump_to_single_result = true }) end,
         bufopts)
-      vim.keymap.set("n", "gr", function() require "fzf-lua".lsp_references({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references({ jump_to_single_result = true }) end,
         bufopts)
-      vim.keymap.set("n", "gt", function() require "fzf-lua".lsp_typedefs({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gt", function() require("fzf-lua").lsp_typedefs({ jump_to_single_result = true }) end,
         bufopts)
 
       vim.keymap.set("n", "<Space>h", vim.lsp.buf.hover, bufopts)
       vim.keymap.set("n", "<Space>s", vim.lsp.buf.signature_help, bufopts)
 
       vim.keymap.set("n", "<Space>r", vim.lsp.buf.rename, bufopts)
-      vim.keymap.set("n", "<Space>a", require "fzf-lua".lsp_code_actions, bufopts)
+      vim.keymap.set("n", "<Space>a", require("fzf-lua").lsp_code_actions, bufopts)
       vim.keymap.set("n", "<Space>f", function() vim.lsp.buf.format { async = true } end, bufopts)
     end,
 
-    capabilities = require "cmp_nvim_lsp".default_capabilities()
-  }
+    capabilities = require("cmp_nvim_lsp").default_capabilities()
+  })
 end
 
-require "cmp".setup {
+require("cmp").setup({
   snippet = {
     expand = function(args)
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
-  preselect = require "cmp".PreselectMode.None,
+  preselect = require("cmp").PreselectMode.None,
   window = {
-    completion = require "cmp".config.window.bordered(),
-    documentation = require "cmp".config.window.bordered(),
+    completion = require("cmp").config.window.bordered(),
+    documentation = require("cmp").config.window.bordered(),
   },
-  mapping = require "cmp".mapping.preset.insert({
-    ["<C-b>"] = require "cmp".mapping.scroll_docs(-4),
-    ["<C-f>"] = require "cmp".mapping.scroll_docs(4),
-    ["<C-k>"] = require "cmp".mapping.complete(),
-    ["<C-e>"] = require "cmp".mapping.abort(),
-    ["<CR>"] = require "cmp".mapping.confirm(),
+  mapping = require("cmp").mapping.preset.insert({
+    ["<C-b>"] = require("cmp").mapping.scroll_docs(-4),
+    ["<C-f>"] = require("cmp").mapping.scroll_docs(4),
+    ["<C-k>"] = require("cmp").mapping.complete(),
+    ["<C-e>"] = require("cmp").mapping.abort(),
+    ["<CR>"] = require("cmp").mapping.confirm(),
   }),
-  sources = require "cmp".config.sources({
+  sources = require("cmp").config.sources({
       { name = "nvim_lsp_signature_help" },
     }, {
       { name = "nvim_lsp" },
@@ -195,20 +198,20 @@ require "cmp".setup {
     {
       { name = "buffer" },
     })
-}
+})
 
-require "cmp".setup.cmdline({ '/', '?' }, {
-  mapping = require "cmp".mapping.preset.cmdline(),
-  sources = require "cmp".config.sources({
+require("cmp").setup.cmdline({ '/', '?' }, {
+  mapping = require("cmp").mapping.preset.cmdline(),
+  sources = require("cmp").config.sources({
     { name = "nvim_lsp_document_symbol" },
   }, {
     { name = 'buffer' },
   })
 })
 
-require "cmp".setup.cmdline(':', {
-  mapping = require "cmp".mapping.preset.cmdline(),
-  sources = require "cmp".config.sources({
+require("cmp").setup.cmdline(':', {
+  mapping = require("cmp").mapping.preset.cmdline(),
+  sources = require("cmp").config.sources({
     { name = 'path' }
   }, {
     { name = 'cmdline' }
