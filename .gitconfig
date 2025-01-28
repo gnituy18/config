@@ -5,8 +5,10 @@
 	name = 許煜廷
 	email = me@hsuyuting.com
 [alias]
+	br = branch
 	ci = commit
 	co = checkout
+	rb = rebase
 	st = status
 [url "git@github.com:"]
 	insteadOf = https://github.com/
