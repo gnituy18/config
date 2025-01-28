@@ -124,7 +124,7 @@ require("ibl").setup()
 require("neoscroll").setup()
 
 require "fzf-lua".setup()
-vim.keymap.set("n", "<Space>j", require("fzf-lua").jumps)
+vim.keymap.set("n", "<Space>j", require("fzf-lua").lgrep_curbuf)
 vim.keymap.set("n", "<Space>k", require("fzf-lua").files)
 vim.keymap.set("n", "<Space>l", require("fzf-lua").live_grep)
 
