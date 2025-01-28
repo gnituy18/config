@@ -41,7 +41,7 @@ vim.opt.rtp:prepend(lazypath)
 require "lazy".setup({
   { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {}, },
   "karb94/neoscroll.nvim",
   "ibhagwan/fzf-lua",
   "ggandor/leap.nvim",
@@ -61,18 +61,8 @@ require "lazy".setup({
   ui = {
     border = "rounded",
     icons = {
-      cmd = "⌘",
-      config = "🛠",
-      event = "📅",
-      ft = "📂",
-      init = "⚙",
-      keys = "🗝",
-      plugin = "🔌",
-      runtime = "💻",
-      require = "🌙",
       source = "📄",
-      start = "🚀",
-      task = "📌",
+      start = "🟢",
       lazy = "💤 ",
     }
   }
