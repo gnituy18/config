@@ -1,0 +1,28 @@
+font-family = "Fira Code"
+font-size = 14
+
+background = #16161d
+foreground = #efeff3
+
+selection-background = #7c7c9c
+selection-foreground = #16161d
+
+palette = 0=#16161d
+palette = 1=#ff8080
+palette = 2=#d7ff5e
+palette = 3=#ffd75e
+palette = 4=#809fff
+palette = 5=#cf9fff
+palette = 6=#00dfdf
+palette = 7=#47475e
+palette = 8=#22222d
+palette = 9=#bf6000
+palette = 10=#60bf00
+palette = 11=#ff9f40
+palette = 12=#7c7c9c
+palette = 13=#ff80df
+palette = 14=#80ff9f
+palette = 15=#efeff3
+
+window-padding-x = 0
+window-padding-y = 0

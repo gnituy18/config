@@ -32,6 +32,10 @@
 # 345
 # 360	red
 
+[font.normal]
+family = "Fira Code"
+style = "Retina"
+
 [colors.primary]
 foreground = "#efeff3"
 background = "#16161d"
