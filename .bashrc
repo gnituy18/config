@@ -5,9 +5,7 @@ if [ -f ~/bin/git-prompt.sh ]; then
 	source ~/bin/git-prompt.sh
 fi
 
-if [ -f ~/.fzf.bash ]; then
-	source ~/.fzf.bash
-fi
+eval "$(fzf --bash)"
 
 export HISTCONTROL=-1
 export HISTSIZE=-1
@@ -20,12 +18,11 @@ opt_hist() {
 }
 export PROMPT_COMMAND='history -a && history -c && history -r && opt_hist'
 
-export PATH="$HOME/bin:$HOME/.cargo/bin:$HOME/go/bin:/opt/homebrew/bin:$PATH"
-export GOPATH="$HOME/go"
+export PATH="$HOME/bin:/opt/homebrew/bin:$PATH"
+
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-. "$HOME/.cargo/env"
+  [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+  [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
 PS1='\[\e[0;34m\]\w\[\e[0m\]\[\e[0;31m\]$(__git_ps1 " %s")\[\e[0m\]\[\e[0;32m\] $\[\e[0m\] '
 PS2='\[\e[0m\]\[\e[0;32m\]>\[\e[0m\] '
