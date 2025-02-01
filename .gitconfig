@@ -8,6 +8,8 @@
 	br = branch
 	ci = commit
 	co = checkout
+	pl = pull
+	ps = push
 	rb = rebase
 	st = status
 [url "git@github.com:"]
