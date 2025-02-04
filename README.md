@@ -13,7 +13,6 @@
 1. `ln -s /Users/hsuyuting/config/ghostty /Users/hsuyuting/.config/ghostty`
 1. `ln -s /Users/hsuyuting/config/nvim /Users/hsuyuting/.config/nvim`
 1. `ln -s /Users/hsuyuting/config/.bash_profile /Users/hsuyuting/.bash_profile`
-1. `ln -s /Users/hsuyuting/config/.bashrc /Users/hsuyuting/.bashrc`
 1. `ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig`
 1. `ln -s /Users/hsuyuting/config/.gitignore /Users/hsuyuting/.gitignore`
 1. `ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf`
