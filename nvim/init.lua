@@ -57,13 +57,21 @@ require("lazy").setup({
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-vsnip",
   "hrsh7th/vim-vsnip",
+  "zbirenbaum/copilot.lua",
+  "zbirenbaum/copilot-cmp",
+  { "nvim-lua/plenary.nvim", branch = "master" },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    build = "make tiktoken",
+    opts = {},
+  },
 }, {
   ui = {
     border = "rounded",
     icons = {
       source = "📄",
       start = "🟢",
-      lazy = "💤 ",
+      lazy = "💤",
     }
   }
 })
@@ -170,6 +178,17 @@ for _, server in ipairs(servers) do
   })
 end
 
+
+require("copilot").setup({
+  suggestion = { enabled = false },
+  panel = { enabled = false },
+  filetypes = {
+    yaml = true,
+  },
+})
+
+require("copilot_cmp").setup()
+
 require("cmp").setup({
   snippet = {
     expand = function(args)
@@ -188,9 +207,12 @@ require("cmp").setup({
     ["<C-e>"] = require("cmp").mapping.abort(),
     ["<CR>"] = require("cmp").mapping.confirm(),
   }),
-  sources = require("cmp").config.sources({
+  sources = require("cmp").config.sources(
+    {
+      { name = "copilot" },
       { name = "nvim_lsp_signature_help" },
-    }, {
+    },
+    {
       { name = "nvim_lsp" },
       { name = "vsnip" },
     },
