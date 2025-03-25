@@ -86,8 +86,6 @@ vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 vim.o.foldlevelstart = 99
 
-vim.treesitter.language.register('html', 'tmpl')
-
 require("gitsigns").setup({
   on_attach = function(bufnr)
     local gs = require('gitsigns')
