@@ -1,5 +1,6 @@
 vim.g.colors_name = 'hsuyuting'
 
+
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#22222d' })
 vim.api.nvim_set_hl(0, 'Directory', { fg = '#809fff' })
 vim.api.nvim_set_hl(0, 'DiffAdd', { fg = '#d7ff5e' })
@@ -16,6 +17,7 @@ vim.api.nvim_set_hl(0, 'MatchParen', { bg = '#00dfdf', fg = '#16161d' })
 vim.api.nvim_set_hl(0, 'ModeMsg', { fg = '#47475e' })
 vim.api.nvim_set_hl(0, 'MoreMsg', { fg = '#47475e' })
 vim.api.nvim_set_hl(0, 'NonText', { fg = '#22222d' })
+vim.api.nvim_set_hl(0, 'Normal', { bg = '#16161d', fg = '#efeff3' })
 vim.api.nvim_set_hl(0, 'NormalFloat', { link = 'Normal' })
 vim.api.nvim_set_hl(0, 'Pmenu', { bg = '#16161d', fg = '#47475e' })
 vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#22222d', fg = '#efeff3' })
