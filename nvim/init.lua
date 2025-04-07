@@ -59,12 +59,6 @@ require("lazy").setup({
   "hrsh7th/vim-vsnip",
   "zbirenbaum/copilot.lua",
   "zbirenbaum/copilot-cmp",
-  { "nvim-lua/plenary.nvim", branch = "master" },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    build = "make tiktoken",
-    opts = {},
-  },
 }, {
   ui = {
     border = "rounded",
@@ -153,15 +147,15 @@ for _, server in ipairs(servers) do
   require("lspconfig")[server].setup({
     on_attach = function(_, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions({ jump1 = true }) end,
         bufopts)
-      vim.keymap.set("n", "gD", function() require("fzf-lua").lsp_declarations({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gD", function() require("fzf-lua").lsp_declarations({ jump1 = true }) end,
         bufopts)
-      vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations({ jump1 = true }) end,
         bufopts)
-      vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references({ jump1 = true }) end,
         bufopts)
-      vim.keymap.set("n", "gt", function() require("fzf-lua").lsp_typedefs({ jump_to_single_result = true }) end,
+      vim.keymap.set("n", "gt", function() require("fzf-lua").lsp_typedefs({ jump1 = true }) end,
         bufopts)
 
       vim.keymap.set("n", "<Space>h", vim.lsp.buf.hover, bufopts)
@@ -175,17 +169,6 @@ for _, server in ipairs(servers) do
     capabilities = require("cmp_nvim_lsp").default_capabilities()
   })
 end
-
-
-require("copilot").setup({
-  suggestion = { enabled = false },
-  panel = { enabled = false },
-  filetypes = {
-    yaml = true,
-  },
-})
-
-require("copilot_cmp").setup()
 
 require("cmp").setup({
   snippet = {
@@ -206,10 +189,6 @@ require("cmp").setup({
     ["<CR>"] = require("cmp").mapping.confirm(),
   }),
   sources = require("cmp").config.sources(
-    {
-      { name = "copilot" },
-      { name = "nvim_lsp_signature_help" },
-    },
     {
       { name = "nvim_lsp" },
       { name = "vsnip" },
