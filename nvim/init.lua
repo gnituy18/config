@@ -57,8 +57,6 @@ require("lazy").setup({
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-vsnip",
   "hrsh7th/vim-vsnip",
-  "zbirenbaum/copilot.lua",
-  "zbirenbaum/copilot-cmp",
 }, {
   ui = {
     border = "rounded",
