@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Delete Selecion",
+  "version": "1.0.0",
+  "description": "Remove selected content by pressing 'd'",
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "delete-selection.js"
+      ]
+    }
+  ]
+}
