@@ -128,7 +128,7 @@ vim.keymap.set("n", "<Space>l", require("fzf-lua").live_grep)
 
 require("leap").add_default_mappings()
 
-local servers = { "gopls", "lua_ls", "ts_ls", "html", "tailwindcss", "yamlls", "jsonls" }
+local servers = { "clangd", "gopls", "lua_ls", "ts_ls", "html", "tailwindcss", "yamlls", "jsonls" }
 
 require("mason").setup()
 require("mason-lspconfig").setup({
