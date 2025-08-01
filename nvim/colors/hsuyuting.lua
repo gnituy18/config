@@ -1,6 +1,5 @@
 vim.g.colors_name = 'hsuyuting'
 
-
 vim.api.nvim_set_hl(0, 'CursorLine', { bg = '#22222d' })
 vim.api.nvim_set_hl(0, 'Directory', { fg = '#809fff' })
 vim.api.nvim_set_hl(0, 'DiffAdd', { fg = '#d7ff5e' })

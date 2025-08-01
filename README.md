@@ -1,4 +1,4 @@
-## MacOS Setup
+## Mac Setup
 
 1. 設定Dock, 變更鍵, 熱點, iCloud同步
 1. [更新Github SSH key pair](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
