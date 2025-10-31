@@ -39,9 +39,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter",     build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter",     branch = 'master', lazy = false, build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",       opts = {}, },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl",      opts = {} },
   "karb94/neoscroll.nvim",
   "ibhagwan/fzf-lua",
   "ggandor/leap.nvim",
@@ -126,14 +126,14 @@ vim.keymap.set("n", "<Space>j", require("fzf-lua").lgrep_curbuf)
 vim.keymap.set("n", "<Space>k", require("fzf-lua").files)
 vim.keymap.set("n", "<Space>l", require("fzf-lua").live_grep)
 
-require("leap").add_default_mappings()
+vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
+vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
 
 local servers = { "clangd", "gopls", "lua_ls", "ts_ls", "html", "tailwindcss", "yamlls", "jsonls" }
 
 require("mason").setup()
 require("mason-lspconfig").setup({
   ensure_installed = servers,
-  automatic_installation = true,
 })
 
 vim.keymap.set("n", "<Space>d", function() vim.diagnostic.open_float(nil, { focusable = false }) end,
@@ -142,7 +142,7 @@ vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { noremap = true, silent = t
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { noremap = true, silent = true })
 
 for _, server in ipairs(servers) do
-  require("lspconfig")[server].setup({
+  vim.lsp.config(server, {
     on_attach = function(_, bufnr)
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
       vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions({ jump1 = true }) end,
