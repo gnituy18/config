@@ -123,6 +123,7 @@ require("ibl").setup()
 require("neoscroll").setup()
 
 require "fzf-lua".setup()
+require("fzf-lua").register_ui_select()
 vim.keymap.set("n", "<Space>j", require("fzf-lua").lgrep_curbuf)
 vim.keymap.set("n", "<Space>k", require("fzf-lua").files)
 vim.keymap.set("n", "<Space>l", require("fzf-lua").live_grep)
@@ -215,3 +216,20 @@ require("cmp").setup.cmdline(':', {
   }),
   matching = { disallow_symbol_nonprefix_matching = false },
 })
+
+vim.keymap.set("n", "<Space>p", function()
+  local folder = vim.fn.getcwd() .. "/.clipboard"
+  local files = vim.fn.globpath(folder, "*", false, true)
+
+  local items = {}
+  for _, file in ipairs(files) do
+    table.insert(items, vim.fn.fnamemodify(file, ":t"))
+  end
+
+  vim.ui.select(items, { prompt = "Select snippet:" }, function(choice)
+    if choice then
+      local content = vim.fn.readfile(folder .. "/" .. choice)
+      vim.api.nvim_put(content, "l", true, true)
+    end
+  end)
+end)
