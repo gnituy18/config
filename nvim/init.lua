@@ -39,12 +39,12 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter",     branch = 'master', lazy = false, build = ":TSUpdate" },
+  { "nvim-treesitter/nvim-treesitter",     lazy = false, build = ":TSUpdate" },
   "lewis6991/gitsigns.nvim",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl",      opts = {} },
+  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
   "karb94/neoscroll.nvim",
   "ibhagwan/fzf-lua",
-  "ggandor/leap.nvim",
+  "https://codeberg.org/andyg/leap.nvim",
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
@@ -67,12 +67,6 @@ require("lazy").setup({
       lazy = "💤",
     }
   }
-})
-
-require("nvim-treesitter.configs").setup({
-  ensure_installed = "all",
-  highlight = { enable = true },
-  indent = { enable = true },
 })
 
 vim.wo.foldmethod = 'expr'
