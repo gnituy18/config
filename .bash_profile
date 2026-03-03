@@ -19,11 +19,11 @@ export NVM_DIR=$HOME/.nvm
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
-if [ -f ~/bin/git-prompt.sh ]; then
+if [ -f ~/.local/bin/git-prompt.sh ]; then
 	GIT_PS1_SHOWDIRTYSTATE=true
 	GIT_PS1_SHOWUNTRACKEDFILES=true
 	GIT_PS1_SHOWUPSTREAM='auto'
-	source ~/bin/git-prompt.sh
+	source ~/.local/bin/git-prompt.sh
 fi
 
 eval "$(fzf --bash)"
