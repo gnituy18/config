@@ -12,6 +12,8 @@ opt_hist() {
 }
 export PROMPT_COMMAND='history -a && history -c && history -r && opt_hist'
 
+export PATH="$HOME/.local/bin:$PATH"
+
 export GOPATH=$HOME/go
 export PATH=$HOME/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$GOPATH/bin:$PATH
 
