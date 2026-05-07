@@ -22,51 +22,25 @@ for i = 1, 9 do
   vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out,                            "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
-
-require("lazy").setup({
-  { "nvim-treesitter/nvim-treesitter",     lazy = false, build = ":TSUpdate" },
-  "lewis6991/gitsigns.nvim",
-  { "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
-  "karb94/neoscroll.nvim",
-  "ibhagwan/fzf-lua",
+vim.pack.add({
+  "https://github.com/lewis6991/gitsigns.nvim",
+  "https://github.com/lukas-reineke/indent-blankline.nvim",
+  "https://github.com/karb94/neoscroll.nvim",
+  "https://github.com/ibhagwan/fzf-lua",
   "https://codeberg.org/andyg/leap.nvim",
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
-  "neovim/nvim-lspconfig",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-nvim-lsp-document-symbol",
-  "hrsh7th/cmp-nvim-lsp-signature-help",
-  "hrsh7th/nvim-cmp",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
-  "gnituy18/tmplx.nvim",
-}, {
-  ui = {
-    border = "rounded",
-    icons = {
-      source = "📄",
-      start = "🟢",
-      lazy = "💤",
-    }
-  }
+  "https://github.com/williamboman/mason.nvim",
+  "https://github.com/williamboman/mason-lspconfig.nvim",
+  "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/hrsh7th/cmp-buffer",
+  "https://github.com/hrsh7th/cmp-path",
+  "https://github.com/hrsh7th/cmp-cmdline",
+  "https://github.com/hrsh7th/cmp-nvim-lsp",
+  "https://github.com/hrsh7th/cmp-nvim-lsp-document-symbol",
+  "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
+  "https://github.com/hrsh7th/nvim-cmp",
+  "https://github.com/hrsh7th/cmp-vsnip",
+  "https://github.com/hrsh7th/vim-vsnip",
+  "https://github.com/gnituy18/tmplx.nvim",
 })
 
 vim.wo.foldmethod = 'expr'
