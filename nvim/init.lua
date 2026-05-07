@@ -24,6 +24,11 @@ vim.o.foldlevelstart = 99
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "yaml", "html", "go" },
+  callback = function() vim.treesitter.start() end,
+})
+
 for i = 1, 9 do
   vim.keymap.set("n", "<Space>" .. i, i .. "gt")
 end
@@ -37,9 +42,9 @@ vim.pack.add({
   "https://github.com/williamboman/mason.nvim",
   "https://github.com/williamboman/mason-lspconfig.nvim",
   "https://github.com/neovim/nvim-lspconfig",
+  "https://github.com/ray-x/lsp_signature.nvim",
   "https://github.com/hrsh7th/nvim-cmp",
   "https://github.com/hrsh7th/cmp-nvim-lsp",
-  "https://github.com/hrsh7th/cmp-nvim-lsp-signature-help",
   "https://github.com/hrsh7th/cmp-buffer",
   "https://github.com/hrsh7th/cmp-path",
   "https://github.com/hrsh7th/cmp-cmdline",
@@ -122,7 +127,7 @@ for _, server in ipairs(servers) do
         bufopts)
 
       vim.keymap.set("n", "<Space>h", vim.lsp.buf.hover, bufopts)
-      vim.keymap.set("n", "<Space>s", vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set("n", "<Space>s", function() require("lsp_signature").toggle_float_win() end, bufopts)
 
       vim.keymap.set("n", "<Space>r", vim.lsp.buf.rename, bufopts)
       vim.keymap.set("n", "<Space>a", require("fzf-lua").lsp_code_actions, bufopts)
@@ -135,7 +140,12 @@ for _, server in ipairs(servers) do
     capabilities = require("cmp_nvim_lsp").default_capabilities()
   })
 end
-vim.lsp.enable(servers)
+
+require("lsp_signature").setup({
+  hint_enable = false,
+  hi_parameter = "LspSignatureActiveParameter",
+  handler_opts = { border = "rounded" },
+})
 
 local cmp = require("cmp")
 cmp.setup({
@@ -153,13 +163,11 @@ cmp.setup({
     ["<C-b>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-k>"] = cmp.mapping.complete(),
-    ["<C-e>"] = cmp.mapping.abort(),
     ["<CR>"] = cmp.mapping.confirm({ select = false }),
   }),
   sources = cmp.config.sources(
     {
       { name = "nvim_lsp" },
-      { name = "nvim_lsp_" },
     },
     {
       { name = "buffer" },

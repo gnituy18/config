@@ -30,4 +30,4 @@ fi
 
 eval "$(fzf --bash)"
 
-[[ -f ~/local.sh ]] && source ~/local.sh
+[[ -f ~/.local/bin/local.sh ]] && source ~/.local/bin/local.sh

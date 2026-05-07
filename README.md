@@ -18,6 +18,8 @@
 1. `ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig`
 1. `ln -s /Users/hsuyuting/config/.gitignore /Users/hsuyuting/.gitignore`
 1. `ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf`
-1. `touch ~/local.sh`
+1. `touch ~/.local/bin/local.sh`
 1. `nvim /etc/shells` 貼上 `/opt/homebrew/bin/bash`
 1. `chsh` 貼上 `/opt/homebrew/bin/bash`
+1. `ln -s ~/Documents/.claude/settings.json ~/.claude/settings.json`
+1. `ln -s ~/Documents/.claude/projects ~/.claude/projects`

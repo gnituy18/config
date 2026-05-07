@@ -52,6 +52,10 @@ vim.api.nvim_set_hl(0, 'Added', { fg = '#d7ff5e' })
 vim.api.nvim_set_hl(0, 'Removed', { fg = '#ff8080' })
 vim.api.nvim_set_hl(0, 'Changed', { fg = '#ffd75e' })
 vim.api.nvim_set_hl(0, 'LspInlayHint', { fg = '#6a6a8a' })
+
+vim.api.nvim_set_hl(0, 'FloatBorder', { fg = '#47475e', bg = '#16161d' })
+vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter', { fg = '#809fff' })
+
 vim.api.nvim_set_hl(0, 'DiagnosticError', { fg = '#ff8080' })
 vim.api.nvim_set_hl(0, 'DiagnosticWarn', { fg = '#ffd75e' })
 vim.api.nvim_set_hl(0, '@tag.attribute', { link = 'Identifier' })
