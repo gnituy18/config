@@ -192,7 +192,7 @@ cmp.setup.cmdline(':', {
 })
 
 vim.keymap.set("n", "<Space>p", function()
-  local folder = vim.fn.getcwd() .. "/.clipboard"
+  local folder = vim.fn.expand("~/.clipboard")
   local files = vim.fn.globpath(folder, "*", false, true)
 
   local items = {}

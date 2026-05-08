@@ -1,6 +1,6 @@
 [core]
 	editor = nvim
-	excludesfile = /Users/hsuyuting/.gitignore
+	excludesfile = ~/.gitignore
 [user]
 	name = 許煜廷
 	email = me@hsuyuting.com

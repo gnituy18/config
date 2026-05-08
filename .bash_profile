@@ -1,7 +1,6 @@
 PS1='\[\e[0;34m\]\w\[\e[0m\]\[\e[0;31m\]$(__git_ps1 " %s")\[\e[0m\]\[\e[0;32m\] $\[\e[0m\] '
 PS2='\[\e[0m\]\[\e[0;32m\]>\[\e[0m\] '
 
-export HISTCONTROL=-1
 export HISTSIZE=-1
 export HISTCONTROL=ignoredups:ignorespace
 opt_hist() {
@@ -10,12 +9,13 @@ opt_hist() {
 	awk '!x[$0]++' $TMP | tail -r > ~/.bash_history
 	rm $TMP
 }
-export PROMPT_COMMAND='history -a && history -c && history -r && opt_hist'
+export PROMPT_COMMAND='history -a && history -c && history -r'
+trap opt_hist EXIT
 
 export PATH="$HOME/.local/bin:$PATH"
 
 export GOPATH=$HOME/go
-export PATH=$HOME/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$GOPATH/bin:$PATH
+export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$GOPATH/bin:$PATH
 
 export NVM_DIR=$HOME/.nvm
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
