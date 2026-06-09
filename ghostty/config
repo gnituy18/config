@@ -1,4 +1,5 @@
-font-family = "Fira Code"
+font-family = "Monaco"
+font-size = 14
 
 background = #16161d
 foreground = #efeff3
@@ -22,6 +23,3 @@ palette = 12=#7c7c9c
 palette = 13=#ff80df
 palette = 14=#80ff9f
 palette = 15=#efeff3
-
-window-padding-x = 0
-window-padding-y = 0

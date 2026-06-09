@@ -2,7 +2,7 @@
 
 1. 設定Dock, 變更鍵, 熱點, iCloud同步
 1. `brew install --cask ghostty font-fira-code`
-1. `brew install bash tmux neovim git fzf ripgrep wget fd lua go python luarocks nvm tree-sitter-cli`
+1. `brew install bash neovim git fzf ripgrep wget fd lua go python luarocks nvm tree-sitter-cli`
 1. `brew install --cask google-chrome`
 1. `brew install --cask claude-code`
 1. `nvm install --lts`
@@ -18,7 +18,6 @@
 1. `ln -s /Users/hsuyuting/config/.bash_profile /Users/hsuyuting/.bash_profile`
 1. `ln -s /Users/hsuyuting/config/.gitconfig /Users/hsuyuting/.gitconfig`
 1. `ln -s /Users/hsuyuting/config/.gitignore /Users/hsuyuting/.gitignore`
-1. `ln -s /Users/hsuyuting/config/.tmux.conf /Users/hsuyuting/.tmux.conf`
 1. `touch ~/.local/bin/local.sh`
 1. `nvim /etc/shells` 貼上 `/opt/homebrew/bin/bash`
 1. `chsh` 貼上 `/opt/homebrew/bin/bash`
