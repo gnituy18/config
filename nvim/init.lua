@@ -24,8 +24,31 @@ vim.o.foldlevelstart = 99
 vim.wo.foldmethod = 'expr'
 vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
 
+-- tmplx files are .html; give them their own filetype so the tmpls language
+-- server attaches (and the plain html server doesn't), while tmplx.nvim's
+-- Go-in-HTML highlighting still works via the html parser.
+vim.filetype.add({
+  extension = {
+    html = function(path, bufnr)
+      for _, l in ipairs(vim.api.nvim_buf_get_lines(bufnr, 0, 200, false)) do
+        if l:find("text/tmplx", 1, true) then
+          return "tmplx"
+        end
+      end
+      -- a script-less component/page still counts if it lives under
+      -- pages/ or components/ in a Go module
+      if (path:find("/pages/", 1, true) or path:find("/components/", 1, true))
+        and vim.fs.find("go.mod", { path = vim.fs.dirname(path), upward = true })[1] then
+        return "tmplx"
+      end
+      return "html"
+    end,
+  },
+})
+vim.treesitter.language.register("html", "tmplx") -- tmplx parses as html
+
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "yaml", "html", "go" },
+  pattern = { "yaml", "html", "go", "tmplx" },
   callback = function() vim.treesitter.start() end,
 })
 
@@ -101,7 +124,7 @@ vim.keymap.set("n", "<Space>l", require("fzf-lua").live_grep)
 vim.keymap.set({ 'n', 'x', 'o' }, 's', '<Plug>(leap)')
 vim.keymap.set('n', 'S', '<Plug>(leap-from-window)')
 
-local servers = { "clangd", "gopls", "lua_ls", "html", "yamlls", "jsonls" }
+local servers = { "clangd", "gopls", "lua_ls", "html", "yamlls", "jsonls", "ts_ls" }
 
 require("mason").setup()
 require("mason-lspconfig").setup({
@@ -111,35 +134,47 @@ require("mason-lspconfig").setup({
 vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, { noremap = true, silent = true })
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1 }) end, { noremap = true, silent = true })
 
-for _, server in ipairs(servers) do
-  vim.lsp.config(server, {
-    on_attach = function(_, bufnr)
-      local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions({ jump1 = true }) end,
-        bufopts)
-      vim.keymap.set("n", "gD", function() require("fzf-lua").lsp_declarations({ jump1 = true }) end,
-        bufopts)
-      vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations({ jump1 = true }) end,
-        bufopts)
-      vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references({ jump1 = true }) end,
-        bufopts)
-      vim.keymap.set("n", "gt", function() require("fzf-lua").lsp_typedefs({ jump1 = true }) end,
-        bufopts)
+local function on_attach(_, bufnr)
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+  vim.keymap.set("n", "gd", function() require("fzf-lua").lsp_definitions({ jump1 = true }) end,
+    bufopts)
+  vim.keymap.set("n", "gD", function() require("fzf-lua").lsp_declarations({ jump1 = true }) end,
+    bufopts)
+  vim.keymap.set("n", "gi", function() require("fzf-lua").lsp_implementations({ jump1 = true }) end,
+    bufopts)
+  vim.keymap.set("n", "gr", function() require("fzf-lua").lsp_references({ jump1 = true }) end,
+    bufopts)
+  vim.keymap.set("n", "gt", function() require("fzf-lua").lsp_typedefs({ jump1 = true }) end,
+    bufopts)
 
-      vim.keymap.set("n", "<Space>h", vim.lsp.buf.hover, bufopts)
-      vim.keymap.set("n", "<Space>s", function() require("lsp_signature").toggle_float_win() end, bufopts)
+  vim.keymap.set("n", "<Space>h", vim.lsp.buf.hover, bufopts)
+  vim.keymap.set("n", "<Space>s", function() require("lsp_signature").toggle_float_win() end, bufopts)
 
-      vim.keymap.set("n", "<Space>r", vim.lsp.buf.rename, bufopts)
-      vim.keymap.set("n", "<Space>a", require("fzf-lua").lsp_code_actions, bufopts)
-      vim.keymap.set("n", "<Space>f", function() vim.lsp.buf.format { async = true } end, bufopts)
-      vim.keymap.set("n", "<Space>i", function()
-        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
-      end, bufopts)
-    end,
-
-    capabilities = require("cmp_nvim_lsp").default_capabilities()
-  })
+  vim.keymap.set("n", "<Space>r", vim.lsp.buf.rename, bufopts)
+  vim.keymap.set("n", "<Space>a", require("fzf-lua").lsp_code_actions, bufopts)
+  vim.keymap.set("n", "<Space>f", function() vim.lsp.buf.format { async = true } end, bufopts)
+  vim.keymap.set("n", "<Space>i", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+  end, bufopts)
 end
+
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+for _, server in ipairs(servers) do
+  vim.lsp.config(server, { on_attach = on_attach, capabilities = capabilities })
+end
+
+-- tmpls: the tmplx language server. Not a mason server -- install with
+--   go install github.com/gnituy18/tmplx/cmd/tmpls@latest
+-- (or keep a `tmpls` binary on your PATH).
+vim.lsp.config("tmpls", {
+  cmd = { "tmpls" },
+  filetypes = { "tmplx" },
+  root_markers = { "go.mod" },
+  on_attach = on_attach,
+  capabilities = capabilities,
+})
+vim.lsp.enable("tmpls")
 
 require("lsp_signature").setup({
   hint_enable = false,
